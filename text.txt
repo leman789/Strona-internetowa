@@ -1,7 +1,13 @@
 leman jak to dziala
 
-chałemzobaczć 
+chałem zobaczć 
 
 Reczuś down
+<<<<<<< HEAD
 
 UWUWUWU
+=======
+ty też xd
+lkdfjsflkjsflskfjslfkjsfl
+wsumie to tak
+>>>>>>> 38950937286b90935e845534ddd4458a737ed7e8
