@@ -16,8 +16,6 @@ body
      }
      #menu div{
         list-style: none;
-        background-color: cadetblue;
-        width: 20%;
         float: right;
         text-align: center;
         height: 54px;
@@ -28,7 +26,17 @@ body
          display: block;
          font-weight: bold;
      }
-     .Int{
+    .Int{
+        width: 20%;
+    }
+    .Int:hover{
          background-color: lime;
          color: red;
      }
+.Tlo{
+    width: 10%;
+}
+.Logo
+{
+    width: 30%;
+}
