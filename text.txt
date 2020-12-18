@@ -21,7 +21,6 @@ sda
 sdaas
 downda
 sdaassd
-wie ktos jak usunąc te znaczki
 
 >>>>>>> 38950937286b90935e845534ddd4458a737ed7e8
 
