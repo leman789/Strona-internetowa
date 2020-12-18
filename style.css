@@ -2,26 +2,33 @@ html{
       font-family: sans-serif;
       background-color: blue;
 }
+body
+{
+    width: 100%;
+     margin: 0 auto;
+}
      #menu{
-      width: 100%;
-      float: left;
+         margin: 0 auto;
+         width: 100%;
+         float: left;
+         text-align: center;
+         background-color: cadetblue;
      }
      #menu div{
-     list-style: none;
-     background-color: cadetblue;
-     width: 33.33%;
-     float: left;
-     text-align: center;
-     height: 54px;
+        list-style: none;
+        background-color: cadetblue;
+        width: 20%;
+        float: right;
+        text-align: center;
+        height: 54px;
      
      }
      #menu a{
          text-decoration: none;
          display: block;
-     
          font-weight: bold;
      }
-     #menu a:hover{
+     .Int{
          background-color: lime;
          color: red;
      }
