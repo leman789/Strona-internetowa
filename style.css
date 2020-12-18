@@ -1,9 +1,10 @@
 html{
       font-family: sans-serif;
-      background-color: blue;
 }
 body
 {
+    background-image: url("wp1965885.png");
+     background-size: cover;
     width: 100%;
      margin: 0 auto;
 }
