@@ -3,11 +3,14 @@ html{
 }
 body
 {
-    background-image: url("wp1965885.png");
-     background-size: cover;
     width: 100%;
      margin: 0 auto;
 }
+
+    #obraz1{
+    width: 100%;
+    height: 80%;
+    }
      #menu{
          margin: 0 auto;
          width: 100%;
