@@ -33,42 +33,49 @@
             Logo
         </div>
     </div>
-    <?php
-    $host="localhost";
-    $user="root";
-    $haslo="";
-    $db="strona_z_grami";
-    $dns="mysql:host=$host;dbname=$db";
-    $pdo=new PDO($dns,$user,$haslo);
-    $zapytanie="SELECT `obrazek` FROM `gry`";
-    $wynik=$pdo->query($zapytanie);
-    echo "$wynik";
     
-    
-    ?> 
-   
-    <img  id="obraz1" src="wp1965885.png" alt="zd_glowne"><!-- kod ktory zmienia zdj automatyczne trzeba tylko zmienic zdj-->
+
+  <img  id="obraz1" src="1.jpg" alt="zd_glowne"><!-- kod ktory zmienia zdj automatyczne trzeba tylko zmienic zdj-->
     <form action=""></form>
     <h2>ZOBACZ WIĘCEJ GIER </h2>
-    <div id="back">dsadd</div>
-
+    <input type="button"  onclick="dodaj()" id="next">
+    <input type="button"  onclick="odejmij()" id="back">
     <script>
-        let zdj=['33214.jpg ','wp1965885.png','33214.jpg','wp1965885.png']
-        let i=0;
-        function zmiana()
+        function dodaj()
+        {
+            i++;
+            zmiana(0);
+            
+        }
+         function odejmij()
+        {
+            i--;
+            zmiana(0);
+            
+        }
+        let zdj=['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg']
+         i=0;
+        function zmiana(x)
             {
+                y=x;
+                if(y==1)
+                    {
+                        i++;
+                        zmiana(0);
+                        y=0;
+                    }
                 document.getElementById("obraz1").src=zdj[i];
-                i++;
-                if(i>=zdj.length)
-                {
+                if(i>4){
                     i=0;
+                   zmiana(0)
                 }
-                
+                else if(i<0){
+                    i=4;   
+                   zmiana(0)
+                }   
             }
-        setInterval("zmiana()",5000);
+        
+        setInterval("zmiana(1)",5000);
     </script>
-   
-     <div id="next">dsadd</div>   
-    
 </body>
 </html>
