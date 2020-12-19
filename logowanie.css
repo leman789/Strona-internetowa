@@ -1,0 +1,24 @@
+html {
+    font-family: sans-serif;
+}
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+body{
+    background-color: aliceblue;
+    text-align: center;
+    position: absolute;
+}
+.logowanie{
+    border:2px solid red;
+}
+.logowanie:target{
+    margin: 30px;
+}
+#reje{
+    width: 30%;
+    position: relative;
+    left: 35%;
+}
