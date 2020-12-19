@@ -17,13 +17,13 @@ h2{
 }
 #menu{
     color: white;
-    position: fixed;
+    position: absolute;
     margin: 0 auto;
     width: 100%;
     text-align: center;
     background-color:black;
     font-size: 30px;
-    height: 6%;
+    height: 10%;
 }
 #menu div{
     float: right;
@@ -42,10 +42,12 @@ h2{
     font-weight: bold;
     color:white;
     height: 100%;
+    margin:0 auto;
 }
 #menu a:hover{
     background-color: white;
     color: black;
+    
 }
 .Int{
     width: 13%;
@@ -72,18 +74,18 @@ h2{
 }
 #back{
     position: absolute;
-    top: 6%;
+    top: 10%;
     width: 100px;
-    height: 104%;
+    height: 100%;
     background-color: red;
     opacity: 0.5;
 }
 #next{
     position: absolute;
     right: 0;
-    top: 6%;
+    top: 10%;
     width: 100px;
-    height: 104%;
+    height: 100%;
     background-color: red;
     opacity: 0.5;
 }
