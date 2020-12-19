@@ -20,7 +20,8 @@ h2{
          width: 100%;
          float: left;
          text-align: center;
-         background-color: cadetblue;
+         background-color:black;
+         font-size: 30px;
      }
      #menu div{
          list-style: none;
@@ -33,14 +34,22 @@ h2{
          text-decoration: none;
          display: block;
          font-weight: bold;
+         color:white;
      }
+     #menu a:hover{
+        color:black;
+    }
      .Int{
          width: 20%;
      }
      .Int:hover{
-         background-color: lime;
-         color: red;
+         background-color: white;
      }
+     a:hover
+     {
+         color:black;
+     }
+    
      .Tlo{
          width: 10%;
     }
