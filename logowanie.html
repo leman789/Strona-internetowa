@@ -8,53 +8,10 @@
 
 </head>
 <body>
-    <div id="menu">
-        <a href="logowanie.html"  class="Int">
-        <div id="menu1" > 
-            Logowanie
-        </div> 
-
-
-        </a>
-        <div id="menu2" class="Tlo"></div>
-        <a href="biblioteka.html" class="Int">
-            <div id="menu3"> 
-                Biblioteka
-            </div>
-        </a>
-        <a href="index.html" class="IntS">
-        <div id="menu4" >
-           Sklep
-
-        </div>
-        </a>
-        <div id="menu2" class="Tlo"></div>
-        <div id="menu5" class="Logo">
-            Logo
-        </div>
-    </div>
-    <img  id="obraz1" src="wp1965885.png" alt="zd_glowne"><!-- kod ktory zmienia zdj automatyczne trzeba tylko zmienic zdj-->
-     
-    <h2>ZOBACZ WIĘCEJ GIER </h2>
-    <div id="back">dsadd</div>
-    <script>
-        let zdj=['33214.jpg ','wp1965885.png','33214.jpg','wp1965885.png']
-        let i=0;
-        function zmiana()
-            {
-                document.getElementById("obraz1").src=zdj[i];
-                i++;
-                if(i>=zdj.length)
-                {
-                    i=0;
-                }
-                
-            }
-        setInterval("zmiana()",5000);
-    </script>
-     <div id="next">dsadd</div>
      <form action="logowanie.php" method="POST">
-        
-     </form>   
+        Podaj login<input type="text" name="login"><br>
+        Podaj hasło<input type="text" name="haslo"><br>
+     </form>
+     <a href="rejestracja.html">Jeżeli nie posiadasz konta, zarejestruj się!</a>   
 </body>
 </html>
