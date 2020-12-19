@@ -27,16 +27,18 @@ h2{
 }
 #menu div{
     float: right;
-    list-style: none;
     text-align: center;
-      float: right;
+    text-decoration: none;
+    display: block
+    font-weight: bold;
+    height: 100%;
 }
 #menu a{
     padding-right: 5%;
     float: right;
     text-align: center;
     text-decoration: none;
-    display: block;
+    display: block
     font-weight: bold;
     color:white;
     height: 100%;
@@ -58,6 +60,9 @@ h2{
 .IntS:hover{
     width: 9%;
     height: 100%;
+}
+#menu2{
+     width: 15%;
 }
 .Tlo{
     width: 15%;
