@@ -53,6 +53,19 @@
         setInterval("zmiana()",5000);
     </script>
     <?php
+    $host="localhost";
+    $user="root";
+    $haslo="";
+    $db="strona_z_grami";
+    $dns="mysql:host=$host;dbname=$db";
+    $pdo=new PDO($dns,$user,$haslo);
+    $zapytanie="SELECT `obrazek` FROM `gry`";
+    $wynik=$pdo->query($zapytanie);
+    foreach($wynik as $rekord)
+    {
+        echo "<img src='$rekord[0]' alt='zdj'>";
+    }
+    
     
     ?>
      <div id="next">dsadd</div>   
