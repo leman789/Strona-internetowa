@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="menu">
-           <div id="menu1" class="Int"> 
+        <div id="menu1" class="Int"> 
             <a href="logowanie.html">Logowanie</a>
         </div> 
         <div id="menu2" class="Tlo"> 
@@ -22,27 +22,25 @@
         </div>
         <div id="menu5" class="Logo">
         </div>
-      </div>
-      <img  id="obraz1" src="wp1965885.png" alt="zd_glowne"><!-- kod ktory zmienia zdj automatyczne trzeba tylko zmienic zdj-->
+    </div>
+    <img  id="obraz1" src="wp1965885.png" alt="zd_glowne"><!-- kod ktory zmienia zdj automatyczne trzeba tylko zmienic zdj-->
      
-        <h2>ZOBACZ WIĘCEJ GIER </h2>
+    <h2>ZOBACZ WIĘCEJ GIER </h2>
        
-       <script>
-       let zdj=['nike.jpg ','wp1965885.png','nike.jpg','wp1965885.png']
+    <script>
+        let zdj=['nike.jpg ','wp1965885.png','nike.jpg','wp1965885.png']
         let i=0;
         function zmiana()
             {
-            document.getElementById("obraz1").src=zdj[i];
-            i++;
-            if(i>=zdj.length)
-            {
-                i=0;
-            }
+                document.getElementById("obraz1").src=zdj[i];
+                i++;
+                if(i>=zdj.length)
+                {
+                    i=0;
+                }
                 
             }
         setInterval("zmiana()",5000);
-        </script>
-        
-        
+    </script>     
 </body>
 </html>
