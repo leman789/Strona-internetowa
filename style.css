@@ -50,31 +50,26 @@ h2{
     color: black;
     
 }
-.Int{
+#Zaloguj{
+    width: 13%;
+    
+}
+#Sklep{
     width: 13%;
 }
-.Int:hover{
+#Biblioteka{
+   width: 13%; 
+}
+#Puste_pole{
+     width: 13%;
+}
+#Logo{
+    width: 20%
+}
+#Zalogowany{
     width: 13%;
-    height: 100%;
 }
-.IntS{
-    width: 9%;
-}
-.IntS:hover{
-    width: 9%;
-    height: 100%;
-}
-#menu2{
-     width: 15%;
-}
-.Tlo{
-    width: 15%;
-}
-.Logo{
-    width: 20%;
-}
-
-#back{
+#Poprzednie_zdj{
     position: absolute;
     top: 10%;
     width: 5%;
@@ -83,7 +78,7 @@ h2{
     opacity: 0.09;
     z-index: 1;
 }
-#back:hover{
+#Poprzednie_zdj:hover{
     position: absolute;
     top: 10%;
     width: 5%;
@@ -92,7 +87,7 @@ h2{
     opacity: 0.25;
     z-index: 1;
 }
-#next{
+#Kolejne_zdj{
     position: absolute;
     right: 0;
     top: 10%;
@@ -102,7 +97,7 @@ h2{
     opacity: 0.09;
     z-index: 1;
 }
-#next:hover{
+#Kolejne_zdj:hover{
     position: absolute;
     right: 0;
     top: 10%;
