@@ -15,13 +15,14 @@
     $zapytanie="SELECT id,Imię,Avatar FROM `użytkownicy` LIMIT 1";
     $wynik=$PDO->query($zapytanie);
     foreach($wynik as $rekord){
+        
     }
     ?>
 </head>
 <body>
     <div id="menu">
         <?php
-                    if($rekord[0]==1)//po zalogowaniu
+            if($rekord[0]==1)//po zalogowaniu
         {
         echo "
         <div id='Zalogowany'>
