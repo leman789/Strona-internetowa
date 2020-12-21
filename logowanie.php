@@ -9,9 +9,11 @@
 </head>
 <body>
     <div id="reje">
-        <form action="logowanie.php" method="POST">
+        <form action="" method="POST">
             Podaj login<input type="text" name="login"><br>
             Podaj hasło<input type="text" name="haslo"><br>
+            <input type="reset" value="wyczyść">
+            <input type="submit" value="zaloguj">
         </form>
         <a href="rejestracja.php">Jeżeli nie posiadasz konta, zarejestruj się!</a>   
     </div>
@@ -19,22 +21,24 @@
 
 </html>
 <?php
+            sleep(3);
             if(!empty($_POST['login']) && !empty($_POST['haslo']));
+            {
                 $login=$_POST['login'];
                 $haslo=$_POST['haslo'];
                 $connect=mysqli_connect("localhost","root","","strona_z_grami");
-                $zapytanie="INSERT INTO `użytkownicy`(`Imię`, `Nazwisko`, `Wiek`, `Stan_konta`) VALUES ('$imie','$nazwisko','$wiek',0)";
-                $zapytanie2="INSERT INTO `dane_logowania`(`Login`, `Hasło`, `E-mail`) VALUES ('$login','$haslo1','$email');";
+                $zapytanie="SELECT `Login`,`Hasło` FROM `dane_logowania`";
                 $wynik=mysqli_query($connect,$zapytanie);
-                $wynik2=mysqli_query($connect,$zapytanie2);
-                if($wynik){
-                    echo '<script>alert("Zalogowano pomyślnie uwu")</script>';
-                    header("Location: logowanie.php");
+                while($rekord=mysqli_fetch_array($wynik))
+                {
+                    if($rekord[0]==$login && $rekord[1]==$haslo)
+                    {
+                        echo "1";
+                        mysqli_close($connect);
+                        //header("Location:index.php");
+                    }
                 }
-                else{
-                    echo "2";
-
-                }
+                echo "Błędny login lub hasło";
                 mysqli_close($connect);
             }
         ?>
