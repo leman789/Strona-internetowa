@@ -26,7 +26,8 @@
 
 </html>
 <?php
-            if(!empty($_POST['imie']) && !empty($_POST['nazwisko']) && !empty($_POST['email']) && !empty($_POST['wiek']) && !empty($_POST['login'])&& !empty($_POST['haslo1']) && !empty($_POST['haslo2']) && $_POST['haslo1']==$_POST['haslo2']){
+            if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['email']) && isset($_POST['wiek']) && isset($_POST['login'])&& isset($_POST['haslo1']) && isset($_POST['haslo2']) && $_POST['haslo1']==$_POST['haslo2'])
+            {
                 $imie=$_POST['imie'];
                 $nazwisko=$_POST['nazwisko'];
                 $email=$_POST['email'];
@@ -39,13 +40,13 @@
                 $zapytanie2="INSERT INTO `dane_logowania`(`Login`, `Hasło`, `E-mail`) VALUES ('$login','$haslo1','$email');";
                 $wynik=mysqli_query($connect,$zapytanie);
                 $wynik2=mysqli_query($connect,$zapytanie2);
-                if($wynik){
-                    echo '<script>alert("Zarejestrowano pomyślnie uwu")</script>';
-                    header("Location: logowanie.php");
+                if($wynik && $wynik2)
+                {
+                    header("Location:logowanie.php");
                 }
-                else{
+                else
+                {
                     echo "2";
-
                 }
                 mysqli_close($connect);
             }
