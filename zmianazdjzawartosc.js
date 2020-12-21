@@ -1,5 +1,5 @@
 
-function dodaj()
+function dodaj() 
 {
     i++;
     zmiana(0);  
