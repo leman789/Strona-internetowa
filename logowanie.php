@@ -22,7 +22,7 @@
 </html>
 <?php
             sleep(3);
-            if(!empty($_POST['login']) && !empty($_POST['haslo']));
+            if(isset($_POST['login']) && isset($_POST['haslo']))
             {
                 $login=$_POST['login'];
                 $haslo=$_POST['haslo'];
@@ -35,7 +35,7 @@
                     {
                         echo "1";
                         mysqli_close($connect);
-                        //header("Location:index.php");
+                        header("Location:index.php");
                     }
                 }
                 echo "Błędny login lub hasło";
