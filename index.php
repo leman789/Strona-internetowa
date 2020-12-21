@@ -24,12 +24,12 @@
                     if($rekord[0]==1)//po zalogowaniu
         {
         echo "
-        <a class='Int'><div id='menu1'>
+        <div id='Zalogowany'>
             <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='60px'>
             $rekord[1]
-        </div></a>
+        </div>
         <style>
-            #menu1{
+            #zalogowany{
                 color: red;
             }
         </style>
@@ -37,27 +37,27 @@
         }
             if($rekord[0]==2)//przed zalogowaniem
             {
-            echo "<a href='logowanie.html'  class='Int'><div id='menu1'> 
+            echo "<a href='logowanie.html'  id='Zaloguj'><div> 
             Logowanie
             </div> </a>";
             }
         $PDO=null;
         ?>
-        <div id="menu2" class="Tlo"></div>
-        <a href="biblioteka.html" class="Int">
-            <div id="menu3"> 
+        <div id="Puste_pole"></div>
+        <a href="biblioteka.html" id="Biblioteka">
+            <div> 
                 Biblioteka
             </div>
 
         </a>
-        <a href="index.html" class="IntS">
-        <div id="menu4" >
+        <a href="index.html" id="Sklep">
+        <div>
            Sklep
         </div>
 
         </a>
-        <div id="menu2" class="Tlo"></div>
-        <div id="menu5" class="Logo">
+        <div id="Puste_pole" class="Tlo"></div>
+        <div id="Logo">
             Logo
         </div>
 
@@ -66,8 +66,8 @@
   <img  id="obraz1" src="Zdjecia_gier/Top_gry/1.jpg" alt="zd_glowne">
   <div id="napis"></div>
     <h2>ZOBACZ WIĘCEJ GIER </h2>
-    <input type="button"  onclick="dodaj()" id="next">
-    <input type="button"  onclick="odejmij()" id="back">
+    <input type="button"  onclick="dodaj()" id="Kolejne_zdj">
+    <input type="button"  onclick="odejmij()" id="Poprzednie_zdj">
     <script  src="zmianazdjzawartosc.js" defer></script><!--dodanie pliku z zmianą obrazu i zawartosc-->
        
     
