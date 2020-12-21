@@ -12,7 +12,7 @@
     $dbname="strona_z_grami";
     $dsn="mysql:host=$host;dbname=$dbname;";
     $PDO = new PDO($dsn,$uzytkownik,$haslo);
-    $zapytanie="SELECT id,Imię FROM `użytkownicy` LIMIT 1";
+    $zapytanie="SELECT id,Imię,Avatar FROM `użytkownicy` LIMIT 1";
     $wynik=$PDO->query($zapytanie);
     foreach($wynik as $rekord){
     }
@@ -20,12 +20,12 @@
 </head>
 <body>
     <div id="menu">
-
         <?php
                     if($rekord[0]==1)//po zalogowaniu
         {
         echo "
         <a class='Int'><div id='menu1'>
+            <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='60px'>
             $rekord[1]
         </div></a>
         <style>
@@ -63,7 +63,7 @@
 
     </div>
     
-  <img  id="obraz1" src="1.jpg" alt="zd_glowne">
+  <img  id="obraz1" src="Zdjecia_gier/Top_gry/1.jpg" alt="zd_glowne">
   <div id="napis"></div>
     <h2>ZOBACZ WIĘCEJ GIER </h2>
     <input type="button"  onclick="dodaj()" id="next">
