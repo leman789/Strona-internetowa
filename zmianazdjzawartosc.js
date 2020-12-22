@@ -28,7 +28,11 @@ function zmianaNapisu()
         document.getElementById("napis").innerHTML=napis4;
     }
 }
-let zdj=['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg']
+let zdj=['1.jpg',
+         '2.jpg',
+         '3.jpg',
+         '4.jpg',
+         '5.jpg']
  i=0;
  napis0="to jest zdj 0";
  napis1="to  jest zdj 1";
