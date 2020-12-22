@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 19 Gru 2020, 19:09
--- Wersja serwera: 10.4.11-MariaDB
--- Wersja PHP: 7.4.3
+-- Czas generowania: 22 Gru 2020, 17:02
+-- Wersja serwera: 10.4.17-MariaDB
+-- Wersja PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -31,8 +30,15 @@ SET time_zone = "+00:00";
 CREATE TABLE `biblioteka_gier` (
   `id` int(11) NOT NULL,
   `id_gry` int(11) NOT NULL,
-  `id_użytkownika` int(11) NOT NULL
+  `id_uzytkownika` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `biblioteka_gier`
+--
+
+INSERT INTO `biblioteka_gier` (`id`, `id_gry`, `id_uzytkownika`) VALUES
+(1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -41,9 +47,10 @@ CREATE TABLE `biblioteka_gier` (
 --
 
 CREATE TABLE `dane_logowania` (
-  `id_użytkownika` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `id_uzytkownika` int(11) NOT NULL,
   `Login` text COLLATE utf8_polish_ci NOT NULL,
-  `Hasło` text COLLATE utf8_polish_ci NOT NULL,
+  `Haslo` text COLLATE utf8_polish_ci NOT NULL,
   `E-mail` text COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
@@ -51,9 +58,8 @@ CREATE TABLE `dane_logowania` (
 -- Zrzut danych tabeli `dane_logowania`
 --
 
-INSERT INTO `dane_logowania` (`id_użytkownika`, `Login`, `Hasło`, `E-mail`) VALUES
-(1, 'ShaoChuj', 'asd123', 'kaminskidawid111@gmail.com'),
-(2, 'Kutołajson', 'asd123', 'miko@wp.pl');
+INSERT INTO `dane_logowania` (`id`, `id_uzytkownika`, `Login`, `Haslo`, `E-mail`) VALUES
+(1, 1, 'R3czus', 'Mleko', 'Mleczko@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -64,48 +70,64 @@ INSERT INTO `dane_logowania` (`id_użytkownika`, `Login`, `Hasło`, `E-mail`) VA
 CREATE TABLE `gry` (
   `id` int(11) NOT NULL,
   `Nazwa` text COLLATE utf8_polish_ci NOT NULL,
-  `Opis` text COLLATE utf8_polish_ci NOT NULL,
+  `Opis` varchar(250) COLLATE utf8_polish_ci NOT NULL,
   `Cena` float NOT NULL,
-  `Id_twórcy` int(11) NOT NULL,
+  `id_tworcy` int(11) NOT NULL,
   `Data_wydania` date NOT NULL,
-  `Wymagania` text COLLATE utf8_polish_ci NOT NULL,
-  `obrazek` text COLLATE utf8_polish_ci NOT NULL
+  `wymagania` text COLLATE utf8_polish_ci NOT NULL,
+  `Obrazek` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+  `Alt_obrazka` varchar(20) COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `gry`
+--
+
+INSERT INTO `gry` (`id`, `Nazwa`, `Opis`, `Cena`, `id_tworcy`, `Data_wydania`, `wymagania`, `Obrazek`, `Alt_obrazka`) VALUES
+(2, 'Mukulele', 'jest to gra strategiczna o tematyce surwiwalowej, zobacz czy dasz rade :) ', 30, 1, '2020-12-22', 'System operacyjny: Windows 7 (64-bit), Windows 8.1 (64-bit).\r\nProcesor: Intel Core i5 2500K 3,3 GHz lub AMD Phenom II X4 940.\r\nKarta graficzna: NVIDIA GeForce GTX 660 lub AMD Radeon HD 7870.\r\nPamięć: 6 GB RAM.\r\nDysk twardy: 40 GB.\r\nDirectX 11.', 'Mukulele.jpg', 'Mukulele');
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `twórcy`
+-- Struktura tabeli dla tabeli `tworcy`
 --
 
-CREATE TABLE `twórcy` (
+CREATE TABLE `tworcy` (
   `id` int(11) NOT NULL,
-  `Imię` text COLLATE utf8_polish_ci DEFAULT NULL,
-  `Nazwisko` text COLLATE utf8_polish_ci DEFAULT NULL,
-  `Producent` text COLLATE utf8_polish_ci NOT NULL
+  `Imie` varchar(40) COLLATE utf8_polish_ci NOT NULL,
+  `Nazwisko` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+  `Producent` varchar(100) COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `tworcy`
+--
+
+INSERT INTO `tworcy` (`id`, `Imie`, `Nazwisko`, `Producent`) VALUES
+(1, '', '', 'Klekel Gry');
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `użytkownicy`
+-- Struktura tabeli dla tabeli `uzytkownicy`
 --
 
-CREATE TABLE `użytkownicy` (
+CREATE TABLE `uzytkownicy` (
   `id` int(11) NOT NULL,
-  `Imię` text COLLATE utf8_polish_ci NOT NULL,
+  `Imie` text COLLATE utf8_polish_ci NOT NULL,
   `Nazwisko` text COLLATE utf8_polish_ci NOT NULL,
+  `Nick` text COLLATE utf8_polish_ci NOT NULL,
   `Wiek` int(11) NOT NULL,
-  `Stan_konta` float DEFAULT NULL
+  `Stan_konta` float NOT NULL,
+  `Avatar` text COLLATE utf8_polish_ci NOT NULL DEFAULT '1.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
--- Zrzut danych tabeli `użytkownicy`
+-- Zrzut danych tabeli `uzytkownicy`
 --
 
-INSERT INTO `użytkownicy` (`id`, `Imię`, `Nazwisko`, `Wiek`, `Stan_konta`) VALUES
-(1, 'Dawid', 'Kamiński', 17, 0),
-(2, 'Mikołaj', 'Nolewajka', 17, 0);
+INSERT INTO `uzytkownicy` (`id`, `Imie`, `Nazwisko`, `Nick`, `Wiek`, `Stan_konta`, `Avatar`) VALUES
+(1, 'Dawid', 'Reczek', 'R3czus', 17, 0, '1.jpg');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -116,60 +138,68 @@ INSERT INTO `użytkownicy` (`id`, `Imię`, `Nazwisko`, `Wiek`, `Stan_konta`) VAL
 --
 ALTER TABLE `biblioteka_gier`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK1` (`id_gry`),
-  ADD KEY `FK2` (`id_użytkownika`);
+  ADD KEY `id_gry` (`id_gry`),
+  ADD KEY `id_uzytkownika` (`id_uzytkownika`);
 
 --
 -- Indeksy dla tabeli `dane_logowania`
 --
 ALTER TABLE `dane_logowania`
-  ADD KEY `FK` (`id_użytkownika`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_uzytkownika` (`id_uzytkownika`);
 
 --
 -- Indeksy dla tabeli `gry`
 --
 ALTER TABLE `gry`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_tworcy` (`id_tworcy`);
+
+--
+-- Indeksy dla tabeli `tworcy`
+--
+ALTER TABLE `tworcy`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `twórcy`
+-- Indeksy dla tabeli `uzytkownicy`
 --
-ALTER TABLE `twórcy`
+ALTER TABLE `uzytkownicy`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `użytkownicy`
---
-ALTER TABLE `użytkownicy`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT dla zrzuconych tabel
 --
 
 --
 -- AUTO_INCREMENT dla tabeli `biblioteka_gier`
 --
 ALTER TABLE `biblioteka_gier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT dla tabeli `dane_logowania`
+--
+ALTER TABLE `dane_logowania`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `gry`
 --
 ALTER TABLE `gry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT dla tabeli `twórcy`
---
-ALTER TABLE `twórcy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT dla tabeli `użytkownicy`
---
-ALTER TABLE `użytkownicy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT dla tabeli `tworcy`
+--
+ALTER TABLE `tworcy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT dla tabeli `uzytkownicy`
+--
+ALTER TABLE `uzytkownicy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ograniczenia dla zrzutów tabel
@@ -179,14 +209,20 @@ ALTER TABLE `użytkownicy`
 -- Ograniczenia dla tabeli `biblioteka_gier`
 --
 ALTER TABLE `biblioteka_gier`
-  ADD CONSTRAINT `FK1` FOREIGN KEY (`id_gry`) REFERENCES `gry` (`id`),
-  ADD CONSTRAINT `FK2` FOREIGN KEY (`id_użytkownika`) REFERENCES `użytkownicy` (`id`);
+  ADD CONSTRAINT `biblioteka_gier_ibfk_1` FOREIGN KEY (`id_gry`) REFERENCES `gry` (`id`),
+  ADD CONSTRAINT `biblioteka_gier_ibfk_2` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownicy` (`id`);
 
 --
 -- Ograniczenia dla tabeli `dane_logowania`
 --
 ALTER TABLE `dane_logowania`
-  ADD CONSTRAINT `FK` FOREIGN KEY (`id_użytkownika`) REFERENCES `użytkownicy` (`id`);
+  ADD CONSTRAINT `dane_logowania_ibfk_1` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownicy` (`id`);
+
+--
+-- Ograniczenia dla tabeli `gry`
+--
+ALTER TABLE `gry`
+  ADD CONSTRAINT `gry_ibfk_1` FOREIGN KEY (`id_tworcy`) REFERENCES `tworcy` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
