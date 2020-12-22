@@ -12,22 +12,24 @@
     $dbname="strona_z_grami";
     $dsn="mysql:host=$host;dbname=$dbname;";
     $PDO = new PDO($dsn,$uzytkownik,$haslo);
-    $zapytanie="SELECT id,Imię,Avatar FROM `użytkownicy` LIMIT 1";
+    $zapytanie="SELECT id,Imie,Avatar FROM `uzytkownicy` LIMIT 1";
     $wynik=$PDO->query($zapytanie);
-    foreach($wynik as $rekord){
-        
+    foreach($wynik as $rekord){ 
     }
     ?>
 </head>
 <body>
     <div id="menu">
         <?php
-            if($rekord[0]==1)//po zalogowaniu
+        if(isset($_COOKIE["Clogin"]))//po zalogowaniu
         {
         echo "
         <div id='Zalogowany'>
             <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='60px'>
             $rekord[1]
+            <form action='wyloguj.php' method='post'>
+            <input type='submit' value='wyloguj'>
+            </form>
         </div>
         <style>
             #zalogowany{
@@ -36,9 +38,9 @@
         </style>
         ";
         }
-            if($rekord[0]==2)//przed zalogowaniem
+            else//przed zalogowaniem
             {
-            echo "<a href='logowanie.html'  id='Zaloguj'><div> 
+            echo "<a href='logowanie.php'  id='Zaloguj'><div> 
             Logowanie
             </div> </a>";
             }
