@@ -21,18 +21,20 @@
 
 </html>
 <?php
+            $Clogin="Clogin";
             sleep(3);
             if(isset($_POST['login']) && isset($_POST['haslo']))
             {
                 $login=$_POST['login'];
                 $haslo=$_POST['haslo'];
                 $connect=mysqli_connect("localhost","root","","strona_z_grami");
-                $zapytanie="SELECT `Login`,`Hasło` FROM `dane_logowania`";
+                $zapytanie="SELECT `Login`,`Haslo` FROM `dane_logowania`";
                 $wynik=mysqli_query($connect,$zapytanie);
                 while($rekord=mysqli_fetch_array($wynik))
                 {
                     if($rekord[0]==$login && $rekord[1]==$haslo)
-                    {
+                    {    
+                        setcookie($Clogin,$login,time()+(3600*24),"/");
                         echo "1";
                         mysqli_close($connect);
                         header("Location:index.php");
