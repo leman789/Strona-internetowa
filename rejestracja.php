@@ -36,17 +36,23 @@
                 $haslo1=$_POST['haslo1'];
                 $haslo2=$_POST['haslo2'];
                 $connect=mysqli_connect("localhost","root","","strona_z_grami");
-                $zapytanie="INSERT INTO `użytkownicy`(`Imię`, `Nazwisko`, `Wiek`, `Stan_konta`) VALUES ('$imie','$nazwisko','$wiek',0)";
-                $zapytanie2="INSERT INTO `dane_logowania`(`Login`, `Hasło`, `E-mail`) VALUES ('$login','$haslo1','$email');";
+                $zapytanie="INSERT INTO `uzytkownicy`(`Imie`, `Nazwisko`, `Wiek`, `Stan_konta`) VALUES ('$imie','$nazwisko','$wiek',0)";
                 $wynik=mysqli_query($connect,$zapytanie);
+                $id="SELECT id FROM `uzytkownicy` GROUP BY id  DESC LIMIT 1";
+                $wynik_id=mysqli_query($connect,$id);
+                $rekord_id=mysqli_fetch_array($wynik_id);
+                    echo "$rekord_id[0]";
+                $zapytanie2="INSERT INTO `dane_logowania`(`id_uzytkownika`,`Login`, `Haslo`, `E-mail`) VALUES ('$id','$login','$haslo1','$email');";
                 $wynik2=mysqli_query($connect,$zapytanie2);
                 if($wynik && $wynik2)
                 {
-                    header("Location:logowanie.php");
+                    $zalogowany++;
+                   header("Location:logowanie.php");
                 }
                 else
                 {
-                    echo "2";
+                    echo "$wynik";
+                    echo "$wynik2";
                 }
                 mysqli_close($connect);
             }
