@@ -1,8 +1,18 @@
-
+let zdj=['Zdjecia_gier/Top_gry/1.jpg',
+'Zdjecia_gier/Top_gry/2.jpg',
+'Zdjecia_gier/Top_gry/3.jpg',
+'Zdjecia_gier/Top_gry/4.jpg',
+'Zdjecia_gier/Top_gry/5.jpg']
+i=0;
+napis0="to jest zdj 0";
+napis1="to  jest zdj 1";
+napis2="to  jest zdj 2";
+napis3="to  jest zdj 3";
+napis4="to  jest zdj 4";
 function dodaj() 
 {
     i++;
-    zmiana(0);  
+    zmiana(0);
 }
  function odejmij()
 {
@@ -28,17 +38,7 @@ function zmianaNapisu()
         document.getElementById("napis").innerHTML=napis4;
     }
 }
-let zdj=['1.jpg',
-         '2.jpg',
-         '3.jpg',
-         '4.jpg',
-         '5.jpg']
- i=0;
- napis0="to jest zdj 0";
- napis1="to  jest zdj 1";
- napis2="to  jest zdj 2";
- napis3="to  jest zdj 3";
- napis4="to  jest zdj 4";
+
 function zmiana(x)
     {
         y=x;
@@ -46,22 +46,20 @@ function zmiana(x)
             {
                 i++;
                 zmiana(0);
-                
+
                 y=0;
             }
         document.getElementById("obraz1").src=zdj[i];
         if(i>4){
             i=0;
            zmiana(0)
-           
+
         }
         else if(i<0){
-            i=4;   
+            i=4;
            zmiana(0)
-          
-        }   
+
+        }
     }
 setInterval("zmiana(1)",5000);
 setInterval("zmianaNapisu()",100);
-
-
