@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Gru 2020, 22:10
+-- Czas generowania: 23 Gru 2020, 20:49
 -- Wersja serwera: 10.4.17-MariaDB
 -- Wersja PHP: 8.0.0
 
@@ -58,6 +58,7 @@ CREATE TABLE `dane_logowania` (
 --
 
 INSERT INTO `dane_logowania` (`id_uzytkownika`, `Login`, `Haslo`, `E-mail`) VALUES
+(0, 'mleczko11', 'mleczko11', 'ww@ggmalf'),
 (1, 'R3czus', 'Mleko', 'Mleczko@gmail.com'),
 (30, '$login', '$haslo1', '$email'),
 (74, 'dlemanski', 'qasw', 'gdg@wp.pl'),
@@ -65,6 +66,30 @@ INSERT INTO `dane_logowania` (`id_uzytkownika`, `Login`, `Haslo`, `E-mail`) VALU
 (76, 'dlemanski', 'qasw', 'gdg@wp.pl'),
 (77, 'dlemanski', 'asfasfsa', 'gornik1234554321@wp.pl'),
 (78, 'q', 'w', 'gdg@wp.pl');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `gatunki`
+--
+
+CREATE TABLE `gatunki` (
+  `id` int(11) NOT NULL,
+  `id_gry` int(11) NOT NULL,
+  `multiplayer` int(11) NOT NULL,
+  `singleplayer` int(11) NOT NULL,
+  `fps` int(11) NOT NULL,
+  `mmo` int(11) NOT NULL,
+  `rpg` int(11) NOT NULL,
+  `moba` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `gatunki`
+--
+
+INSERT INTO `gatunki` (`id`, `id_gry`, `multiplayer`, `singleplayer`, `fps`, `mmo`, `rpg`, `moba`) VALUES
+(1, 2, 1, 0, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -142,7 +167,12 @@ INSERT INTO `uzytkownicy` (`id`, `Imie`, `Nazwisko`, `Wiek`, `Stan_konta`, `Avat
 (81, 'q', 'w', 12, 0, '1.jpg'),
 (82, 'q', 'w', 12, 0, '1.jpg'),
 (83, 'q', 'w', 12, 0, '1.jpg'),
-(84, 'q', 'w', 12, 0, '1.jpg');
+(84, 'q', 'w', 12, 0, '1.jpg'),
+(85, 'Dawid', 'Reeek', 77, 0, '1.jpg'),
+(86, 'Moj_nick', 'kkkkk', 9, 0, '1.jpg'),
+(87, '', '', 0, 0, '1.jpg'),
+(88, '', '', 0, 0, '1.jpg'),
+(89, '', '', 0, 0, '1.jpg');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -161,6 +191,13 @@ ALTER TABLE `biblioteka_gier`
 --
 ALTER TABLE `dane_logowania`
   ADD UNIQUE KEY `id_uzytkownika` (`id_uzytkownika`);
+
+--
+-- Indeksy dla tabeli `gatunki`
+--
+ALTER TABLE `gatunki`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_gry` (`id_gry`);
 
 --
 -- Indeksy dla tabeli `gry`
@@ -192,10 +229,16 @@ ALTER TABLE `biblioteka_gier`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT dla tabeli `gatunki`
+--
+ALTER TABLE `gatunki`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT dla tabeli `gry`
 --
 ALTER TABLE `gry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT dla tabeli `tworcy`
@@ -207,30 +250,17 @@ ALTER TABLE `tworcy`
 -- AUTO_INCREMENT dla tabeli `uzytkownicy`
 --
 ALTER TABLE `uzytkownicy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- Ograniczenia dla zrzutów tabel
 --
 
 --
--- Ograniczenia dla tabeli `biblioteka_gier`
+-- Ograniczenia dla tabeli `gatunki`
 --
-ALTER TABLE `biblioteka_gier`
-  ADD CONSTRAINT `biblioteka_gier_ibfk_1` FOREIGN KEY (`id_gry`) REFERENCES `gry` (`id`),
-  ADD CONSTRAINT `biblioteka_gier_ibfk_2` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownicy` (`id`);
-
---
--- Ograniczenia dla tabeli `dane_logowania`
---
-ALTER TABLE `dane_logowania`
-  ADD CONSTRAINT `dane_logowania_ibfk_1` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownicy` (`id`);
-
---
--- Ograniczenia dla tabeli `gry`
---
-ALTER TABLE `gry`
-  ADD CONSTRAINT `gry_ibfk_1` FOREIGN KEY (`id_tworcy`) REFERENCES `tworcy` (`id`);
+ALTER TABLE `gatunki`
+  ADD CONSTRAINT `gatunki_ibfk_1` FOREIGN KEY (`id_gry`) REFERENCES `gry` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
