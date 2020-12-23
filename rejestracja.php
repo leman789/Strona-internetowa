@@ -42,7 +42,7 @@
                 $wynik_id=mysqli_query($connect,$id);
                 $rekord_id=mysqli_fetch_array($wynik_id);
                     echo "$rekord_id[0]";
-                $zapytanie2="INSERT INTO `dane_logowania`(`id_uzytkownika`,`Login`, `Haslo`, `E-mail`) VALUES ('$id','$login','$haslo1','$email');";
+                $zapytanie2="INSERT INTO `dane_logowania`(`id_uzytkownika`,`Login`, `Haslo`, `E-mail`) VALUES ('$rekord_id[0]','$login','$haslo1','$email');";
                 $wynik2=mysqli_query($connect,$zapytanie2);
                 if($wynik && $wynik2)
                 {
