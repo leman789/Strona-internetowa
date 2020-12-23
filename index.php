@@ -19,17 +19,16 @@
     ?>
 </head>
 <body>
+
     <div id="menu">
         <?php
-        if(isset($_COOKIE["Clogin"]))//po zalogowaniu
+        if(isset($_COOKIE["Clogin"]))//logowanie po zalogowaniu
         {
         echo "
         <div id='Zalogowany'>
             <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='60px'>
             $rekord[1]
-            <form action='wyloguj.php' method='post'>
-            <input type='submit' value='wyloguj'>
-            </form>
+            <a href='wyloguj.php'>wyloguj</a>
         </div>
         <style>
             #zalogowany{
@@ -38,27 +37,54 @@
         </style>
         ";
         }
-            else//przed zalogowaniem
+        else//przed zalogowaniem
             {
             echo "<a href='logowanie.php'  id='Zaloguj'><div> 
             Logowanie
             </div> </a>";
             }
-        $PDO=null;
         ?>
+       
+        
         <div id="Puste_pole"></div>
-        <a href="biblioteka.html" id="Biblioteka">
+        
+        <?php
+        if(isset($_COOKIE["Clogin"]))//biblioteka po zalogowaniu
+        {
+        echo "<a href='biblioteka.php' id='Biblioteka'>
             <div> 
                 Biblioteka
             </div>
-
-        </a>
-        <a href="index.html" id="Sklep">
+            </a>";
+        }
+        else
+           {
+        echo "<a href='logowanie.php' id='Biblioteka'>
+            <div> 
+                Biblioteka
+            </div>
+            </a>";
+        } 
+        ?>
+        
+        <?php
+        if(isset($_COOKIE["Clogin"]))//sklep po zalogowaniu
+        {
+        echo "<a href='sklep.php' id='Sklep'>
         <div>
            Sklep
         </div>
-
-        </a>
+        </a>";
+        }
+        else
+         {
+        echo "<a href='logowanie.php' id='Sklep'>
+        <div>
+           Sklep
+        </div>
+        </a>";
+        }
+        ?>
         <div id="Puste_pole" class="Tlo"></div>
         <div id="Logo">
             Logo
