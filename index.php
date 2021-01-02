@@ -19,24 +19,34 @@
     ?>
 </head>
 <body>
-
+    <script>
+        let x=0;
+    function wysun()
+        {
+            x++;
+            if(x==1){
+                    document.getElementById("elwys1").innerHTML="<div id='elwys'><a href='ustawienia'>ustawienia</a><br><a href='doladuj'>doladuj</a><br><a href='wyloguj.php'>wyloguj</a><br></div>";
+                }
+            else if(x>1){
+                    x=0;
+                    document.getElementById("elwys1").innerHTML="";
+                }
+        }
+    </script>
+    <div id="elwys1"></div>
     <div id="menu">
         <?php
         if(isset($_COOKIE["Clogin"]))//logowanie po zalogowaniu
         {
-        echo "
-        <div id='Zalogowany'>
+        echo "<a id='Zalogowany' data-tooltip='xd'>
+        <div >
             <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='60px'>
             $rekord[1]
-            <a href='wyloguj.php'>wyloguj</a>
+            <input type='button' onclick='wysun()' id='wysun'>
         </div>
-        <style>
-            #zalogowany{
-                color: red;
-            }
-        </style>
-        ";
+        </a>";
         }
+        
         else//przed zalogowaniem
             {
             echo "<a href='logowanie.php'  id='Zaloguj'><div> 
