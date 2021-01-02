@@ -4,10 +4,82 @@
     <title>Gpoint</title>
     <meta charset="utf-8">
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
-    <link rel="stylesheet" href="logowanie.css" type="text/css">
+        <link rel="stylesheet" href="logowanie.css" type="text/css">
 
 </head>
 <body>
+        <div id="menu">
+        <?php
+        if(isset($_COOKIE["Clogin"]))//logowanie po zalogowaniu
+        {
+        echo "
+        <div id='Zalogowany'>
+            <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='60px'>
+            $rekord[1]
+            <a href='wyloguj.php'>wyloguj</a>
+        </div>
+        <style>
+            #zalogowany{
+                color: red;
+            }
+        </style>
+        ";
+        }
+        else//przed zalogowaniem
+            {
+            echo "<a href='index.php'  id='Zaloguj'><div> 
+            Powrót
+            </div> </a>";
+            }
+        ?>
+       
+        
+        <div id="Puste_pole"></div>
+        
+        <?php
+        if(isset($_COOKIE["Clogin"]))//biblioteka po zalogowaniu
+        {
+        echo "<a href='biblioteka.php' id='Biblioteka'>
+            <div> 
+                Biblioteka
+            </div>
+            </a>";
+        }
+        else
+           {
+        echo "<a href='logowanie.php' id='Biblioteka'>
+            <div> 
+                Biblioteka
+            </div>
+            </a>";
+        } 
+        ?>
+        
+        <?php
+        if(isset($_COOKIE["Clogin"]))//sklep po zalogowaniu
+        {
+        echo "<a href='sklep.php' id='Sklep'>
+        <div>
+           Sklep
+        </div>
+        </a>";
+        }
+        else
+         {
+        echo "<a href='logowanie.php' id='Sklep'>
+        <div>
+           Sklep
+        </div>
+        </a>";
+        }
+        ?>
+        <div id="Puste_pole" class="Tlo"></div>
+        <div id="Logo">
+            Logo
+        </div>
+
+    </div>
+    
     <div id="reje">
         <form action="" method="POST">
             Podaj login<input type="text" name="login"><br>
