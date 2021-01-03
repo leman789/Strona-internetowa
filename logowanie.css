@@ -77,3 +77,25 @@ body{
     position:relative;
     left: 35%;
 }
+#rejestracja{
+    text-decoration: none;
+    font-size: 25px;
+}
+#login{
+    border: 4px double black;
+}
+#haslo{
+    border: 4px double black;
+}
+#login:hover{
+    border: 4px solid lime;
+}
+#haslo:hover{
+    border: 4px solid lime;
+}
+#wyczysc:hover{
+    background-color: white;
+}
+#zaloguj:hover{
+    background-color: white;
+}

@@ -84,12 +84,12 @@
     
     <div id="reje">
         <form action="" method="POST">
-            Podaj login<input type="text" name="login"><br>
-            Podaj hasło<input type="text" name="haslo"><br>
-            <input type="reset" value="wyczyść">
-            <input type="submit" value="zaloguj">
+            <input type="text" name="login" id="login" placeholder="tu wpisz login" style="text-align: center; margin: 10px;"><br>
+            <input type="text" name="haslo" id="haslo" placeholder="tu wpisz hasło" style="text-align: center; margin: 10px;"><br>
+            <input type="reset" value="wyczyść" id="wyczysc">
+            <input type="submit" value="zaloguj" id="zaloguj">
         </form>
-        <a href="rejestracja.php">Jeżeli nie posiadasz konta, zarejestruj się!</a>   
+        <a id="rejestracja" href="rejestracja.php">Jeżeli nie posiadasz konta, zarejestruj się!</a>   
     </div>
 </body>
 
