@@ -96,10 +96,11 @@
         }
         ?>
         <div id="Puste_pole" class="Tlo"></div>
+        <a href="index.php">
         <div id="Logo">
             Logo
         </div>
-
+        </a>  
     </div>
     
   <img  id="obraz1" src="Zdjecia_gier/Top_gry/1.jpg" alt="zd_glowne">
