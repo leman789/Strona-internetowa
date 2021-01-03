@@ -74,9 +74,11 @@
         }
         ?>
         <div id="Puste_pole" class="Tlo"></div>
+        <a href="index.php">
         <div id="Logo">
             Logo
         </div>
+        </a>  
 
     </div>
     
