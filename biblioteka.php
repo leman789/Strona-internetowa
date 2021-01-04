@@ -25,7 +25,7 @@
         {
             x++;
             if(x==1){
-                    document.getElementById("elwys1").innerHTML="<div id='elwys'><a href='ustawienia'>ustawienia</a><br><a href='doladuj'>doladuj</a><br><a href='wyloguj.php'>wyloguj</a><br></div>";
+                document.getElementById("elwys1").innerHTML="<div id='elwys'><a href='dane_osobowe.php'>ustawienia</a><br><a href='wyloguj.php'>wyloguj</a><br></div>";
                 }
             else if(x>1){
                     x=0;
