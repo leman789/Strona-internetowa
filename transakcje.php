@@ -111,6 +111,7 @@
     </div>
 <div id="prawa">
     <h2>HISTORIA PŁATNOŚCI</h2>
+
 </div>
 </div>
 </body>
