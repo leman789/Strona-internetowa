@@ -149,7 +149,7 @@ function Karta_kredytowa()
         {
            y++;
             if(y==1){
-                document.getElementById("Play1").innerHTML="<div id='elwysPlay'> <?php echo "<form action='doladuj2.php' method='post'>";  echo  "<input type='text' name='ile' placeholder='*kwota doładowania'><br>"; echo "<input type='text' name='nr_tel' placeholder='*numer telefonu'><br>"; echo "<input type='number' name='kod' placeholder='*kod'>";echo "</form>";?></div>";
+                document.getElementById("Play1").innerHTML="<div id='elwysPlay'> <?php echo "<form action='doladuj2.php' method='post'>";  echo  "<input type='text' name='ile' placeholder='*kwota doładowania'><br>"; echo "<input type='text' name='nr_tel' placeholder='*numer telefonu'><br>"; echo "<input type='number' name='kod' placeholder='*kod'>";  echo "<input type='submit' value='wykonaj'>";echo "</form>";?></div>";
                 }
             else if(y>1){
                     y=0;
@@ -160,7 +160,7 @@ function Karta_kredytowa()
         {
            y++;
             if(y==1){
-                document.getElementById("PayPal1").innerHTML="<div id='elwysPayPal'> <?php echo "<form action='doladuj3.php' method='post'>";  echo  "<input type='text' name='ile' placeholder='*kwota doładowania'><br>"; echo "<input type='text' name='login' placeholder='*login PayPal'><br>"; echo "<input type='number' name='haslo' placeholder='*haslo PayPal'>";echo "</form>";?></div>";
+                document.getElementById("PayPal1").innerHTML="<div id='elwysPayPal'> <?php echo "<form action='doladuj3.php' method='post'>";  echo  "<input type='text' name='ile' placeholder='*kwota doładowania'><br>"; echo "<input type='text' name='login' placeholder='*login PayPal'><br>"; echo "<input type='number' name='haslo' placeholder='*haslo PayPal'>"; echo "<input type='submit' value='wykonaj'>";echo "</form>";?></div>";
                 }
             else if(y>1){
                     y=0;
