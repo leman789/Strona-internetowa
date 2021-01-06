@@ -1,0 +1,136 @@
+html {
+    font-family: serif;
+}
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+h2{
+    text-align: center; 
+    padding: 5%;
+}
+
+#obraz1{
+    width: 100%;
+    height: 50%;
+}
+#menu{
+    color: white;
+    position: fixed;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    background-color:black;
+    font-size: 30px;
+    height: 10%;
+    z-index: 2;
+}
+#menu div{
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    height: 100%;
+}
+#menu a{
+    padding-right: 5%;
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    color:white;
+    height: 100%;
+    margin:0 auto;
+}
+#menu a:hover{
+    background-color: white;
+    color: black;
+    
+}
+#Zaloguj{
+    width: 13%;
+    
+}
+#Sklep{
+    width: 13%;
+}
+#Biblioteka{
+   width: 13%; 
+}
+#Puste_pole{
+     width: 13%;
+}
+#Logo{
+    width: 20%;
+}
+#Zalogowany{
+    width: 13%;
+}
+#Zalogowany:hover{
+    width: 13%;
+}
+#elwys{
+    z-index: 1;
+    height: 10%;
+    width: 17.99%;
+    background-color: red;
+    color: white;
+    position: fixed;
+    top: 10%;
+    right: 0px;
+}
+#wysun
+{
+     height: 10%;
+    width: 17.99%;
+    position: fixed;
+    right: 0px;
+    opacity: 0;
+    cursor: pointer;
+}
+#Poprzednie_zdj{
+    position: absolute;
+    top: 10%;
+    width: 5%;
+    height: 100%;
+    background-color:white;
+    opacity: 0.09;
+    z-index: 1;
+}
+#Poprzednie_zdj:hover{
+    position: absolute;
+    top: 10%;
+    width: 5%;
+    height: 100%;
+    background-color: white;
+    opacity: 0.25;
+    z-index: 1;
+}
+#Kolejne_zdj{
+    position: absolute;
+    right: 0;
+    top: 10%;
+    width: 5%;
+    height: 100%;
+    background-color:white;
+    opacity: 0.09;
+    z-index: 1;
+}
+#Kolejne_zdj:hover{
+    position: absolute;
+    right: 0;
+    top: 10%;
+    width: 5%;
+    height: 100%;
+    background-color:white;
+    opacity: 0.25;
+    z-index: 1;
+}
+#xd{
+    top: 10%;
+    z-index: 0;
+    position: absolute;
+}
