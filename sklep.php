@@ -25,7 +25,7 @@
         {
             x++;
             if(x==1){
-                document.getElementById("elwys1").innerHTML="<div id='elwys'><a href='dane_osobowe.php'>ustawienia</a><br><a href='wyloguj.php'>wyloguj</a><br></div>";
+                document.getElementById("elwys1").innerHTML="<div id='elwys'><a href='ustawienia/dane_osobowe.php'>ustawienia</a><br><a href='wyloguj.php'>wyloguj</a><br></div>";
                 }
             else if(x>1){
                     x=0;
@@ -111,7 +111,7 @@ while($rekord=mysqli_fetch_array($wynik))
 {
     echo "
         $rekord[0]
-        <form action='zakup.php' method='post'>
+        <form action='sklep/zakup.php' method='post'>
         <input type='hidden' name='id' value='$rekord[0]'>
         <input type='submit' value='Zobacz'>
         </form>";
