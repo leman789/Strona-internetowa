@@ -120,17 +120,18 @@
 </button>
 <div id="karta_kredytowa1"></div>
 
-<button onclick='PayPal()' id='PayPal'>
-<div  id="PayPal"  class="przycisk">
-PayPal</div>
-</button>
-<div id="PayPal1"  class="przycisk"></div>
 
 <button onclick='Play()' id='Play'>
 <div id="Play"  class="przycisk">
 Play<br></div>
 </button>
 <div id="Play1"  class="przycisk"></div>
+
+<button onclick='PayPal()' id='PayPal'>
+<div  id="PayPal"  class="przycisk">
+PayPal</div>
+</button>
+<div id="PayPal1"  class="przycisk"></div>
 <?php
 //pobieranie id;
 $login=$_COOKIE["Clogin"];
@@ -149,8 +150,20 @@ while($rekord=mysqli_fetch_array($wynik))
     $cvv=$rekord[3];
 }
 
-
-
+$zapytanie="SELECT `nr_telefonu`,`kod` FROM `play` WHERE `id_uzytkownika`=$id_uzytkownika_R[0]";
+$wynik=mysqli_query($connect,$zapytanie);
+while($rekord=mysqli_fetch_array($wynik))
+{
+    $nr_tel=$rekord[0];
+    $kod=$rekord[1];  
+}
+$zapytanie="SELECT `login_paypal`,`haslo_paypal` FROM `paypal` WHERE `id_uzytkownika`=$id_uzytkownika_R[0]";
+$wynik=mysqli_query($connect,$zapytanie);
+while($rekord=mysqli_fetch_array($wynik))
+{
+    $login_paypal=$rekord[0];
+    $haslo_paypal=$rekord[1];  
+}
 error_reporting(0);
 ?>
 <script>
@@ -172,7 +185,7 @@ function Karta_kredytowa()
         {
            y++;
             if(y==1){
-                document.getElementById("Play1").innerHTML="<div id='elwysPlay'> <?php echo "<form action='doladuj2.php' method='post'>";  echo  "kwota:<input type='text' name='ile' placeholder='*kwota doładowania'><br>"; echo "<input type='text' name='nr_tel' placeholder='*numer telefonu'><br>"; echo "<input type='number' name='kod' placeholder='*kod'>";  echo "<input type='submit' value='wykonaj'>";echo "</form>";?></div>";
+                document.getElementById("Play1").innerHTML="<div id='elwysPlay'> <?php echo "<form action='doladuj2.php' method='post'>";  echo  "kwota:<input type='text' name='ile' placeholder='*kwota doładowania'><br>"; echo "numer telefonu: <input type='text' name='nr_tel' placeholder='*numer telefonu' value='$nr_tel'><br>"; echo "kod: <input type='number' name='kod' placeholder='*kod' value='$kod'>";  echo "<input type='submit' value='wykonaj'>";echo "</form>";?></div>";
                 }
             else if(y>1){
                     y=0;
@@ -183,7 +196,7 @@ function Karta_kredytowa()
         {
            y++;
             if(y==1){
-                document.getElementById("PayPal1").innerHTML="<div id='elwysPayPal'> <?php echo "<form action='doladuj3.php' method='post'>";  echo  "kwota:<input type='text' name='ile' placeholder='*kwota doładowania'><br>"; echo "login:<input type='text' name='login' value='mleko'><br>"; echo "<input type='number' name='haslo' value='*haslo PayPal'>"; echo "<input type='submit' value='wykonaj'>";echo "</form>";?></div>";
+                document.getElementById("PayPal1").innerHTML="<div id='elwysPayPal'> <?php echo "<form action='doladuj3.php' method='post'>";  echo  "kwota:<input type='text' name='ile' placeholder='*kwota doładowania'><br>"; echo "login:<input type='text' name='login_paypal' placeholder='*login paypal' value='$login_paypal'><br>"; echo "haslo: <input type='text' name='haslo_paypal' placeholder='*haslo PayPal' value='$haslo_paypal'>"; echo "<input type='submit' value='wykonaj'>";echo "</form>";?></div>";
                 }
             else if(y>1){
                     y=0;
