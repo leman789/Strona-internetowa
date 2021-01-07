@@ -4,7 +4,11 @@
     <title>Gpoint</title>
     <meta charset="utf-8">
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
-    <link rel="stylesheet" href="style.css" type="text/css">
+     <link rel="stylesheet" href="../style.css" type="text/css">
+    <link rel="stylesheet" href="../menu.css" type="text/css">
+      <style>body{
+          background-color: #162d40;
+        }</style>
     <?php 
     $host="localhost";
     $uzytkownik="root";
