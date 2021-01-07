@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
     <link rel="stylesheet" href="../style.css" type="text/css">
+    <link rel="stylesheet" href="../menu.css" type="text/css">
     <?php 
     $host="localhost";
     $uzytkownik="root";
