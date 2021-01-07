@@ -10,7 +10,7 @@
 <body>
     <div id="reje">
         <form action="" method="POST">
-            <p>Podaj imię <input type="text" name="imie" class="logowanie"></p>
+            <p>Podaj imię(nick) <input type="text" name="imie" class="logowanie"></p>
             <p>Podaj nazwisko <input type="text" name="nazwisko" class="logowanie"></p>
             <p>Podaj e-mail <input type="email" name="email" class="logowanie"></p>
             <p>Podaj wiek(opcjonalnie) <input type="number" name="wiek" class="logowanie"></p>
