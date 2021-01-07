@@ -112,6 +112,36 @@
 <div id="prawa">
     <h2>HISTORIA PŁATNOŚCI</h2>
 
+<?php
+$login=$_COOKIE["Clogin"];
+$connect=mysqli_connect("localhost","root","","strona_z_grami");
+$id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";
+$id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
+$id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
+// wyswietlanie zawartosc
+$zapytanie="SELECT `kwota`,`metoda`,`czas`,`nazwa_gry` FROM `tranzakcje` where `id_uzytkownika`=$id_uzytkownika_R[0]";
+$wynik=mysqli_query($connect,$zapytanie);
+while($rekord=mysqli_fetch_array($wynik))
+{
+    if($rekord[1]==0)
+    $rekord[1]="kupienie gry";
+     else if($rekord[1]==1)
+    $rekord[1]="konto bankowe";
+    else if($rekord[1]==2)
+    $rekord[1]="Play";
+    else if($rekord[1]==3)
+    $rekord[1]="PayPal";
+    if($rekord[3]=='0')
+    $rekord[3]='Tranzakcja gotówkowa';
+    else if($rekord[3]!='0')
+    {
+        $nazwa_gry=$rekord[3];
+        $rekord[3]='nazwa gry :'.$nazwa_gry;  
+    }
+
+   echo " kwota: $rekord[0] metoda: $rekord[1], data: $rekord[2], opis : $rekord[3]<br>";
+}
+?>
 </div>
 </div>
 </body>
