@@ -1,0 +1,101 @@
+#menu{
+    position: fixed;
+    margin: 0 auto;
+    width: 100%;
+    background-color:#15202b;
+    font-size: 30px;
+    height: 6%;
+    z-index: 2;
+}
+#menu div{
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    height: 100%;
+}
+#menu a{
+    padding-right: 5%;
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    color: #7e8b98;
+    height: 100%;
+    margin:0 auto;
+}
+#nick{
+    padding-left: 3%;
+    padding-top: 2%;
+}
+#Zaloguj{
+    border-radius: 5px;
+    width: 13%;
+}
+#Zaloguj:hover{
+     color: #1d99db;
+     background-color: #162d40;
+}
+
+#Sklep{
+     border-radius: 5px;
+    width: 10%;
+}
+#Sklep:hover{
+    color: #1d99db;
+     background-color: #162d40;;
+}
+#Biblioteka{
+    border-radius: 5px;
+   width: 13%; 
+}
+#Biblioteka:hover{
+      color: #1d99db;
+     background-color: #162d40;;
+}
+#Puste_pole{
+     width: 15%;
+}
+#Puste_pole1{
+     width: 3%;
+}
+#Logo{
+    width: 11%;
+}
+#Logo:hover{
+      color: #1d99db;
+     background-color: #162d40;;
+}
+#Zalogowany{
+    text-align: center;
+     border-radius: 5px;
+    width: 13%;
+}
+#Zalogowany:hover{
+    color: #1d99db;
+     background-color: #162d40;
+}
+#elwys{
+    height: 10%;
+    width: 17.99%;
+    background-color: #162d40;
+    position: fixed;
+    top: 6%;
+    right: 0px;
+    z-index: 2;
+}
+#elwys2{
+    text-decoration: none;
+     color: #1d99db;
+}
+#wysun
+{
+     height: 10%;
+    width: 17.99%;
+    position: fixed;
+    right: 0px;
+    opacity: 0;
+    cursor: pointer;
+}
