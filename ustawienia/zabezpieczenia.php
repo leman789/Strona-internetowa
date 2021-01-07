@@ -111,7 +111,81 @@
     </div>
 <div id="prawa">
 <h2>ZMIEŃ HASŁO</h2>
+<p>Ze względów bezpieczeństwa gorąco zalecamy wybranie takiego hasła, którego nie używasz w żadnym innym koncie internetowym.</p>
+<?php
+// pobieranie id
+$login=$_COOKIE["Clogin"];
+$connect=mysqli_connect("localhost","root","","strona_z_grami");
+$id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";
+$id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
+$id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
+//wyswitlanie rekordow 
+ 
+$zapytanie="SELECT `Haslo`,`E-mail` FROM `dane_logowania` WHERE `id_uzytkownika`=$id_uzytkownika_R[0];";
+$wynik=mysqli_query($connect,$zapytanie);
+while($rekord_haslo=mysqli_fetch_array($wynik))
+{
+    $haslo_z_bazy=$rekord_haslo[0];
+    $emial_z_bazy=$rekord_haslo[1];
+}
+ echo "<form action='' method='post'>";
+    echo "aktualne hasło<br> <input type='text' name='stare_haslo' placeholder='aktualne haslo' ><br>
+    nowe haslo<br> <input type='text' name='nowe_haslo' placeholder='nowe haslo' ><br>
+    powtórz nowe haslo<br> <input type='number' name='nowe_hasloP' placeholder='powtórz nowe haslo' ><br>
+    <input type='reset' value='odrzuć zmiany'><input type='submit' value='zmien'>";
+ echo "</form>";
+ if(isset($_POST['stare_haslo']) && isset($_POST['nowe_haslo'])&& isset($_POST['nowe_hasloP']))
+ { 
+ $aktualne_haslo=$_POST['stare_haslo'];
+ $nowe_haslo=$_POST['nowe_haslo'];
+ $nowe_hasloP=$_POST['nowe_hasloP'];
+ $i=0;
+ if($aktualne_haslo!=$haslo_z_bazy)
+ {
+     echo "wpisane aktualne haslo jest błędne<br>";
+     $i++;
+ }
+ if($nowe_haslo!=$nowe_hasloP)
+ {
+     echo "Nowe hasła nie są takie same<br>";
+     $i++;
+ }
+ if($nowe_haslo=$haslo_z_bazy)
+ {
+     echo "Te hasło już jest ustawiane na twoim koncie";
+     $i++;
+ }
+ if(strlen($nowe_haslo)<7)
+ {
+     echo "Nowe hasło jest za krótkie"
+     $i++;
+ }
+ for($e=0;$e>=strlen($nowe_haslo);$e++)
+ {
+   $ile=0;
+    if($nowe_haslo[$e]!='0'||$nowe_haslo[$e]!='1'||$nowe_haslo[$e]!='2'||$nowe_haslo[$e]!='3'||$nowe_haslo[$e]!='4'||$nowe_haslo[$e]!='5'||$nowe_haslo[$e]!='6'||$nowe_haslo[$e]!='7'||$nowe_haslo[$e]!='8'||$nowe_haslo[$e]!='9')
+     {
+         $ile++;
+     }
+     if($ile==strlen($nowe_haslo))
+     {
+         echo "twoje hasło nie posiada żadnych liczb";
+         $i++;
+     } 
+ }
+ }
+?>
+<div id="prawa_bardziej">
+<p>TWOJE HASŁO<br>
+Twoje hasło musi mieć co najmniej 7 znaków<br>
+Twoje hasło musi zawierać co najmniej 1 cyfrę<br>
+Zalecane jest użycie znaków specjalnych<br></p>
 </div>
 </div>
+</div>
+<?php
+
+?>
+
 </body>
 </html>
