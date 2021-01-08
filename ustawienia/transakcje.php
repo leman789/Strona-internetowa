@@ -17,16 +17,19 @@
     $wynik=$PDO->query($zapytanie);
     foreach($wynik as $rekord){ 
     }
+    $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
+    $stan_konta_elwys_w=$PDO->query($stan_konta_elwys);
+    foreach($stan_konta_elwys_w as $stan_konta_elwys_r)
     ?>
 </head>
 <body>
-        <script>
+    <script>
         let x=0;
     function wysun()
         {
             x++;
             if(x==1){
-                    document.getElementById("elwys1").innerHTML="<div id='elwys'><a href='../dane_osobowe.php'>ustawienia</a><br><a href='../wyloguj.php'>wyloguj</a><br></div>";
+                    document.getElementById("elwys1").innerHTML="<div id='elwys'><?php echo "<a id='elwys2'> Stan Konta:".$stan_konta_elwys_r[0]."zł</a><br>" ?><a href='../ustawienia/dane_osobowe.php' id='elwys2'>ustawienia</a><br><a href='../wyloguj.php' id='elwys2'>wyloguj</a><br></div>";
                 }
             else if(x>1){
                     x=0;
@@ -40,9 +43,11 @@
         if(isset($_COOKIE["Clogin"]))//logowanie po zalogowaniu
         {
         echo "<a id='Zalogowany' data-tooltip='xd'>
-        <div >
-            <img src='../Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='60px'>
-            $rekord[1]
+         <div id='nick'>
+         $rekord[1]
+        </div>
+        <div>
+            <img src='../Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='45px'>
             <input type='button' onclick='wysun()' id='wysun'>
         </div>
         </a>";
@@ -102,7 +107,7 @@
             Logo
         </div>
         </a>  
-    </div>s
+    </div>
     <div style="position:absolute; top:10%;">
     <div id="lewa">
      <a href="dane_osobowe.php">Dane osobowe</a><br>
