@@ -130,9 +130,9 @@ while($rekord_haslo=mysqli_fetch_array($wynik))
     $emial_z_bazy=$rekord_haslo[1];
 }
  echo "<form action='' method='post'>";
-    echo "aktualne hasło<br> <input type='text' name='stare_haslo' placeholder='aktualne haslo' ><br>
-    nowe haslo<br> <input type='text' name='nowe_haslo' placeholder='nowe haslo' ><br>
-    powtórz nowe haslo<br> <input type='number' name='nowe_hasloP' placeholder='powtórz nowe haslo' ><br>
+    echo "aktualne hasło<br> <input  type='password' name='stare_haslo' placeholder='aktualne haslo' ><br>
+    nowe haslo<br> <input type='password' name='nowe_haslo' placeholder='nowe haslo' ><br>
+    powtórz nowe haslo<br> <input  type='password' name='nowe_hasloP' placeholder='powtórz nowe haslo' ><br>
     <input type='reset' value='odrzuć zmiany'><input type='submit' value='zmien'>";
  echo "</form>";
  if(isset($_POST['stare_haslo']) && isset($_POST['nowe_haslo'])&& isset($_POST['nowe_hasloP']))
@@ -151,30 +151,42 @@ while($rekord_haslo=mysqli_fetch_array($wynik))
      echo "Nowe hasła nie są takie same<br>";
      $i++;
  }
- if($nowe_haslo=$haslo_z_bazy)
+ if($nowe_haslo==$haslo_z_bazy)
  {
-     echo "Te hasło już jest ustawiane na twoim koncie";
+     echo "Te hasło już jest ustawiane na twoim koncie<br>";
      $i++;
  }
  if(strlen($nowe_haslo)<7)
  {
-     echo "Nowe hasło jest za krótkie"
+     echo "Nowe hasło jest za krótkie<br>";
      $i++;
  }
- for($e=0;$e>=strlen($nowe_haslo);$e++)
+ $ile=0;
+ $dlugosc=strlen($nowe_haslo);
+ $ile=$dlugosc;
+ for($e=0;$e<$dlugosc;$e++)
  {
-   $ile=0;
-    if($nowe_haslo[$e]!='0'||$nowe_haslo[$e]!='1'||$nowe_haslo[$e]!='2'||$nowe_haslo[$e]!='3'||$nowe_haslo[$e]!='4'||$nowe_haslo[$e]!='5'||$nowe_haslo[$e]!='6'||$nowe_haslo[$e]!='7'||$nowe_haslo[$e]!='8'||$nowe_haslo[$e]!='9')
+    
+    if($nowe_haslo[$e]=='0'||$nowe_haslo[$e]=='1'||$nowe_haslo[$e]=='2'||$nowe_haslo[$e]=='3'||$nowe_haslo[$e]=='4'||$nowe_haslo[$e]=='5'||$nowe_haslo[$e]=='6'||$nowe_haslo[$e]=='7'||$nowe_haslo[$e]=='8'||$nowe_haslo[$e]=='9')
      {
-         $ile++;
-     }
-     if($ile==strlen($nowe_haslo))
-     {
-         echo "twoje hasło nie posiada żadnych liczb";
-         $i++;
-     } 
+       $ile--;
+         
+     }    
  }
+  if($ile==$dlugosc)
+  {
+      echo "Hasło nie posiada liczb";
+      $i++;
+  }
+  if($i==0)
+  {
+    $zapytanie_zmiana_hasla="UPDATE `dane_logowania` SET `Haslo` = '$nowe_haslo' WHERE id_uzytkownika = $id_uzytkownika_R[0];";
+    $wynik_zmiana_hasla=mysqli_query($connect,$zapytanie_zmiana_hasla);
+    echo "udało sie zmienić hasło";
+  }
+  
  }
+ 
 ?>
 <div id="prawa_bardziej">
 <p>TWOJE HASŁO<br>
