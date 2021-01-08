@@ -20,6 +20,7 @@
     $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
     $stan_konta_elwys_w=$PDO->query($stan_konta_elwys);
     foreach($stan_konta_elwys_w as $stan_konta_elwys_r)
+   
     ?>
 </head>
 <body>
@@ -29,7 +30,7 @@
         {
             x++;
             if(x==1){
-                    document.getElementById("elwys1").innerHTML="<div id='elwys'><?php echo "<a id='elwys2'>".$stan_konta_elwys_r[0]."zł</a><br>" ?><a href='ustawienia/dane_osobowe.php' id='elwys2'>ustawienia</a><br><a href='wyloguj.php' id='elwys2'>wyloguj</a><br></div>";
+                    document.getElementById("elwys1").innerHTML="<div id='elwys'><?php echo "<a id='elwys2'> Stan Konta:".$stan_konta_elwys_r[0]."zł</a><br>" ?><a href='ustawienia/dane_osobowe.php' id='elwys2'>ustawienia</a><br><a href='wyloguj.php' id='elwys2'>wyloguj</a><br></div>";
                 }
             else if(x>1){
                     x=0;
