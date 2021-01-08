@@ -124,11 +124,42 @@ $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
  
 $zapytanie="SELECT `Imie`,`Nazwisko`,`Wiek`,`Avatar` FROM `uzytkownicy` WHERE `id`=$id_uzytkownika_R[0];";
 $wynik=mysqli_query($connect,$zapytanie);
+//wypisywanie zakropkowanych
+
+
  echo "<form action='dane_osobowe1.php' method='post'>";
 while($rekord=mysqli_fetch_array($wynik))
 {
-    echo "imie: <input type='text' name='imie' placeholder='$rekord[0]' ><br>
-    nazwisko: <input type='text' name='nazwisko' placeholder='$rekord[1]' ><br>
+    $text="$rekord[0]";
+$a=strlen($text);
+$odejmowanie=$a;
+$odejmowanie--;
+$ostatnia=$text[$odejmowanie];
+$d=$text[0];
+$gwiazdki='';
+$znak='*';
+for($i=0;$i!=$a-2;$i++)
+{  
+    $gwiazdki=$gwiazdki.$znak;
+}
+$wszystko=$d.$gwiazdki.$ostatnia;
+
+$text1="$rekord[1]";
+$a1=strlen($text1);
+$odejmowanie1=$a1;
+$odejmowanie1--;
+$ostatnia1=$text1[$odejmowanie1];
+$d1=$text1[0];
+$gwiazdki1='';
+$znak1='*';
+for($i1=0;$i1!=$a1-2;$i1++)
+{  
+    $gwiazdki1=$gwiazdki1.$znak1;
+}
+$wszystko1=$d1.$gwiazdki1.$ostatnia1;
+
+    echo "imie: <input type='text' name='imie' placeholder='$wszystko' ><br>
+    nazwisko: <input type='text' name='nazwisko' placeholder='$wszystko1' ><br>
     Wiek: <input type='number' name='wiek' placeholder='$rekord[2]' ><br>
     Avatar: <input type='text' name='avatar' placeholder='$rekord[3]' ><input type='submit' value='zmien'>";
     
