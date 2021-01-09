@@ -6,6 +6,7 @@
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="menu.css" type="text/css">
+    <link rel="stylesheet" href="style/biblioteka.css" type="text/css">
     <?php 
     $host="localhost";
     $uzytkownik="root";
@@ -109,7 +110,7 @@
         </div>
         </a>  
     </div>
-    <div id="content">
+    <div id="content" style=" width: 100%;">
     <?php
 $login=$_COOKIE["Clogin"];
 $connect=mysqli_connect("localhost","root","","strona_z_grami");
@@ -120,11 +121,14 @@ $biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_
 $biblioteka_W=mysqli_query($connect,$biblioteka);
 while($biblioteka_R=mysqli_fetch_array($biblioteka_W))
 {
-    echo $biblioteka_R[0],$biblioteka_R[1],$biblioteka_R[2],$biblioteka_R[3]."<br>";
+    echo " <a href='biblioteka.php'><div id='okladka'>
+    <img src='Zdjecia_gier/okladki/$biblioteka_R[2]' alt='$biblioteka_R[3]' width='150px' height='185px' id='okladka_obraz'><br>
+        $biblioteka_R[1]
+    </div></a>";
 }
 
 ?>
-    </div>
+</div>
 </body>
 
 </html>
