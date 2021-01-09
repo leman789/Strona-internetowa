@@ -110,14 +110,62 @@
         </div>
         </a>  
     </div>
-    <div id="content" style=" width: 100%;">
+
+    <div id="content" style=" width: 100%; position:absolute; top:10%;">
     <?php
+    // pobieranie id 
 $login=$_COOKIE["Clogin"];
 $connect=mysqli_connect("localhost","root","","strona_z_grami");
 $id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";
 $id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
 $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
-$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika WHERE biblioteka_gier.id_uzytkownika='$id_uzytkownika_R[0]'";
+
+ echo "<form action='' method='post'>";
+ echo "<input type='radio' value='1' name='gra'>Multi player <br>";
+ echo "<input type='radio' value='2' name='gra'>Single player <br>";
+ echo "<input type='radio' value='3' name='gra'>Fps <br>";
+ echo "<input type='radio' value='4' name='gra'>Mmo  <br>";
+ echo "<input type='radio' value='5' name='gra'>rpg <br>";
+ echo "<input type='radio' value='6' name='gra'>moba<br>";
+ echo "<input type='radio' value='7' name='gra'>inne<br>";
+ echo "<input type='submit' value='szukaj'><br>";
+
+echo "</form>";
+// trzeba ogarnąć jak pobrac value bo nie można uzyc tego sposobu :/ 
+$multip=0;
+$singlep=0;
+$fps=0;
+$mmo=0;
+$rpg=0;
+$moba=0;
+$inne=0;
+if(isset($_POST['multip']))
+$multip=1;
+if(isset($_POST['singlep']))
+$singlep=1;
+if(isset($_POST['fps']))
+$fps=1;
+if(isset($_POST['mmo']))
+$mmo=1;
+if(isset($_POST['rpg']))
+$rpg=1;
+if(isset($_POST['moba']))
+$moba=1;
+if(isset($_POST['inne']))
+{
+    $inne=1;
+}
+
+// sprawdzanie ktory wybrac
+if(isset($_POST['fps'])||isset($_POST['multip'])||isset($_POST['singlep']))
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id WHERE  `multiplayer`=$multip and `singleplayer`=$singlep and `fps`=$fps and `mmo`=$mmo and `rpg`=$rpg and`moba`=$moba";
+else if( isset($_POST['inne']))
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id WHERE biblioteka_gier.id_uzytkownika=$id_uzytkownika_R[0] and `inne`=$inne";
+else
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id WHERE biblioteka_gier.id_uzytkownika=$id_uzytkownika_R[0]";
+
+echo $singlep;
+// wyswietlanie bibioteki
 $biblioteka_W=mysqli_query($connect,$biblioteka);
 while($biblioteka_R=mysqli_fetch_array($biblioteka_W))
 {
