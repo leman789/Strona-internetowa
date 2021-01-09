@@ -130,7 +130,7 @@ $wynik=mysqli_query($connect,$zapytanie);
 while($rekord=mysqli_fetch_array($wynik))
 {
     if($rekord[1]==0)
-    $rekord[1]="kupienie gry";
+    $rekord[1]="Pobranie z konta";
      else if($rekord[1]==1)
     $rekord[1]="konto bankowe";
     else if($rekord[1]==2)
@@ -138,14 +138,14 @@ while($rekord=mysqli_fetch_array($wynik))
     else if($rekord[1]==3)
     $rekord[1]="PayPal";
     if($rekord[3]=='0')
-    $rekord[3]='Tranzakcja gotówkowa';
+    $rekord[3]='doładowanie konta';
     else if($rekord[3]!='0')
     {
         $nazwa_gry=$rekord[3];
-        $rekord[3]='nazwa gry :'.$nazwa_gry;  
+        $rekord[3]='kupno gry :'.$nazwa_gry;  
     }
 
-   echo " kwota: $rekord[0] metoda: $rekord[1], data: $rekord[2], opis : $rekord[3]<br>";
+   echo " kwota: $rekord[0], metoda płatoność: $rekord[1], data: $rekord[2], opis: $rekord[3]<br>";
 }
 ?>
 </div>
