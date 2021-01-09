@@ -20,7 +20,6 @@
     $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
     $stan_konta_elwys_w=$PDO->query($stan_konta_elwys);
     foreach($stan_konta_elwys_w as $stan_konta_elwys_r)
-    echo $rekord[0];
     ?>
 </head>
 <body>
