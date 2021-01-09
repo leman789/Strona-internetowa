@@ -147,7 +147,7 @@ if($rekord2[1]>=$rekord3[0])
       $wynik7=mysqli_query($connect,$dodawanie_do_biblioteki);
   $pobieranie_oplaty="UPDATE `uzytkownicy` SET `Stan_konta` = `Stan_konta`-$rekord3[0] WHERE `uzytkownicy`.`id` = '$rekord[0]';";
       $wynik8=mysqli_query($connect,$pobieranie_oplaty);
-    header("Location:sklep.php");
+    header("Location:../sklep.php");
 }
 else{
     echo "za malo kasy<br>
