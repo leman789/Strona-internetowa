@@ -131,7 +131,7 @@ print_r($id_gier);
 $zapytanie="SELECT * FROM `gry` WHERE id='$id'";
 $wynik=mysqli_query($connect,$zapytanie);
 $rekord=mysqli_fetch_array($wynik);
-    echo "$rekord[1]<br>
+    echo "$rekord[0] $rekord[1]<br>
     $rekord[2]<br>$rekord[3]<br>$rekord[4]<br>$rekord[5]<br>$rekord[6]<br>$rekord[7]<br>$rekord[8]
     ";
 $kup="kup";
