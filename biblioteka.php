@@ -204,7 +204,7 @@ else if($inne==1 && $fps==0 && $mmo==0 && $rpg==0 && $moba==0 && $multip==0 && $
 $biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and `inne`=$inne GROUP BY gry.id";
 
 else  if( $inne==0 && $fps==0 && $mmo==0 && $rpg==0 && $moba==0 && $multip==0 && $singlep==0)
-$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and GROUP BY gry.id";
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] GROUP BY gry.id";
 else 
 {
     $biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and GROUP BY gry.id";
