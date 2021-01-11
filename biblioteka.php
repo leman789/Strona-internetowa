@@ -119,15 +119,18 @@ $connect=mysqli_connect("localhost","root","","strona_z_grami");
 $id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";
 $id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
 $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
-
+echo "<form action='' method='post'>";
+echo "Nazwa gry <input type='text' name='napis' placeholder='wpisz nazwe gry'>";
+echo "<input type='submit' value='szukaj'>";
+echo "</form><br>";
  echo "<form action='' method='post'>";
- echo "<input type='radio' value='1' name='gra'>Multi player <br>";
- echo "<input type='radio' value='2' name='gra'>Single player <br>";
- echo "<input type='radio' value='3' name='gra'>Fps <br>";
- echo "<input type='radio' value='4' name='gra'>Mmo  <br>";
- echo "<input type='radio' value='5' name='gra'>rpg <br>";
- echo "<input type='radio' value='6' name='gra'>moba<br>";
- echo "<input type='radio' value='7' name='gra'>inne<br>";
+ echo "<input type='checkbox' name='multip'>Multi player <br>";
+ echo "<input type='checkbox' name='singlep'>Single player <br>";
+ echo "<input type='checkbox' name='fps'>Fps <br>";
+ echo "<input type='checkbox' name='mmo'>Mmo  <br>";
+ echo "<input type='checkbox' name='rpg'>rpg <br>";
+ echo "<input type='checkbox' name='moba'>moba<br>";
+ echo "<input type='checkbox' name='inne'>inne<br>";
  echo "<input type='submit' value='szukaj'><br>";
 
 echo "</form>";
@@ -155,26 +158,76 @@ if(isset($_POST['inne']))
 {
     $inne=1;
 }
-
+////////////////////////////////////////// dalsze problemy jak w bazie danych nie ma tej gry to sie nie wyswitla komunikat że jej nie ma nie wiem jak to zrobic , po wejsciu na strone nie wyswitlają sie wszystkiee gry uzytkownika
 // sprawdzanie ktory wybrac
-if(isset($_POST['fps'])||isset($_POST['multip'])||isset($_POST['singlep']))
-$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id WHERE  `multiplayer`=$multip and `singleplayer`=$singlep and `fps`=$fps and `mmo`=$mmo and `rpg`=$rpg and`moba`=$moba";
-else if( isset($_POST['inne']))
-$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id WHERE biblioteka_gier.id_uzytkownika=$id_uzytkownika_R[0] and `inne`=$inne";
-else
-$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id WHERE biblioteka_gier.id_uzytkownika=$id_uzytkownika_R[0]";
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and GROUP BY gry.id";
+ 
+ if(isset($_POST['multip']) && $fps==1 && $mmo==0 && $rpg==0 && $moba==0 && $inne==0)
+{
+    $biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE`id_uzytkownika`=$id_uzytkownika_R[0] and `multip`=1 and `fps`=1 GROUP BY gry.id";
+}
+else if (isset($_POST['multip']) && $fps==0 && $mmo==1 && $rpg==0 && $moba==0 && $inne==0)
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE`id_uzytkownika`=$id_uzytkownika_R[0] and `multip`=1 and `mmo`=1 GROUP BY gry.id";
+else if(isset($_POST['napis']))
+{
+$napis=$_POST['napis'];
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE`id_uzytkownika`=$id_uzytkownika_R[0] and `Nazwa` like '%$napis%' GROUP BY gry.id";
+}
+else if (isset($_POST['multip']) && $fps==0 && $mmo==0 && $rpg==1 && $moba==0 && $inne==0)
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and `multip`=1 and `rpg`=1 GROUP BY gry.id";
+else if (isset($_POST['multip']) && $fps==0 && $mmo==0 && $rpg==0 && $moba==1 && $inne==0)
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and `multip`=1 and `moba`=1 GROUP BY gry.id";
+else if (isset($_POST['multip']) && $fps==0 && $mmo==0 && $rpg==0 && $moba==0 && $inne==1)
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and `multip`=1 and `inne`=1 GROUP BY gry.id";
 
-echo $singlep;
+else if(isset($_POST['singlep']) && $fps==1 && $mmo==0 && $rpg==0 && $moba==0 && $inne==0)
+{
+    $biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and `singlep`=1 and `fps`=1 GROUP BY gry.id";
+}
+else if (isset($_POST['singlep']) && $fps==0 && $mmo==1 && $rpg==0 && $moba==0 && $inne==0)
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and `singlep`=1 and `mmo`=1 GROUP BY gry.id";
+else if (isset($_POST['singlep']) && $fps==0 && $mmo==0 && $rpg==1 && $moba==0 && $inne==0)
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and `singlep`=1 and `rpg`=1 GROUP BY gry.id";
+else if (isset($_POST['singlep']) && $fps==0 && $mmo==0 && $rpg==0 && $moba==1 && $inne==0)
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and `singlep`=1 and `moba`=1 GROUP BY gry.id";
+else if (isset($_POST['singlep']) && $fps==0 && $mmo==0 && $rpg==0 && $moba==0 && $inne==1)
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and `singlep`=1 and `inne`=1 GROUP BY gry.id";
+
+
+else if  (isset($_POST['multip'])  && $fps==0 && $mmo==0 && $rpg==0 && $moba==0 && $inne==0)
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and  `multip`=$multip  GROUP BY gry.id";
+else if (isset($_POST['singlep']) && $inne==0 && $fps==0 && $mmo==0 && $rpg==0 && $moba==0 )
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and  `singlep`=$singlep GROUP BY gry.id";
+else if(isset($_POST['fps']) || isset($_POST['mmo']) || isset($_POST['rpg'])|| isset($_POST['moba']) &&$multip==0 && $singlep==0)
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and  `fps`=$fps and `mmo`=$mmo and `rpg`=$rpg and `moba`=$moba GROUP BY gry.id";
+else if($inne==1 && $fps==0 && $mmo==0 && $rpg==0 && $moba==0 && $multip==0 && $singlep==0)
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and `inne`=$inne GROUP BY gry.id";
+
+else  if( $inne==0 && $fps==0 && $mmo==0 && $rpg==0 && $moba==0 && $multip==0 && $singlep==0)
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and GROUP BY gry.id";
+else 
+{
+    $biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN biblioteka_gier ON biblioteka_gier.id_gry=gry.id JOIN uzytkownicy ON uzytkownicy.id=biblioteka_gier.id_uzytkownika JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `id_uzytkownika`=$id_uzytkownika_R[0] and GROUP BY gry.id";
+    echo "nie znaleziono wyniku ";
+}
+
+
+
 // wyswietlanie bibioteki
 $biblioteka_W=mysqli_query($connect,$biblioteka);
+if($biblioteka_W)
+{
 while($biblioteka_R=mysqli_fetch_array($biblioteka_W))
 {
+   
     echo " <a href='biblioteka.php'><div id='okladka'>
     <img src='Zdjecia_gier/okladki/$biblioteka_R[2]' alt='$biblioteka_R[3]' width='150px' height='185px' id='okladka_obraz'><br>
         $biblioteka_R[1]
     </div></a>";
 }
-
+ }
+ else
+ 
 ?>
 </div>
 </body>
