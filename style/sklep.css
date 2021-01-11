@@ -1,0 +1,14 @@
+
+#okladka{
+    text-align: center;
+    width: 15%;
+    float: left;
+    color: white;
+}
+#okladka_obraz:hover{
+    opacity : 0.80;
+    filter : alpha(opacity=80);
+}
+#okladka_obraz{
+     border-radius: 2%;
+}
