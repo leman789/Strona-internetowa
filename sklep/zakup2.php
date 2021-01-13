@@ -16,11 +16,19 @@
     $dbname="strona_z_grami";
     $dsn="mysql:host=$host;dbname=$dbname;";
     $PDO = new PDO($dsn,$uzytkownik,$haslo);
-    $zapytanie="SELECT id,Imie,Avatar FROM `uzytkownicy` LIMIT 1";
+    
+    //pobieranie id z loginu
+    $login=$_COOKIE["Clogin"];
+    $id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";
+    $id_uzytkownika_W=$PDO->query($id_uzytkownika);
+    foreach($id_uzytkownika_W as $id_uzytkownika_R)
+    //zapytanie
+    $zapytanie="SELECT id,Imie,Avatar FROM `uzytkownicy` where id='$id_uzytkownika_R[0]'";
     $wynik=$PDO->query($zapytanie);
     foreach($wynik as $rekord){ 
     }
-       $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
+    //stan konta uzytkownika
+    $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
     $stan_konta_elwys_w=$PDO->query($stan_konta_elwys);
     foreach($stan_konta_elwys_w as $stan_konta_elwys_r)
     ?>
@@ -117,6 +125,14 @@ $connect=mysqli_connect("localhost","root","","strona_z_grami");
 $gra=$_POST['gra'];
 $login=$_COOKIE["Clogin"];
 
+        
+$czas=date("Y-m-d");//aktualny czas
+        
+$nazwa_gry="SELECT Nazwa FROM `gry` WHERE id=$gra";
+$nazwa_gry_w=mysqli_query($connect,$nazwa_gry);
+$nazwa_gry_r=mysqli_fetch_array($nazwa_gry_w);
+        echo $nazwa_gry_r[0];
+        
 $uzytkownik="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";//pobieranie id uzytkownika
 $wynik=mysqli_query($connect,$uzytkownik);
 $rekord=mysqli_fetch_array($wynik);
@@ -125,7 +141,7 @@ $stan_konta="SELECT dane_logowania.Login,uzytkownicy.Stan_konta FROM `uzytkownic
 $wynik2=mysqli_query($connect,$stan_konta);
 $rekord2=mysqli_fetch_array($wynik2);
 
-$cena_gry="SELECT Cena FROM `gry` WHERE id=2";//pobieranie ceny gry
+$cena_gry="SELECT Cena FROM `gry` WHERE id=$gra";//pobieranie ceny gry
 $wynik3=mysqli_query($connect,$cena_gry);
 $rekord3=mysqli_fetch_array($wynik3);
 
@@ -134,6 +150,7 @@ $wynik10=mysqli_query($connect,$posiadanie_gry);
 $rekord10=mysqli_fetch_array($wynik10);
 
 
+        
 echo "login: $login<br>";
 echo "Id: $rekord[0]<br>";
 echo "Gra: $gra<br>";
@@ -147,11 +164,13 @@ if($rekord2[1]>=$rekord3[0])
       $wynik7=mysqli_query($connect,$dodawanie_do_biblioteki);
   $pobieranie_oplaty="UPDATE `uzytkownicy` SET `Stan_konta` = `Stan_konta`-$rekord3[0] WHERE `uzytkownicy`.`id` = '$rekord[0]';";
       $wynik8=mysqli_query($connect,$pobieranie_oplaty);
+    $Tranzakcje_gry="INSERT INTO `tranzakcje` (`id`, `id_uzytkownika`, `kwota`, `metoda`, `czas`, `nazwa_gry`) VALUES (NULL, '$rekord[0]', '$rekord3[0]', '0', '$czas', '$nazwa_gry_r[0]');";
+    $Tranzakcje_gry_w=mysqli_query($connect,$Tranzakcje_gry);
     header("Location:../sklep.php");
 }
 else{
     echo "za malo kasy<br>
-    <a href='sklep.php'>Wroc</a>
+    <a href='../sklep.php'>Wroc</a>
     ";
     
 }}
