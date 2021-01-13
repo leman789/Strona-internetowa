@@ -13,10 +13,18 @@
     $dbname="strona_z_grami";
     $dsn="mysql:host=$host;dbname=$dbname;";
     $PDO = new PDO($dsn,$uzytkownik,$haslo);
-    $zapytanie="SELECT id,Imie,Avatar FROM `uzytkownicy` LIMIT 1";
+    error_reporting(E_ALL ^ E_WARNING);
+    //pobieranie id z loginu
+    $login=$_COOKIE["Clogin"];
+    $id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";
+    $id_uzytkownika_W=$PDO->query($id_uzytkownika);
+    foreach($id_uzytkownika_W as $id_uzytkownika_R)
+    //zapytanie
+    $zapytanie="SELECT id,Imie,Avatar FROM `uzytkownicy` where id='$id_uzytkownika_R[0]'";
     $wynik=$PDO->query($zapytanie);
     foreach($wynik as $rekord){ 
     }
+    //stan konta uzytkownika
     $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
     $stan_konta_elwys_w=$PDO->query($stan_konta_elwys);
     foreach($stan_konta_elwys_w as $stan_konta_elwys_r)
@@ -29,7 +37,7 @@
         {
             x++;
             if(x==1){
-                    document.getElementById("elwys1").innerHTML="<div id='elwys'><?php echo "<a id='elwys2'> Stan Konta:".$stan_konta_elwys_r[0]."zł</a><br>" ?><a href='ustawienia/dane_osobowe.php' id='elwys2'>ustawienia</a><br><a href='wyloguj.php' id='elwys2'>wyloguj</a><br></div>";
+                    document.getElementById("elwys1").innerHTML="<div id='elwys'><?php echo "<a id='elwys2' href='ustawienia/doladuj.php'><div>Stan Konta:".$stan_konta_elwys_r[0]."zł</div></a><br>" ?><a href='ustawienia/dane_osobowe.php' id='elwys3'><div>ustawienia</div></a><br><a href='wyloguj.php' id='elwys4'><div>wyloguj</div></a><br></div>";
                 }
             else if(x>1){
                     x=0;
