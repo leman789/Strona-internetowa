@@ -45,7 +45,7 @@
 }
 #Sklep:hover{
     color: #1d99db;
-     background-color: #162d40;;
+     background-color: #162d40;
 }
 #Biblioteka{
     border-radius: 5px;
@@ -78,21 +78,67 @@
      background-color: #162d40;
 }
 #elwys{
-    height: 10%;
+    height: 15%;
     width: 17.99%;
     background-color: #15202b;
     position: fixed;
     top: 6%;
     right: 0px;
-    z-index: 2;
+    z-index: 3;
 }
 #elwys2{
+    color: #7e8b98;
+    padding-top: 0.5%;
+    padding-left: 1%;
+    font-size: 150%;
+    height: 4%;
+    width: 100%;
+     position: fixed;
+    text-decoration: none;
+}
+#elwys2:hover{
+     position: fixed;
     text-decoration: none;
      color: #1d99db;
+     background-color: #162d40;
+}
+#elwys3{
+    padding-left: 6%;
+     padding-top: 0.5%;
+    height: 4%;
+     width: 100%;
+    margin-top: 1.5%;
+    font-size: 150%;
+     position: fixed;
+    text-decoration: none;
+      color: #7e8b98;
+}
+#elwys3:hover{
+     position: fixed;
+    text-decoration: none;
+     color: #1d99db;
+     background-color: #162d40;
+}
+#elwys4{
+     padding-top: 0.5%;
+    padding-left: 6.5%;
+     height: 4%;
+     width: 100%;
+    margin-top: 3%;
+    font-size: 150%;
+     position: fixed;
+    text-decoration: none;
+     color: #7e8b98;
+}
+#elwys4:hover{
+     position: fixed;
+    text-decoration: none;
+      color: #1d99db;
+     background-color: #162d40;
 }
 #wysun
 {
-     height: 10%;
+    height: 6%;
     width: 17.99%;
     position: fixed;
     right: 0px;
