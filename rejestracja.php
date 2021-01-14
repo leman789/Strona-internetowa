@@ -26,6 +26,7 @@
 
 </html>
 <?php
+
             if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['email']) && isset($_POST['wiek']) && isset($_POST['login'])&& isset($_POST['haslo1']) && isset($_POST['haslo2']) && $_POST['haslo1']==$_POST['haslo2'])
             {
                 $imie=$_POST['imie'];
