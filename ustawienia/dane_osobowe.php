@@ -34,11 +34,11 @@
 <body>
  <script>
         let x=0;
-    function wysun()
+        function wysun()
         {
             x++;
             if(x==1){
-                    document.getElementById("elwys1").innerHTML="<div id='elwys'><?php echo "<a id='elwys2'> Stan Konta:".$stan_konta_elwys_r[0]."zł</a><br>" ?><a href='../ustawienia/dane_osobowe.php' id='elwys2'>ustawienia</a><br><a href='../wyloguj.php' id='elwys2'>wyloguj</a><br></div>";
+                    document.getElementById("elwys1").innerHTML="<div id='elwys'><?php echo "<a id='elwys2' href='doladuj.php'><div>Stan Konta:".$stan_konta_elwys_r[0]."zł</div></a><br>" ?><a href='dane_osobowe.php' id='elwys3'><div>ustawienia</div></a><br><a href='../wyloguj.php' id='elwys4'><div>wyloguj</div></a><br></div>";
                 }
             else if(x>1){
                     x=0;
@@ -49,6 +49,7 @@
     <div id="elwys1"></div>
     <div id="menu">
         <?php
+         $zdj_avatara_p=$rekord[2];
         if(isset($_COOKIE["Clogin"]))//logowanie po zalogowaniu
         {
         echo "<a id='Zalogowany' data-tooltip='xd'>
@@ -56,6 +57,7 @@
          $rekord[1]
         </div>
         <div>
+       
             <img src='../Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='45px'>
             <input type='button' onclick='wysun()' id='wysun'>
         </div>
@@ -171,15 +173,18 @@ for($i1=0;$i1!=$a1-2;$i1++)
 }
 $wszystko1=$d1.$gwiazdki1.$ostatnia1;
 
-    echo "imie: <input type='text' name='imie' placeholder='$wszystko' ><br>
+    echo "imie (nick): <input type='text' name='imie' placeholder='$wszystko' ><br>
     nazwisko: <input type='text' name='nazwisko' placeholder='$wszystko1' ><br>
-    Wiek: <input type='number' name='wiek' placeholder='$rekord[2]' ><br>
-    Avatar: <input type='text' name='avatar' placeholder='$rekord[3]' ><input type='submit' value='zmien'>";
+    Wiek: <input type='number' name='wiek' placeholder='$rekord[2]' >
+   <input type='submit' value='zmien'>";
     
    
 }
  echo "</form>";
- 
+echo "<br>zmiana swojego avatara<br> aktualny:<br><img src='../Zdjecia_gier/avatar/$zdj_avatara_p' alt='zjd_avatara'>";
+ echo " <form action='../Zdjecia_gier/avatar/plik2.php' method='POST' ENCTYPE='multipart/form-data'>";
+   echo   " <input type='file' name='plik'><br>";
+      echo "  <input type='submit' value='zapisz'>";
 ?>
 
 
