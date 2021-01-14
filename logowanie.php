@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
         <link rel="stylesheet" href="logowanie.css" type="text/css">
+        <link rel="stylesheet" href="menu.css" type="text/css">
 
 </head>
 <body>
@@ -84,7 +85,7 @@
     
     <div id="reje">
         <form action="" method="POST">
-            <input type="text" name="login" id="login" placeholder="tu wpisz login" style="text-align: center; margin: 10px;"><br>
+            <input type="text" name="login" id="login" placeholder="tu wpisz login" style="text-align: center; margin: 10px;" width="100" height="10"><br>
             <input type="text" name="haslo" id="haslo" placeholder="tu wpisz hasło" style="text-align: center; margin: 10px;"><br>
             <input type="reset" value="wyczyść" id="wyczysc">
             <input type="submit" value="zaloguj" id="zaloguj">
