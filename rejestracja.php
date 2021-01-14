@@ -10,15 +10,15 @@
 <body>
     <div id="reje">
         <form action="" method="POST">
-            <p>Podaj imię(nick) <input type="text" name="imie" class="logowanie"></p>
-            <p>Podaj nazwisko <input type="text" name="nazwisko" class="logowanie"></p>
-            <p>Podaj e-mail <input type="email" name="email" class="logowanie"></p>
+            <p>Podaj imię(nick) <input type="text" name="imie" class="logowanie" autocomplete="off"></p>
+            <p>Podaj nazwisko <input type="text" name="nazwisko" class="logowanie"autocomplete="off"></p>
+            <p>Podaj e-mail <input type="email" name="email" class="logowanie"autocomplete="off"></p>
             <p>Podaj wiek(opcjonalnie) <input type="number" name="wiek" class="logowanie"></p>
-            <p>Podaj login <input type="text" name="login" class="logowanie"></p>
-            <p>Podaj hasło <input type="text" name="haslo1" class="logowanie"></p>
-            <p>Powtórz hasło <input type="text" name="haslo2" class="logowanie"></p>
-            <input type="reset" value="wyczyść dane">
-            <input type="submit" value="zarejestruj"><br>
+            <p>Podaj login <input type="text" name="login" class="logowanie"autocomplete="off"></p>
+            <p>Podaj hasło <input type="text" name="haslo1" class="logowanie"autocomplete="off"></p>
+            <p>Powtórz hasło <input type="text" name="haslo2" class="logowanie"autocomplete="off"></p>
+            <input type="reset" id="przycisk" value="wyczyść dane">
+            <input type="submit" id="przycisk2" value="zarejestruj"><br>
 
         </form>
     </div>
