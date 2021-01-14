@@ -7,69 +7,13 @@ body {
     margin: 0 auto;
 }
 body{
-    background-color: aliceblue;
+    color: white;
+    background-color: #162d40;
     text-align: center;
     position: absolute;
 }
-#menu{
+input{
     color: white;
-    position: fixed;
-    margin: 0 auto;
-    width: 100%;
-    text-align: center;
-    background-color:black;
-    font-size: 30px;
-    height: 10%;
-    z-index: 2;
-}
-#menu div{
-    float: right;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    font-weight: bold;
-    height: 100%;
-}
-#menu a{
-    padding-right: 5%;
-    float: right;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    font-weight: bold;
-    color:white;
-    height: 100%;
-    margin:0 auto;
-}
-#menu a:hover{
-    background-color: white;
-    color: black;
-    
-}
-#Zaloguj{
-    width: 13%;
-    
-}
-#Sklep{
-    width: 13%;
-}
-#Biblioteka{
-   width: 13%; 
-}
-#Puste_pole{
-     width: 13%;
-}
-#Logo{
-    width: 20%
-}
-#Zalogowany{
-    width: 18%;
-}
-.logowanie{
-    border:2px solid red;
-}
-.logowanie:target{
-    margin: 30px;
 }
 #reje{
     margin-top: 5%;
@@ -77,25 +21,96 @@ body{
     position:relative;
     left: 35%;
 }
-#rejestracja{
-    text-decoration: none;
-    font-size: 25px;
-}
 #login{
-    border: 4px double black;
+    font-size: 200%;
+    padding: 10 10;
+    border-width: 10px;
+    outline-style: none;
+    background-color: #162d40;
+    border: 1px solid #7e8b98;
+}
+#login:focus{
+    border: 1px solid #1d99db;
 }
 #haslo{
-    border: 4px double black;
+    font-size: 200%;
+    outline-style: none;
+    background-color: #162d40;
+    border: 1px solid #7e8b98;
 }
-#login:hover{
-    border: 4px solid lime;
+#haslo:focus{
+    border: 1px solid #1d99db;
 }
-#haslo:hover{
-    border: 4px solid lime;
+.logowanie{
+    font-size: 130%;
+    outline-style: none;
+    background-color: #162d40;
+    border: 1px solid #7e8b98;
 }
+.logowanie:focus{
+    border: 1px solid #1d99db;
+}
+#rejestracja{
+    font-size: 120%;
+    color: #1d99db;
+    text-decoration: none;
+}
+#rejestracja:hover{
+    text-decoration: underline;
+}
+
+#wyczysc{
+    padding: 2%;
+    font-size: 200%;
+    border-radius: 50px;
+    border: 1px solid #1d99db;
+    background-color: #162d40;
+}
+#zaloguj{
+     padding: 2%;
+    font-size: 200%;
+    border-radius: 50px;
+    border: 1px solid #1d99db;
+    background-color: #162d40;
+}
+#przycisk{
+     padding: 2%;
+    font-size: 150%;
+    border-radius: 50px;
+    border: 1px solid #1d99db;
+    background-color: #162d40;
+}
+#przycisk2{
+     padding: 2%;
+    font-size: 150%;
+    border-radius: 50px;
+    border: 1px solid #1d99db;
+    background-color: #162d40;
+}
+
 #wyczysc:hover{
-    background-color: white;
+    background-color: #1d99db;
 }
 #zaloguj:hover{
-    background-color: white;
+    background-color: #1d99db;
+}
+#przycisk:hover{
+    background-color: #1d99db;
+}
+#przycisk2:hover{
+    background-color: #1d99db;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid green;
+  -webkit-font-size: 200%;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #162d40 inset;
 }
