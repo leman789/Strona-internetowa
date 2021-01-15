@@ -118,7 +118,7 @@
         </div>
         </a>  
     </div>
-
+<div id='lewo'></div>
     <div id="content" style=" width: 100%; position:absolute; top:10%;">
     <?php
     // pobieranie id 
@@ -128,18 +128,18 @@ $id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login
 $id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
 $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
 echo "<form action='' method='post'>";
-echo "Nazwa gry <input type='text' name='napis' placeholder='wpisz nazwe gry'>";
-echo "<input type='submit' value='szukaj'>";
+echo "<div id='gora'><input type='text' id='napis' name='napis' placeholder='wpisz nazwe gry' size='50%'>";
+echo "<input type='submit' value='szukaj' id='szukaj2'></div>";
 echo "</form><br>";
  echo "<form action='' method='post'>";
- echo "<input type='checkbox' name='multip'>Multi player <br>";
+ echo "<div id='lewo'><input type='checkbox' name='multip'>Multi player <br>";
  echo "<input type='checkbox' name='singlep'>Single player <br>";
  echo "<input type='checkbox' name='fps'>Fps <br>";
  echo "<input type='checkbox' name='mmo'>Mmo  <br>";
  echo "<input type='checkbox' name='rpg'>rpg <br>";
  echo "<input type='checkbox' name='moba'>moba<br>";
  echo "<input type='checkbox' name='inne'>inne<br>";
- echo "<input type='submit' value='szukaj'><br>";
+ echo "<input type='submit' value='szukaj' id='szukaj'><br></div>";
 
 echo "</form>";
 // trzeba ogarnąć jak pobrac value bo nie można uzyc tego sposobu :/ 
@@ -220,7 +220,7 @@ else
 }
 
 
-
+echo "<div id='prawo'>";
 // wyswietlanie bibioteki
 $biblioteka_W=mysqli_query($connect,$biblioteka);
 if($biblioteka_W)
@@ -228,16 +228,14 @@ if($biblioteka_W)
 while($biblioteka_R=mysqli_fetch_array($biblioteka_W))
 {
    
-    echo " <a href='biblioteka.php'><div id='okladka'>
+    echo "<a href='biblioteka.php'><div id='okladka'>
     <img src='Zdjecia_gier/okladki/$biblioteka_R[2]' alt='$biblioteka_R[3]' width='150px' height='185px' id='okladka_obraz'><br>
         $biblioteka_R[1]
     </div></a>";
 }
  }
- else
- 
+ echo "</div>";
 ?>
 </div>
 </body>
-
 </html>
