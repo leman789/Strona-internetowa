@@ -126,18 +126,18 @@ $id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login
 $id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
 $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
 echo "<form action='' method='post'>";
-echo "Nazwa gry <input type='text' name='napis' placeholder='wpisz nazwe gry'>";
-echo "<input type='submit' value='szukaj'>";
+echo "<div id='gora'><input type='text' name='napis' placeholder='wpisz nazwe gry'size='50%'>";
+echo "<input type='submit' value='szukaj' id='szukaj2'>";
 echo "</form><br>";
  echo "<form action='' method='post'>";
- echo "<input type='checkbox' name='multip'>Multi player <br>";
+ echo "<div id='lewo'><input type='checkbox' name='multip'>Multi player <br>";
  echo "<input type='checkbox' name='singlep'>Single player <br>";
  echo "<input type='checkbox' name='fps'>Fps <br>";
  echo "<input type='checkbox' name='mmo'>Mmo  <br>";
  echo "<input type='checkbox' name='rpg'>rpg <br>";
  echo "<input type='checkbox' name='moba'>moba<br>";
  echo "<input type='checkbox' name='inne'>inne<br>";
- echo "<input type='submit' value='szukaj'><br>";
+ echo "<input type='submit' value='szukaj'><br></div>";
 echo "</form>";
 // trzeba ogarnąć jak pobrac value bo nie można uzyc tego sposobu :/ 
 $multip=0;
@@ -229,6 +229,7 @@ $wynik_2=mysqli_query($connect,$zapytanie);
 $rekord_2=mysqli_fetch_array($wynik_2);
 // wyswietlanie bibioteki
 $biblioteka_W=mysqli_query($connect,$biblioteka);
+        echo "<div id='prawo'>";
 if($biblioteka_W)
 {
 while($biblioteka_R=mysqli_fetch_array($biblioteka_W))
@@ -253,7 +254,7 @@ while($biblioteka_R=mysqli_fetch_array($biblioteka_W))
         ";
 }
  }
- else
+ echo "</div>";
 ?>
 </div>
 </body>
