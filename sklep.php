@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="menu.css" type="text/css">
     <link rel="stylesheet" href="style/sklep.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <?php 
     $host="localhost";
     $uzytkownik="root";
@@ -127,7 +129,7 @@ $id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
 $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
 echo "<form action='' method='post'>";
 echo "<div id='gora'><input type='text' name='napis' placeholder='wpisz nazwe gry'size='50%'>";
-echo "<input type='submit' value='szukaj' id='szukaj2'>";
+echo "<input type='submit' value='szukaj' id='szukaj2'></div>";
 echo "</form><br>";
  echo "<form action='' method='post'>";
  echo "<div id='lewo'><input type='checkbox' name='multip'>Multi player <br>";
