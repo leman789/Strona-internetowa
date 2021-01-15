@@ -1,9 +1,59 @@
-
+input[type=text] {
+    font-size: 75%;
+    background-color: #162d40;
+  border: 2px solid #7e8b98;
+  border-radius: 20px;
+    outline-style: none;
+    color: white;
+}
+input[type=text]:focus {
+    background-color: #162d40;
+  border: 2px solid #1d99db;
+  border-radius: 20px;
+}
+#szukaj{
+    color: white;
+     padding: 2%;
+    font-size: 110%;
+    border-radius: 50px;
+    border: 1px solid #1d99db;
+    background-color: #162d40;
+}
+#szukaj:hover{
+     background-color: #1d99db;
+}
+#szukaj2{
+    color: white;
+    font-size: 83%;
+    border-radius: 50px;
+    border: 1px solid #1d99db;
+    background-color: #162d40;
+}
+#szukaj2:hover{
+     background-color: #1d99db;
+}
+#gora{
+    text-align: center;
+    font-size:300%; 
+    
+}
+#lewo{
+    font-size: 200%;
+    width: 20%;
+    float: left;
+}
+#prawo{
+    float: right;
+    width: 80%;
+    color: blue;
+    font-size: 200%;
+}
 #okladka{
     text-align: center;
     width: 15%;
     float: left;
     color: white;
+    margin:1%;
 }
 #okladka_obraz:hover{
     opacity : 0.80;
@@ -11,4 +61,18 @@
 }
 #okladka_obraz{
      border-radius: 2%;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid green;
+  -webkit-font-size: 200%;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #162d40 inset;
 }
