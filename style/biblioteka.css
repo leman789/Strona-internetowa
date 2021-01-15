@@ -54,13 +54,17 @@ input[type=text]:focus {
     width: 15%;
     float: left;
     color: white;
+    margin:1%;
+   padding:1%;
 }
 #okladka_obraz:hover{
     opacity : 0.80;
     filter : alpha(opacity=80);
+    text-align:center;
 }
 #okladka_obraz{
      border-radius: 2%;
+     text-align:center;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
