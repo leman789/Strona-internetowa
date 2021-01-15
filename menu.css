@@ -7,6 +7,9 @@
     height: 6%;
     z-index: 2;
 }
+  html{
+    font-family: 'Lato', sans-serif;
+  }
 #menu div{
     float: right;
     text-align: center;
