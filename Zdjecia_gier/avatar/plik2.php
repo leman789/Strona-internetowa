@@ -34,4 +34,6 @@ $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
 $zapytanie="UPDATE `uzytkownicy` SET `Avatar` = '$nazwa' WHERE `uzytkownicy`.`id`=$id_uzytkownika_R[0];";
 $wynik=mysqli_query($connect,$zapytanie);
 mysqli_close($connect);
+header("Location:../../ustawienia/dane_osobowe.php");
+
 ?>
