@@ -181,7 +181,7 @@ $wszystko1=$d1.$gwiazdki1.$ostatnia1;
    
 }
  echo "</form>";
-echo "<br>zmiana swojego avatara<br> aktualny:<br><img src='../Zdjecia_gier/avatar/$zdj_avatara_p' alt='zjd_avatara'>";
+echo "<br>zmiana swojego avatara<br> aktualny:<br><img src='../Zdjecia_gier/avatar/$zdj_avatara_p' alt='zjd_avatara' height='150px' width='180px'>";
  echo " <form action='../Zdjecia_gier/avatar/plik2.php' method='POST' ENCTYPE='multipart/form-data'>";
    echo   " <input type='file' name='plik'><br>";
       echo "  <input type='submit' value='zapisz'>";
