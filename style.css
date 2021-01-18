@@ -59,3 +59,15 @@ h2{
     opacity: 0.25;
     z-index: 1;
 }
+#przejscie{
+    border: 1 solid #e12178;
+    color: white;
+    border-radius: 40px;
+    padding: 1% 2%;
+    font-size: 150%;
+    background-color: #e12178;
+    text-decoration: none;
+    position: absolute;
+    top: 80%;
+    left: 41%;
+}
