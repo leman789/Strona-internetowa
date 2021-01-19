@@ -228,14 +228,20 @@ if($biblioteka_W)
 while($biblioteka_R=mysqli_fetch_array($biblioteka_W))
 {
    
-    echo "<a href='biblioteka.php'><div id='okladka'>
-    <img src='Zdjecia_gier/okladki/$biblioteka_R[2]' alt='$biblioteka_R[3]' width='150px' height='185px' id='okladka_obraz'><br>
-        $biblioteka_R[1]
-    </div></a>";
+    echo "<form action='sklep/zakup.php' method='post'>
+        <div id='okladka'>
+            <button type='submit' class='button'>
+                <img src='Zdjecia_gier/okladki/$biblioteka_R[2]' alt='$biblioteka_R[3]' width='150px' height='185px' id='okladka_obraz'/>
+                <p class='napis'>$biblioteka_R[1]</p>
+                </button>
+            <input type='hidden' value='$biblioteka_R[0]' name='id'>
+        </div>
+</form>";
 }
  }
  echo "</div>";
 ?>
 </div>
+    
 </body>
 </html>
