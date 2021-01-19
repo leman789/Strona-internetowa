@@ -237,22 +237,20 @@ if($biblioteka_W)
 while($biblioteka_R=mysqli_fetch_array($biblioteka_W))
 {
     $kup="kup";
-    $noniewiem="<input type='submit' value='$kup'>";
-    $href="";
     foreach($id_gier as $value){
         if($value==$biblioteka_R[0]){
-            $kup="masz";
-            $noniewiem="$kup";
-            $href="biblioteka.php";
+            $kup="pobierz";
         }
     }
-    echo " <a href='$href'><div id='okladka'>
+    echo " <form action='sklep/zakup.php' method='post'><div id='okladka'>
+    <button type='submit' class='button'>
     <img src='Zdjecia_gier/okladki/$biblioteka_R[2]' alt='$biblioteka_R[3]' width='150px' height='185px' id='okladka_obraz'><br>
-        $biblioteka_R[1]
-        $biblioteka_R[0]
-        <form action='sklep/zakup.php' method='post'>
+    <p class='napis'>
+        $biblioteka_R[1]<br>
+        ($kup)</p>
+          </button>
         <input type='hidden' name='id' value='$biblioteka_R[0]'>
-        <br>$noniewiem </form></div></a>
+        </form></div>
         ";
 }
  }
