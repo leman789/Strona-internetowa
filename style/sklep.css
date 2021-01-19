@@ -76,3 +76,12 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: white;
   -webkit-box-shadow: 0 0 0px 1000px #162d40 inset;
 }
+.button{
+    background-color:#162d40;  
+    border: none;
+    color: white;
+}
+.napis{
+    font-size: 150%;
+    padding-top: 1%;
+}
