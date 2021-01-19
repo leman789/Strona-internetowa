@@ -119,10 +119,18 @@
     </div>
     <div id="content">
     <?php
-$login=$_COOKIE["Clogin"];
-$id=$_POST['id'];
 $connect=mysqli_connect("localhost","root","","strona_z_grami");
-echo $login;
+        if(isset($_POST['id2']))
+           {
+                $id2=$_POST['id2'];
+                $pobieranie_id_gry_z="SELECT id_gry FROM `top_5` WHERE id=$id2";
+                $pobieranie_id_gry_w=mysqli_query($connect,$pobieranie_id_gry_z);
+                $pobieranie_id_gry=mysqli_fetch_array($pobieranie_id_gry_w);
+           }
+        else{
+            $id=$_POST['id'];
+        }
+$login=$_COOKIE["Clogin"];
 $id_gier=[];
 $i=0;
 $uzytkownik="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";
@@ -135,24 +143,25 @@ while($rekord2=mysqli_fetch_array($wynik2))
     $id_gier[$i]=$rekord2[0];
     $i++;
 }
-print_r($id_gier);
 $zapytanie="SELECT * FROM `gry` WHERE id='$id'";
 $wynik=mysqli_query($connect,$zapytanie);
 $rekord=mysqli_fetch_array($wynik);
-    echo "$rekord[0] $rekord[1]<br>
+    echo "<div>$rekord[1]<div><br>
     $rekord[2]<br>$rekord[3]<br>$rekord[4]<br>$rekord[5]<br>$rekord[6]<br>$rekord[7]<br>$rekord[8]
     ";
 $kup="kup";
 $noniewiem="<input type='submit' value='$kup'>";
-echo "<br>
-<form action='zakup2.php' method='post'>
-<input type='hidden' value='$id' name='gra'>";
+$action="zakup2.php";
 foreach($id_gier as $value){
 if($value==$rekord[0]){
-    $kup="masz juz";
-    $noniewiem="<a href='../sklep.php'>$kup</a>";
+    $action="pobierz.php";
+$kup="pobierz";
+$noniewiem="<input type='submit' value='$kup'>";
 }
 }
+echo "<br>
+<form action='$action' method='post'>
+<input type='hidden' value='$id' name='gra'>";
     
 echo "
     $noniewiem
