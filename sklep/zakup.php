@@ -146,7 +146,8 @@ while($rekord2=mysqli_fetch_array($wynik2))
 $zapytanie="SELECT * FROM `gry` WHERE id='$id'";
 $wynik=mysqli_query($connect,$zapytanie);
 $rekord=mysqli_fetch_array($wynik);
-    echo "<div>$rekord[1]<div><br>
+    echo "<div>$rekord[1]title<div>
+    
     $rekord[2]<br>$rekord[3]<br>$rekord[4]<br>$rekord[5]<br>$rekord[6]<br>$rekord[7]<br>$rekord[8]
     ";
 $kup="kup";
@@ -156,7 +157,7 @@ foreach($id_gier as $value){
 if($value==$rekord[0]){
     $action="pobierz.php";
 $kup="pobierz";
-$noniewiem="<input type='submit' value='$kup'>";
+$noniewiem="<a href='../gry_rar/download.php?path=$rekord[1].rar'>$kup</a>";
 }
 }
 echo "<br>
@@ -167,7 +168,9 @@ echo "
     $noniewiem
     </form>
     <a href='../sklep.php'>Wroc</a><br>";
+    
 ?>
+
     </div>
 </body>
 </html>
