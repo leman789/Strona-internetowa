@@ -118,4 +118,5 @@
                 echo "Błędny login lub hasło";
                 mysqli_close($connect);
             }
+
         ?>
