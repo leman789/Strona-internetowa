@@ -179,6 +179,7 @@ while($rekord=mysqli_fetch_array($wynik))
     $haslo_paypal=$rekord[1];  
 }
 error_reporting(0);
+
 ?>
 <script>
 function Karta_kredytowa()
