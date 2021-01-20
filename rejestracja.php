@@ -43,12 +43,22 @@
                 $rekord_id=mysqli_fetch_array($wynik_id);
                 $zapytanie1="SELECT Login FROM dane_logowania WHERE Login='admin' OR Login='$login' GROUP BY  id_uzytkownika DESC LIMIT 1";
                 $wynik1=mysqli_query($connect,$zapytanie1);
+              
                 $rekord1=mysqli_fetch_array($wynik1);
                 $zapytanie2="INSERT INTO `dane_logowania`(`id_uzytkownika`,`Login`, `Haslo`, `E-mail`) VALUES ('$rekord_id[0]','$login','$haslo1','$email');";
+                $konto_bankowe_Z="INSERT INTO `konto_bankowe` (`id`, `id_uzytkownika`, `nr_karty`, `miesiac`, `rok`, `cvv`) VALUES (NULL, '$rekord_id[0]', NULL, NULL, NULL, NULL);";
+                $paypal_Z="INSERT INTO `paypal` (`id`, `id_uzytkownika`, `login_paypal`, `haslo_paypal`) VALUES (NULL, '$rekord_id[0]', NULL, NULL);";
+                $play_Z="INSERT INTO `paypal` (`id`, `id_uzytkownika`, `login_paypal`, `haslo_paypal`) VALUES (NULL, '$rekord_id[0]', NULL, NULL);";
                 if($rekord1[0]=="admin")
                     {
                         
                         $wynik2=mysqli_query($connect,$zapytanie2);
+                       
+                        mysqli_query($connect,$konto_bankowe_Z);
+                        mysqli_query($connect,$paypal_Z);
+                        mysqli_query($connect,$play_Z);
+                        
+
                         if($wynik && $wynik2)
                         {
                             $zalogowany++;
