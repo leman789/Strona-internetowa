@@ -7,6 +7,7 @@
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
     <link rel="stylesheet" href="../style.css" type="text/css">
     <link rel="stylesheet" href="../menu.css" type="text/css">
+    <link rel="stylesheet" href="../style/ustawienia.css" type="text/css">
     <?php 
     $host="localhost";
     $uzytkownik="root";
@@ -119,12 +120,12 @@
         </div>
         </a>  
     </div>
-    <div style="position:absolute; top:10%;">
+    <div style="position:absolute; top:10%;" id="content">
     <div id="lewa">
-     <a href="dane_osobowe.php">Dane osobowe</a><br>
-     <a href="doladuj.php">Doladuj konto</a><br>
-     <a href="transakcje.php">Transakcje</a><br>
-     <a href="zabezpieczenia.php">Haslo i zabezpieczenia</a><br>
+     <a href="dane_osobowe.php"><div>Dane osobowe</div></a><br>
+     <a href="doladuj.php"><div>Doladuj konto</div></a><br>
+     <a href="transakcje.php"><div>Transakcje</div></a><br>
+     <a href="zabezpieczenia.php"><div>Haslo i zabezpieczenia</div></a><br>
     </div>
 <div id="prawa">
 <h2>USTAWIENIA OGÓLNE</h2>
@@ -184,12 +185,8 @@ $wszystko1=$d1.$gwiazdki1.$ostatnia1;
 echo "<br>zmiana swojego avatara<br> aktualny:<br><img src='../Zdjecia_gier/avatar/$zdj_avatara_p' alt='zjd_avatara' height='150px' width='180px'>";
  echo " <form action='../Zdjecia_gier/avatar/plik2.php' method='POST' ENCTYPE='multipart/form-data'>";
    echo   " <input type='file' name='plik'><br>";
-      echo "  <input type='submit' value='zapisz'>";
+      echo "  <input type='submit' value='zapisz'></form>";
 ?>
-
-
-
-</form>
 </div>
 </div>
 </body>
