@@ -126,6 +126,7 @@ $connect=mysqli_connect("localhost","root","","strona_z_grami");
                 $pobieranie_id_gry_z="SELECT id_gry FROM `top_5` WHERE id=$id2";
                 $pobieranie_id_gry_w=mysqli_query($connect,$pobieranie_id_gry_z);
                 $pobieranie_id_gry=mysqli_fetch_array($pobieranie_id_gry_w);
+                $id=$pobieranie_id_gry[0];
            }
         else{
             $id=$_POST['id'];
