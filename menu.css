@@ -56,7 +56,7 @@
 }
 #Biblioteka:hover{
       color: #1d99db;
-     background-color: #162d40;;
+     background-color: #162d40;
 }
 #Puste_pole{
      width: 15%;
@@ -69,7 +69,7 @@
 }
 #Logo:hover{
       color: #1d99db;
-     background-color: #162d40;;
+     background-color: #162d40;
 }
 #Zalogowany{
     text-align: center;
@@ -81,6 +81,7 @@
      background-color: #162d40;
 }
 #elwys{
+    resize: both;
     height: 15%;
     width: 17.99%;
     background-color: #15202b;
@@ -90,6 +91,7 @@
     z-index: 3;
 }
 #elwys2{
+    background-color: #15202b;
     color: #7e8b98;
     padding-top: 0.5%;
     padding-left: 1%;
@@ -106,6 +108,7 @@
      background-color: #162d40;
 }
 #elwys3{
+    background-color: #15202b;
     padding-left: 6%;
      padding-top: 0.5%;
     height: 4%;
@@ -115,6 +118,7 @@
      position: fixed;
     text-decoration: none;
       color: #7e8b98;
+     z-index: 3;
 }
 #elwys3:hover{
      position: fixed;
@@ -123,6 +127,7 @@
      background-color: #162d40;
 }
 #elwys4{
+    background-color: #15202b;
      padding-top: 0.5%;
     padding-left: 6.5%;
      height: 4%;
