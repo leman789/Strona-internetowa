@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../style.css" type="text/css">
     <link rel="stylesheet" href="../menu.css" type="text/css">
     <link rel="stylesheet" href="../style/ustawienia.css" type="text/css">
+    <link rel="stylesheet" href="../style/dane_osobowe.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <?php 
     $host="localhost";
     $uzytkownik="root";
@@ -174,18 +176,25 @@ for($i1=0;$i1!=$a1-2;$i1++)
 }
 $wszystko1=$d1.$gwiazdki1.$ostatnia1;
 
-    echo "imie (nick): <input type='text' name='imie' placeholder='$wszystko' ><br>
-    nazwisko: <input type='text' name='nazwisko' placeholder='$wszystko1' ><br>
-    Wiek: <input type='number' name='wiek' placeholder='$rekord[2]' >
-   <input type='submit' value='zmien'>";
+    echo "<div>Imie:</div> <input type='text' name='imie' placeholder='$wszystko' autocomplete='off'><br>
+    <div>Nazwisko:</div> <input type='text' name='nazwisko' placeholder='$wszystko1' autocomplete='off'><br>
+    <div>Wiek:</div> <input type='number' name='wiek' placeholder='$rekord[2]'><br>
+   <input type='submit' value='zmien' id='zmien'>";
     
    
 }
  echo "</form>";
-echo "<br>zmiana swojego avatara<br> aktualny:<br><img src='../Zdjecia_gier/avatar/$zdj_avatara_p' alt='zjd_avatara' height='150px' width='180px'>";
+echo "<br><h2>Zmiana swojego avatara</h2><img src='../Zdjecia_gier/avatar/$zdj_avatara_p' alt='zjd_avatara' height='150px' width='180px' id='avatar'>";
  echo " <form action='../Zdjecia_gier/avatar/plik2.php' method='POST' ENCTYPE='multipart/form-data'>";
-   echo   " <input type='file' name='plik'><br>";
-      echo "  <input type='submit' value='zapisz'></form>";
+   echo   " <div class='file-input'>
+  <input type='file' id='file' class='file'>
+  <label for='file'>
+    Wybierz plik ...
+    <p class='file-name'></p>
+  </label>
+</div>
+   <br>";
+      echo "  <input type='submit' value='zapisz' id='zmien1'></form>";
 ?>
 </div>
 </div>
