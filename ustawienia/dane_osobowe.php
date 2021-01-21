@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../menu.css" type="text/css">
     <link rel="stylesheet" href="../style/ustawienia.css" type="text/css">
     <link rel="stylesheet" href="../style/dane_osobowe.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
     <?php 
     $host="localhost";
     $uzytkownik="root";
@@ -187,7 +187,7 @@ $wszystko1=$d1.$gwiazdki1.$ostatnia1;
 echo "<br><h2>Zmiana swojego avatara</h2><img src='../Zdjecia_gier/avatar/$zdj_avatara_p' alt='zjd_avatara' height='150px' width='180px' id='avatar'>";
  echo " <form action='../Zdjecia_gier/avatar/plik2.php' method='POST' ENCTYPE='multipart/form-data'>";
    echo   " <div class='file-input'>
-  <input type='file' id='file' class='file'>
+  <input type='file' name='plik' id='file' class='file'>
   <label for='file'>
     Wybierz plik ...
     <p class='file-name'></p>
