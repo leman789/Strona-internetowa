@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../style.css" type="text/css">
     <link rel="stylesheet" href="../menu.css" type="text/css">
     <link rel="stylesheet" href="../style/ustawienia.css" type="text/css">
+    <link rel="stylesheet" href="../style/doladuj.css" type="text/css">
     <?php 
     $host="localhost";
     $uzytkownik="root";
@@ -127,26 +128,24 @@
     </div>
 <div id="prawa">
 <h2>SPOSOBY PŁATNOŚCI</h2>
-<p><a href="transakcje.php" style="color:white; text-decoration:none;" >Sprawdź historię płatności i aktualny stan konta Gpoint.</a></p><br>
+<p id="sprawdz"><a href="transakcje.php" style="color:white; text-decoration:none;text-align: center;">Sprawdź historię płatności i aktualny stan konta Gpoint.</a></p><br>
 <h2>DODAJ METODĘ PŁATNOŚCI</h2>
-<button onclick='Karta_kredytowa()' id='karta'>
-<div id="karta_kredytowa" class="przycisk">
-<img width="30px" height="15px" src="karta.jpg" alt="zjd karty"> Karta kredytowa <br></div>
+    <div id="m_p">
+<button onclick='Karta_kredytowa(2),Play(3),PayPal(3)' id='karta' class="przycisk">
+Karta kredytowa
 </button>
 <div id="karta_kredytowa1"></div>
 
 
-<button onclick='Play()' id='Play'>
-<div id="Play"  class="przycisk">
-Play<br></div>
+<button onclick='Karta_kredytowa(3),Play(2),PayPal(3)' id='Play' class="przycisk">
+Play
 </button>
-<div id="Play1"  class="przycisk"></div>
-
-<button onclick='PayPal()' id='PayPal'>
-<div  id="PayPal"  class="przycisk">
-PayPal</div>
+<div id="Play1"  class="przycisk_content"></div>
+        
+<button onclick='Karta_kredytowa(3),Play(3),PayPal(2)' id='PayPal' class="przycisk">PayPal
 </button>
-<div id="PayPal1"  class="przycisk"></div>
+        
+<div id="PayPal1"  class="przycisk_content"></div></div>
 <?php
 //pobieranie id;
 $login=$_COOKIE["Clogin"];
@@ -183,39 +182,40 @@ error_reporting(0);
 
 ?>
 <script>
-function Karta_kredytowa()
+    x=1;
+function Karta_kredytowa(a)
         {
-            x++;
-            zz="";
-            if(x==1){
-                document.getElementById("karta_kredytowa1").innerHTML="<div id='elwysKarta'> <?php echo "<form action='doladuj1.php' method='post'>";  echo  "kwota:<input type='text' name='ile' placeholder='*kwota doładowania' value=''><br>"; echo "nr_konta:<input type='text' name='nr_karty'placeholder='nr_karty' maxlength='26' value='$nr_karty';><br>"; echo "miesiąc: <input type='number' name='miesiac'placeholder='miesiac' max='12' min='1' maxlength='2' value='$miesiac'>"; echo " rok: <input type='number' name='rok'placeholder='rok' min='1980' maxlength='4' value='$rok'><br>"; echo " ccv: <input type='number' name='cvv' placeholder='ccv'maxlength='3' value='$cvv'>";  echo "<input type='submit' placeholder='wykonaj'>";echo "</form>";?></div>";
+         x=x*a;
+            if(x==2){
+                document.getElementById("karta_kredytowa1").innerHTML="<div id='elwysKarta'> <?php echo "<form action='doladuj1.php' method='post'>";  echo  "<div id='Pdiv'>kwota:</div><input type='text' name='ile' placeholder='*kwota doładowania' value=''><br>"; echo "<div id='Pdiv'>nr_konta:</div><input type='text' name='nr_karty'placeholder='nr_karty' maxlength='26' value='$nr_karty';><br>"; echo "<div id='Pdiv'>miesiąc:</div> <input type='number' name='miesiac'placeholder='miesiac' max='12' min='1' maxlength='2' value='$miesiac'><br>"; echo " <div id='Pdiv'>rok:</div> <input type='number' name='rok'placeholder='rok' min='1980' maxlength='4' value='$rok'><br>"; echo " <div id='Pdiv'>ccv:</div> <input type='number' name='cvv' placeholder='ccv'maxlength='3' value='$cvv'>";  echo "<br><input type='submit' value='wykonaj' id='wykonaj'>";echo "</form>";?></div>";
                 }
-            else if(x>1){
-                    x=0;
-                    document.getElementById("karta_kredytowa1").innerHTML="";
+            else if(x==1 || x>2){
+                 x=1;
+                document.getElementById("karta_kredytowa1").innerHTML="";
                 }
         }
-        
-         y=0;
-        function Play()
+    y=1;
+        function Play(b)
         {
-           y++;
-            if(y==1){
-                document.getElementById("Play1").innerHTML="<div id='elwysPlay'> <?php echo "<form action='doladuj2.php' method='post'>";  echo  "kwota:<input type='text' name='ile' placeholder='*kwota doładowania'><br>"; echo "numer telefonu: <input type='text' name='nr_tel' placeholder='*numer telefonu' value='$nr_tel'><br>"; echo "kod: <input type='number' name='kod' placeholder='*kod' value='$kod'>";  echo "<input type='submit' value='wykonaj'>";echo "</form>";?></div>";
+            y=y*b;
+            
+            if(y==2){
+                document.getElementById("Play1").innerHTML="<div id='elwysPlay'> <?php echo "<form action='doladuj2.php' method='post'>";  echo  "kwota:<input type='text' name='ile' placeholder='*kwota doładowania'><br>"; echo "numer telefonu: <input type='text' name='nr_tel' placeholder='*numer telefonu' value='$nr_tel'><br>"; echo "kod: <input type='number' name='kod' placeholder='*kod' value='$kod'>";  echo "<input type='submit' value='wykonaj'id='wykonaj'>";echo "</form>";?></div>";
                 }
-            else if(y>1){
-                    y=0;
+            else if(y==1 || y>2){
+                  y=1;
                     document.getElementById("Play1").innerHTML="";
                 }
         }
-        function PayPal()
+    z=1;
+        function PayPal(c)
         {
-           y++;
-            if(y==1){
-                document.getElementById("PayPal1").innerHTML="<div id='elwysPayPal'> <?php echo "<form action='doladuj3.php' method='post'>";  echo  "kwota:<input type='text' name='ile' placeholder='*kwota doładowania'><br>"; echo "login:<input type='text' name='login_paypal' placeholder='*login paypal' value='$login_paypal'><br>"; echo "haslo: <input type='text' name='haslo_paypal' placeholder='*haslo PayPal' value='$haslo_paypal'>"; echo "<input type='submit' value='wykonaj'>";echo "</form>";?></div>";
+            z=z*c;
+            if(z==2){
+                document.getElementById("PayPal1").innerHTML="<div id='elwysPayPal'> <?php echo "<form action='doladuj3.php' method='post'>";  echo  "kwota:<input type='text' name='ile' placeholder='*kwota doładowania'><br>"; echo "login:<input type='text' name='login_paypal' placeholder='*login paypal' value='$login_paypal'><br>"; echo "haslo: <input type='text' name='haslo_paypal' placeholder='*haslo PayPal' value='$haslo_paypal'>"; echo "<input type='submit' value='wykonaj'id='wykonaj'>";echo "</form>";?></div>";
                 }
-            else if(y>1){
-                    y=0;
+            else if(z==1 || z>2){
+                  z=1;
                     document.getElementById("PayPal1").innerHTML="";
                 }
         }
