@@ -36,4 +36,5 @@ $wynik=mysqli_query($connect,$zapytanie);
 mysqli_close($connect);
 header("Location:../../ustawienia/dane_osobowe.php");
 
+
 ?>
