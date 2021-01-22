@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
     <link rel="stylesheet" href="logowanie.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -26,6 +27,7 @@
 
 </html>
 <?php
+error_reporting(E_ALL ^ E_WARNING);
             if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['email']) && isset($_POST['wiek']) && isset($_POST['login'])&& isset($_POST['haslo1']) && isset($_POST['haslo2']) && $_POST['haslo1']==$_POST['haslo2'])
             {
                 $imie=$_POST['imie'];
@@ -48,7 +50,7 @@
                 $zapytanie2="INSERT INTO `dane_logowania`(`id_uzytkownika`,`Login`, `Haslo`, `E-mail`) VALUES ('$rekord_id[0]','$login','$haslo1','$email');";
                 $konto_bankowe_Z="INSERT INTO `konto_bankowe` (`id`, `id_uzytkownika`, `nr_karty`, `miesiac`, `rok`, `cvv`) VALUES (NULL, '$rekord_id[0]', NULL, NULL, NULL, NULL);";
                 $paypal_Z="INSERT INTO `paypal` (`id`, `id_uzytkownika`, `login_paypal`, `haslo_paypal`) VALUES (NULL, '$rekord_id[0]', NULL, NULL);";
-                $play_Z="INSERT INTO `play` (`id`, `id_uzytkownika`, `nr_telefonu`, `kod`) VALUES (NULL, $rekord[0], NULL, NULL);"
+                $play_Z="INSERT INTO `play` (`id`, `id_uzytkownika`, `nr_telefonu`, `kod`) VALUES (NULL, $rekord[0], NULL, NULL);";
                 if($rekord1[0]=="admin")
                     {
                         
@@ -60,12 +62,12 @@
                        
                         if($haslo1!=$haslo2)
                         {
-                            echo "hasła nie są takie same<br>";
+                            echo "<em>Hasła nie są takie same</em><br>";
                             $i++;
                         }
                         if(strlen($haslo1)<7)
                         {
-                            echo "hasło jest za krótkie<br>";
+                            echo "<em>Hasło jest za krótkie</em><br>";
                             $i++;
                         }
                         $ile=0;
@@ -82,10 +84,9 @@
                         }
                          if($ile==$dlugosc)
                          {
-                             echo "Hasło nie posiada liczb";
+                             echo "<em>Hasło nie posiada liczb</em><br>";
                              $i++;
                          }
-                         echo $i;
                          if($i!=0)
                          {
                            $dziala=0;
@@ -107,15 +108,19 @@
                             }
                             else
                             {
-                                echo "wpisz jeszcze raz dane";
+                                echo "<em>Wpisz jeszcze raz dane</em><br>";
                             }
                         
                     }
                 }
                 else
                     {
-                        echo "Ten login jest zajęty";
+                        echo "<em>Ten login jest zajęty</em>";
                     }
                 mysqli_close($connect);
             }
+        echo "<p>TWOJE HASŁO:<br>
+*Twoje hasło musi mieć co najmniej 7 znaków<br>
+*Twoje hasło musi zawierać co najmniej 1 cyfrę<br>
+*Zalecane jest użycie znaków specjalnych<br></p>";
         ?>
