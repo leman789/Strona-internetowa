@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../style.css" type="text/css">
     <link rel="stylesheet" href="../menu.css" type="text/css">
     <link rel="stylesheet" href="../style/ustawienia.css" type="text/css">
+    <link rel="stylesheet" href="../style/zabezpieczenia.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <?php 
     $host="localhost";
     $uzytkownik="root";
@@ -29,6 +31,7 @@
     $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
     $stan_konta_elwys_w=$PDO->query($stan_konta_elwys);
     foreach($stan_konta_elwys_w as $stan_konta_elwys_r)
+    $PDO=null;
     ?>
 </head>
 <body>
@@ -56,7 +59,7 @@
          $rekord[1]
         </div>
         <div>
-            <img src='../Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='45px'>
+            <img src='../Zdjecia_gier/avatar/$rekord[2]' alt='awatar' id='avatar'>
             <input type='button' onclick='wysun()' id='wysun'>
         </div>
         </a>";
@@ -144,10 +147,10 @@ while($rekord_haslo=mysqli_fetch_array($wynik))
     $emial_z_bazy=$rekord_haslo[1];
 }
  echo "<form action='' method='post'>";
-    echo "aktualne hasło<br> <input  type='password' name='stare_haslo' placeholder='aktualne haslo' ><br>
-    nowe haslo<br> <input type='password' name='nowe_haslo' placeholder='nowe haslo' ><br>
-    powtórz nowe haslo<br> <input  type='password' name='nowe_hasloP' placeholder='powtórz nowe haslo' ><br>
-    <input type='reset' value='odrzuć zmiany'><input type='submit' value='zmien'>";
+    echo "<div>Aktualne hasło</div><br> <input  type='password' name='stare_haslo' placeholder='aktualne haslo' ><br>
+    <div>Nowe haslo</div><br> <input type='password' name='nowe_haslo' placeholder='nowe haslo' ><br>
+    <div>Powtórz nowe haslo</div><br> <input  type='password' name='nowe_hasloP' placeholder='powtórz nowe haslo' ><br>
+    <input type='reset' value='odrzuć zmiany' id='przycisk'><input type='submit' value='zmien' id='przycisk'>";
  echo "</form>";
  if(isset($_POST['stare_haslo']) && isset($_POST['nowe_haslo'])&& isset($_POST['nowe_hasloP']))
  { 
@@ -157,22 +160,22 @@ while($rekord_haslo=mysqli_fetch_array($wynik))
  $i=0;
  if($aktualne_haslo!=$haslo_z_bazy)
  {
-     echo "wpisane aktualne haslo jest błędne<br>";
+     echo "<em>Wpisane aktualne haslo jest błędne</em><br>";
      $i++;
  }
  if($nowe_haslo!=$nowe_hasloP)
  {
-     echo "Nowe hasła nie są takie same<br>";
+     echo "<em>Nowe hasła nie są takie same</em><br>";
      $i++;
  }
  if($nowe_haslo==$haslo_z_bazy)
  {
-     echo "Te hasło już jest ustawiane na twoim koncie<br>";
+     echo "<em>Te hasło już jest ustawiane na twoim koncie</em><br>";
      $i++;
  }
  if(strlen($nowe_haslo)<7)
  {
-     echo "Nowe hasło jest za krótkie<br>";
+     echo "<em>Nowe hasło jest za krótkie</em><br>";
      $i++;
  }
  $ile=0;
@@ -189,7 +192,7 @@ while($rekord_haslo=mysqli_fetch_array($wynik))
  }
   if($ile==$dlugosc)
   {
-      echo "Hasło nie posiada liczb";
+      echo "<em>Hasło nie posiada liczb</em>";
       $i++;
   }
   if($i==0)
@@ -200,19 +203,13 @@ while($rekord_haslo=mysqli_fetch_array($wynik))
   }
   
  }
- 
+ mysqli_close($connect);
 ?>
-<div id="prawa_bardziej">
-<p>TWOJE HASŁO<br>
-Twoje hasło musi mieć co najmniej 7 znaków<br>
-Twoje hasło musi zawierać co najmniej 1 cyfrę<br>
-Zalecane jest użycie znaków specjalnych<br></p>
+<p>TWOJE HASŁO:<br>
+*Twoje hasło musi mieć co najmniej 7 znaków<br>
+*Twoje hasło musi zawierać co najmniej 1 cyfrę<br>
+*Zalecane jest użycie znaków specjalnych<br></p>
 </div>
 </div>
-</div>
-<?php
-
-?>
-
 </body>
 </html>
