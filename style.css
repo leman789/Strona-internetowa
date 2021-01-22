@@ -71,3 +71,11 @@ h2{
     top: 80%;
     left: 41%;
 }
+przejscie1{
+}
+#przejscie:hover{
+    cursor: pointer;
+}
+#przejscie1:hover{
+    cursor: pointer;
+}
