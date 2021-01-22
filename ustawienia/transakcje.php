@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../style.css" type="text/css">
     <link rel="stylesheet" href="../menu.css" type="text/css">
     <link rel="stylesheet" href="../style/ustawienia.css" type="text/css">
+    <link rel="stylesheet" href="../style/transakcje.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <?php 
     $host="localhost";
     $uzytkownik="root";
@@ -29,6 +31,7 @@
     $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
     $stan_konta_elwys_w=$PDO->query($stan_konta_elwys);
     foreach($stan_konta_elwys_w as $stan_konta_elwys_r)
+    $PDO = null;
     ?>
 </head>
 <body>
@@ -56,7 +59,7 @@
          $rekord[1]
         </div>
         <div>
-            <img src='../Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='45px'>
+            <img src='../Zdjecia_gier/avatar/$rekord[2]' alt='awatar' id='avatar'>
             <input type='button' onclick='wysun()' id='wysun'>
         </div>
         </a>";
@@ -135,6 +138,8 @@ $id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
 $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
 // wyswietlanie zawartosc
 $zapytanie="SELECT `kwota`,`metoda`,`czas`,`nazwa_gry` FROM `tranzakcje` where `id_uzytkownika`=$id_uzytkownika_R[0]";
+    echo "<table>";
+    echo "<tr><th>kwota:</th><th>metoda płatoność:</th><th>data:</th><th>opis:</th></tr>";
 $wynik=mysqli_query($connect,$zapytanie);
 while($rekord=mysqli_fetch_array($wynik))
 {
@@ -154,8 +159,10 @@ while($rekord=mysqli_fetch_array($wynik))
         $rekord[3]='kupno gry :'.$nazwa_gry;  
     }
 
-   echo " kwota: $rekord[0], metoda płatoność: $rekord[1], data: $rekord[2], opis: $rekord[3]<br>";
+   echo "<tr> <td>$rekord[0]zł</td> <td>$rekord[1]</td> <td>$rekord[2]</td> <td>$rekord[3]</td></tr>";
 }
+    echo "</table>";
+    mysqli_close($connect);
 ?>
 </div>
 </div>
