@@ -30,8 +30,11 @@
     margin:0 auto;
 }
 #nick{
-    padding-left: 3%;
-    padding-top: 2%;
+    position: relative;
+    width: 60%;
+    padding-top: 4%;
+    align-items: center;
+  justify-content: center;
 }
 #Zaloguj{
     border-radius: 5px;
@@ -152,4 +155,8 @@
     right: 0px;
     opacity: 0;
     cursor: pointer;
+}
+#avatar{
+    position: relative;
+    height:  100%;
 }
