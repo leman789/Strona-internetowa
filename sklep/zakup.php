@@ -29,6 +29,7 @@
     $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
     $stan_konta_elwys_w=$PDO->query($stan_konta_elwys);
     foreach($stan_konta_elwys_w as $stan_konta_elwys_r)
+    $PDO = null;
     ?>
 </head>
 <body>
@@ -56,7 +57,7 @@
          $rekord[1]
         </div>
         <div>
-            <img src='../Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='45px'>
+            <img src='../Zdjecia_gier/avatar/$rekord[2]' alt='awatar' id='avatar'>
             <input type='button' onclick='wysun()' id='wysun'>
         </div>
         </a>";
@@ -169,7 +170,7 @@ echo "
     $noniewiem
     </form>
     <a href='../sklep.php'>Wroc</a><br>";
-    
+    mysqli_close($connect);
 ?>
 
     </div>
