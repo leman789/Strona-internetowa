@@ -1,0 +1,66 @@
+#kupno{
+    background-color: red;
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 3%;
+}
+#obraz_z{
+     position: relative;
+    width: 45%;
+     background-color: blue;
+    float: left;
+}
+#okladka_obraz{
+    position: relative;
+    width: 100%;
+}
+#tytul{
+    margin-top: 5%;
+    font-size: 300%;
+    position: relative;
+    margin-left: 5%;
+    width: 50%;
+     background-color: red;
+     float: left;
+}
+#opis
+{   
+    margin-top: 5%;
+    font-size: 200%;
+    position: relative;
+     background-color: red;
+    margin-left: 5%;
+     float: left;
+      width: 50%;
+}
+#cena{
+    font-size: 300%;
+    margin-top: 5%;
+    position: relative;
+     background-color: red;
+     float: left;
+      margin-left: 5%;
+    width: 50%;
+}
+#tworca{
+        font-size: 200%;
+    background-color: red;
+      margin-top: 5%;
+    position: relative;
+        margin-left: 5%;
+    width: 50%;
+     float: left;
+}
+#data{
+        font-size: 300%;
+      background-color: red;
+      margin-top: 5%;
+    position: relative;
+        margin-left: 5%;
+    width: 50%;
+     float: left;
+    
+}
+#wymagania{
+    clear: both;
+}
