@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="menu.css" type="text/css">
     <link rel="stylesheet" href="style/sklep.css" type="text/css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <?php 
     $host="localhost";
     $uzytkownik="root";
@@ -31,6 +31,7 @@
     $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
     $stan_konta_elwys_w=$PDO->query($stan_konta_elwys);
     foreach($stan_konta_elwys_w as $stan_konta_elwys_r)
+    $PDO = null;
     ?>
 </head>
 <body>
@@ -58,7 +59,7 @@
          $rekord[1]
         </div>
         <div>
-            <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='45px'>
+            <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' id='avatar'>
             <input type='button' onclick='wysun()' id='wysun'>
         </div>
         </a>";
@@ -139,7 +140,7 @@ echo "</form><br>";
  echo "<input type='checkbox' name='rpg'>rpg <br>";
  echo "<input type='checkbox' name='moba'>moba<br>";
  echo "<input type='checkbox' name='inne'>inne<br>";
- echo "<input type='submit' value='szukaj'><br></div>";
+ echo "<input type='submit' value='szukaj' id='szukaj'><br></div>";
 echo "</form>";
 // trzeba ogarnąć jak pobrac value bo nie można uzyc tego sposobu :/ 
 $multip=0;
