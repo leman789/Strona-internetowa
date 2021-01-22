@@ -6,6 +6,7 @@
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
         <link rel="stylesheet" href="logowanie.css" type="text/css">
         <link rel="stylesheet" href="menu.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -15,7 +16,7 @@
         {
         echo "
         <div id='Zalogowany'>
-            <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='60px'>
+            <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' id='avatar'>
             $rekord[1]
             <a href='wyloguj.php'>wyloguj</a>
         </div>
