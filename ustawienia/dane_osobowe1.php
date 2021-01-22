@@ -30,6 +30,7 @@ if(strlen($imie2)>3)
 
 $zapytanie_zmiana="UPDATE `uzytkownicy` SET `Imie` = '$imie', `Nazwisko` = '$nazwisko', `Wiek` = '$wiek', `Avatar` = '1.jpg' WHERE `uzytkownicy`.`id` = $id_uzytkownika_R[0];";
 $zrobione=mysqli_query($connect,$zapytanie_zmiana);
+mysqli_close($connect);
 if($zrobione)
 {
    header("Location:dane_osobowe.php");
