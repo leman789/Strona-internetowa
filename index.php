@@ -6,6 +6,7 @@
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="menu.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <?php 
     $host="localhost";
     $uzytkownik="root";
@@ -28,6 +29,7 @@
     $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
     $stan_konta_elwys_w=$PDO->query($stan_konta_elwys);
     foreach($stan_konta_elwys_w as $stan_konta_elwys_r)
+    $PDO = null;
     ?>
 </head>
 <body>
@@ -55,7 +57,7 @@
          $rekord[1]
         </div>
         <div>
-            <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='45px'>
+            <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' id='avatar'>
             <input type='button' onclick='wysun()' id='wysun'>
         </div>
         </a>";
