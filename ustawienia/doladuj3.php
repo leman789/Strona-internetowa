@@ -18,6 +18,7 @@ $doladowanie="UPDATE `uzytkownicy` SET `Stan_konta` = `Stan_konta`+$ile WHERE `u
 $wynik2=mysqli_query($connect,$doladowanie);
 $tranzakcje="INSERT INTO `tranzakcje` (`id`, `id_uzytkownika`, `kwota`, `metoda`, `czas`, `nazwa_gry`) VALUES (NULL, '$id_uzytkownika_R[0]', '$ile', '3', '$czas', '0');";
 $wynik3=mysqli_query($connect,$tranzakcje);
+mysqli_close($connect);
 header("Location:doladuj.php");
 
 
