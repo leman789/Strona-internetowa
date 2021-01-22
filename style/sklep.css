@@ -60,7 +60,8 @@ input[type=text]:focus {
     filter : alpha(opacity=80);
 }
 #okladka_obraz{
-     border-radius: 2%;
+    box-shadow:2px 2px 10px 1px #15202b;
+     border-radius: 10px;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
