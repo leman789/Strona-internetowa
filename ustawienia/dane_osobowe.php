@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../menu.css" type="text/css">
     <link rel="stylesheet" href="../style/ustawienia.css" type="text/css">
     <link rel="stylesheet" href="../style/dane_osobowe.css" type="text/css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <?php 
     $host="localhost";
     $uzytkownik="root";
@@ -32,6 +32,7 @@
     $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
     $stan_konta_elwys_w=$PDO->query($stan_konta_elwys);
     foreach($stan_konta_elwys_w as $stan_konta_elwys_r)
+    $PDO = null;
     ?>
 </head>
 <body>
@@ -61,7 +62,7 @@
         </div>
         <div>
        
-            <img src='../Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='45px'>
+            <img src='../Zdjecia_gier/avatar/$rekord[2]' alt='awatar' id='avatar'>
             <input type='button' onclick='wysun()' id='wysun'>
         </div>
         </a>";
@@ -195,6 +196,7 @@ echo "<br><h2>Zmiana swojego avatara</h2><img src='../Zdjecia_gier/avatar/$zdj_a
 </div>
    <br>";
       echo "  <input type='submit' value='zapisz' id='zmien1'></form>";
+    mysqli_close($connect);
 ?>
 </div>
 </div>
