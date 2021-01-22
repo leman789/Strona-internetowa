@@ -6,7 +6,7 @@
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
     <link rel="stylesheet" href="../style.css" type="text/css">
     <link rel="stylesheet" href="../menu.css" type="text/css">
-     <link rel="stylesheet" href="style.css" type="text/css">
+     <link rel="stylesheet" href="../style/zakup.css" type="text/css">
     <?php 
     $host="localhost";
     $uzytkownik="root";
@@ -148,9 +148,17 @@ while($rekord2=mysqli_fetch_array($wynik2))
 $zapytanie="SELECT * FROM `gry` WHERE id='$id'";
 $wynik=mysqli_query($connect,$zapytanie);
 $rekord=mysqli_fetch_array($wynik);
-    echo "<div>$rekord[1]title<div>
-    
-    $rekord[2]<br>$rekord[3]<br>$rekord[4]<br>$rekord[5]<br>$rekord[6]<br>$rekord[7]<br>$rekord[8]
+    $tworca_z="SELECT `Imie`, `Nazwisko` FROM `tworcy` where id='$rekord[4]'";
+        $tworca_w=mysqli_query($connect,$tworca_z);
+        $tworca=mysqli_fetch_array($tworca_w);
+    echo "
+        <div id='kupno'><div id='obraz_z'><img src='../Zdjecia_gier/okladki/$rekord[7]' alt=' $rekord[8]' id='okladka_obraz'></div>
+        <div id='tytul'>Tytuł: $rekord[1]</div>
+    <div id='opis'>Opis: $rekord[2]</div>
+    <div id='tworca'>Tworca: $tworca[0]<br><br>Wydawca: $tworca[1]</div>
+    <div id='data'>Data powstania: $rekord[5]</div>
+     <div id='cena'>$rekord[3]</div></div>
+    <div id='wymagania'>$rekord[6]</div>
     ";
 $kup="kup";
 $noniewiem="<input type='submit' value='$kup'>";
