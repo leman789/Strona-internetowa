@@ -163,8 +163,30 @@ $rekord=mysqli_fetch_array($wynik);
         </div>
         <div id='przyciski'>
     ";
+    $zapytanie_Specyfikacje="SELECT `system_o`,`procesor`,`ram`,`miejsce_dysku`,`directx` FROM `specyfikacja` WHERE`id_gry`=$id";
+    $wynik=mysqli_query($connect,$zapytanie_Specyfikacje);
+    while($rekord_s=mysqli_fetch_array($wynik))
+    {
+       $system= $rekord_s[0];
+       $procesor=$rekord_s[1];
+        $ram=$rekord_s[2];
+        $miejsce=$rekord_s[3];
+        $dirx=$rekord_s[4];
+    }
+    $w_system= "<input type='hidden' value='$system' id='system'>";
+    $w_procesor="<input type='hidden' value='$procesor' id='procesor'>";
+    $w_ram="<input type='hidden' value='$ram' id='ram'>";
+    $w_miejsce="<input type='hidden' value='$miejsce' id='miejsce'>";
+    $w_dirx="<input type='hidden' value='$dirx' id='dirx'>";
 $wymagania="<input type='hidden' value='$rekord[6]' id='wynagania'>";
-        echo $wymagania;
+echo $w_procesor;
+echo $w_ram;
+echo $w_system;
+echo $w_miejsce;
+echo $w_dirx;
+ echo $wymagania;
+    
+
 $kup="kup";
 $noniewiem="<input type='submit' value='$kup' id='przycisk'>";
 $action="zakup2.php";
@@ -191,11 +213,16 @@ echo "
     <script>
         var napis_startowy=document.getElementById("prawa").textContent;
         var napis=document.getElementById("wynagania").value;
+        var system=document.getElementById("wynagania").value;
+        var procesor=document.getElementById("procesor").value;
+        var ram=document.getElementById("ram").value;
+        var miejsce=document.getElementById("miejsce").value;
+        var dirx=document.getElementById("dirx").value;
               let wym=0;
         function wymagania(){
             wym++;
                 if(wym==1){
-                document.getElementById("prawa").innerHTML="<div id='opis_wymagan'>"+napis+"</div>";}
+                document.getElementById("prawa").innerHTML="<div id='opis_wymagan'>"+"<p id='zm1'>system:<br>"+system+"</p><p id='zm2'>procesor:<br>"+procesor+"</p><p id='zm3'>ram:"+ram+"GB</p><p id='zm4'>miejsce:"+miejsce+"GB</p><p id='zm5'>dirx:"+dirx+"</p></div>";}
             else if(wym>1){
                 wym=0;
                 javascript:location.reload();
