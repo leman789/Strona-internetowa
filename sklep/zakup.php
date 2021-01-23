@@ -152,22 +152,27 @@ $rekord=mysqli_fetch_array($wynik);
         $tworca_w=mysqli_query($connect,$tworca_z);
         $tworca=mysqli_fetch_array($tworca_w);
     echo "
-        <div id='kupno'><div id='obraz_z'><img src='../Zdjecia_gier/okladki/$rekord[7]' alt=' $rekord[8]' id='okladka_obraz'></div>
+        <div id='kupno'>
+        <div id='obraz_z'><img src='../Zdjecia_gier/okladki/$rekord[7]' alt=' $rekord[8]' id='okladka_obraz'></div>
+        <div id='prawa'>
         <div id='tytul'>Tytuł: $rekord[1]</div>
-    <div id='opis'>Opis: $rekord[2]</div>
-    <div id='tworca'>Tworca: $tworca[0]<br><br>Wydawca: $tworca[1]</div>
-    <div id='data'>Data powstania: $rekord[5]</div>
-     <div id='cena'>$rekord[3]</div></div>
-    <div id='wymagania'>$rekord[6]</div>
+        <div id='opis'>Opis: $rekord[2]</div>
+        <div id='tworca'>Tworca: $tworca[0]<br><br>Wydawca: $tworca[1]</div>
+        <div id='data'>Data powstania: $rekord[5]</div>
+        <div id='cena'>Cena: $rekord[3]zł</div>
+        </div>
+        <div id='przyciski'>
     ";
+$wymagania="<input type='hidden' value='$rekord[6]' id='wynagania'>";
+        echo $wymagania;
 $kup="kup";
-$noniewiem="<input type='submit' value='$kup'>";
+$noniewiem="<input type='submit' value='$kup' id='przycisk'>";
 $action="zakup2.php";
 foreach($id_gier as $value){
 if($value==$rekord[0]){
     $action="pobierz.php";
 $kup="pobierz";
-$noniewiem="<a href='../gry_rar/download.php?path=$rekord[1].rar'>$kup</a>";
+$noniewiem="<a href='../gry_rar/download.php?path=$rekord[1].rar' id='przycisk'>$kup</a>";
 }
 }
 echo "<br>
@@ -177,10 +182,26 @@ echo "<br>
 echo "
     $noniewiem
     </form>
-    <a href='../sklep.php'>Wroc</a><br>";
+   <a href='../sklep.php'><div id='przycisk3'>Wroc</div></a>";
+    echo "<div id='wymagania1'><input type='button'  onclick='wymagania()' id='wymagania' value='pokaz wymagania'></div></div></div>";
+    $informacje=$rekord[6];
     mysqli_close($connect);
 ?>
-
     </div>
+    <script>
+        var napis_startowy=document.getElementById("prawa").textContent;
+        var napis=document.getElementById("wynagania").value;
+              let wym=0;
+        function wymagania(){
+            wym++;
+                if(wym==1){
+                document.getElementById("prawa").innerHTML="<div id='opis_wymagan'>"+napis+"</div>";}
+            else if(wym>1){
+                wym=0;
+                javascript:location.reload();
+            }
+        }
+    </script>
 </body>
+    <!--document.getElementById("prawa").innerHTML="";-->
 </html>
