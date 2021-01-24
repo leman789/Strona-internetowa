@@ -149,7 +149,7 @@ while($rekord2=mysqli_fetch_array($wynik2))
 $zapytanie="SELECT * FROM `gry` WHERE id='$id'";
 $wynik=mysqli_query($connect,$zapytanie);
 $rekord=mysqli_fetch_array($wynik);
-    $tworca_z="SELECT `Imie`, `Nazwisko` FROM `tworcy` where id='$rekord[4]'";
+    $tworca_z="SELECT * FROM `tworcy` where id='$rekord[4]'";
         $tworca_w=mysqli_query($connect,$tworca_z);
         $tworca=mysqli_fetch_array($tworca_w);
     echo "
@@ -179,7 +179,7 @@ $rekord=mysqli_fetch_array($wynik);
     $w_ram="<input type='hidden' value='$ram' id='ram'>";
     $w_miejsce="<input type='hidden' value='$miejsce' id='miejsce'>";
     $w_dirx="<input type='hidden' value='$dirx' id='dirx'>";
-$wymagania="<input type='hidden' value='$rekord[6]' id='wynagania'>";
+$wymagania="<input type='hidden' value='$rekord[7]' id='wynagania'>";
 echo $w_procesor;
 echo $w_ram;
 echo $w_system;
