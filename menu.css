@@ -149,9 +149,12 @@
 }
 #wysun
 {
+    position: fixed;
+    top: 0%;
     height: 6%;
     width: 17.99%;
     position: fixed;
+    z-index: 5;
     right: 0px;
     opacity: 0;
     cursor: pointer;
@@ -159,4 +162,7 @@
 #avatar{
     position: relative;
     height:  100%;
+     border-radius: 10px;
+    margin-left: 4%;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
 }
