@@ -1,7 +1,5 @@
 #kupno{
     margin: 0 10%;
-    border: 5px solid white;
-    background-color:black;
     width: 75%;
     padding-top: 3%;
     float: left;
@@ -47,8 +45,7 @@
     margin-top: 3%;
         font-size: 200%;
      margin-left: 5%;
-    background-color: black;
-     width: 95%;
+     width: 100%;
      float: left;
 }
 #data{
@@ -83,11 +80,11 @@
     background-color: #1d99db;
 }
 #przyciski{
-    border: 5px solid green;
     margin-top: 3%;
     position: relative;
-    width: 54%;
-     float: left;
+    margin-left: 5%;
+    width: 49%;
+     float:left;
 }
 #przycisk3{
       margin-left: 6%;  
@@ -97,13 +94,33 @@
     margin-left: 15%;
 }
 #prawa{
+    margin-left: 5%;
     position: relative;
-    border: 5px solid red;
-    width: 54%;
+    width: 49%;
     color: red;
     float: left;
 }
 #opis_wymagan{
-    font-size: 300%;
+    font-size: 200%;
     color: pink;
+}
+.prawa_d{
+      color: white;
+      font-size: 150%;
+    padding: 10 10;
+    border-width: 10px;
+    outline-style: none;
+    background-color: #162d40;
+    border-bottom: 1px solid #7e8b98;
+    margin-bottom: 3%;
+}
+.prawa_d2{
+      color: white;
+      font-size: 100%;
+    padding: 10 10;
+    border-width: 10px;
+    outline-style: none;
+    background-color: #162d40;
+    border-bottom: 1px solid #7e8b98;
+    margin-bottom: 3%;
 }
