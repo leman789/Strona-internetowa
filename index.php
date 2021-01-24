@@ -16,7 +16,9 @@
     $PDO = new PDO($dsn,$uzytkownik,$haslo);
     error_reporting(E_ALL ^ E_WARNING);
     //pobieranie id z loginu
+    
     $login=$_COOKIE["Clogin"];
+    if(isset($_COOKIE["Clogin"])){
     $id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";
     $id_uzytkownika_W=$PDO->query($id_uzytkownika);
     foreach($id_uzytkownika_W as $id_uzytkownika_R)
@@ -28,7 +30,8 @@
     //stan konta uzytkownika
     $stan_konta_elwys="SELECT `Stan_konta` FROM `uzytkownicy` WHERE `id` = $rekord[0]";
     $stan_konta_elwys_w=$PDO->query($stan_konta_elwys);
-    foreach($stan_konta_elwys_w as $stan_konta_elwys_r)
+    foreach($stan_konta_elwys_w as $stan_konta_elwys_r);
+    }
     $PDO = null;
     ?>
 </head>
