@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gpoint</title>
+    <title>Gspot</title>
     <meta charset="utf-8">
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
     <link rel="stylesheet" href="../style.css" type="text/css">
@@ -129,7 +129,7 @@
     </div>
 <div id="prawa">
 <h2>SPOSOBY PŁATNOŚCI</h2>
-<p id="sprawdz"><a href="transakcje.php" style="color:white; text-decoration:none;text-align: center;">Sprawdź historię płatności i aktualny stan konta Gpoint.</a></p><br>
+<p id="sprawdz"><a href="transakcje.php" style="color:white; text-decoration:none;text-align: center;">Sprawdź historię płatności i aktualny stan konta Gspot.</a></p><br>
 <h2>DODAJ METODĘ PŁATNOŚCI</h2>
     <div id="m_p">
 <button onclick='Karta_kredytowa(2),Play(3),PayPal(3)' id='karta' class="przycisk">
