@@ -154,7 +154,7 @@ $rekord=mysqli_fetch_array($wynik);
         $tworca=mysqli_fetch_array($tworca_w);
     echo "
         <div id='kupno'>
-        <div id='obraz_z'><img src='../Zdjecia_gier/okladki/$rekord[7]' alt=' $rekord[8]' id='okladka_obraz'></div>
+        <div id='obraz_z'><img src='../Zdjecia_gier/okladki/$rekord[6]' alt=' $rekord[7]' id='okladka_obraz'></div>
         <div id='prawa'>
         <div id='tytul' class='prawa_d'>Tytuł: $rekord[1]</div>
         <div id='opis'class='prawa_d'>Opis: $rekord[2]</div>
