@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <title>Gpoint</title>
     <meta charset="utf-8">
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
@@ -95,7 +94,7 @@
             </a>";
         } 
         ?>
-        
+        <div id="Puste_pole1" class="Tlo"></div>
         <?php
         if(isset($_COOKIE["Clogin"]))//sklep po zalogowaniu
         {
@@ -115,8 +114,8 @@
         }
         ?>
         <div id="Puste_pole" class="Tlo"></div>
-        <a href="../index.php">
-        <div id="Logo">
+        <a href="../index.php" id="Logo">
+        <div >
             Logo
         </div>
         </a>  
