@@ -168,7 +168,7 @@ if(isset($_POST['inne']))
 }
 ////////////////////////////////////////// dalsze problemy jak w bazie danych nie ma tej gry to sie nie wyswitla komunikat że jej nie ma nie wiem jak to zrobic , po wejsciu na strone nie wyswitlają sie wszystkiee gry uzytkownika
 // sprawdzanie ktory wybrac
-$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id GROUP BY gry.id";
+$biblioteka="SELECT id FROM `gry`";
  
  if(isset($_POST['multip']) && $fps==1 && $mmo==0 && $rpg==0 && $moba==0 && $inne==0)
 {
@@ -212,10 +212,10 @@ else if($inne==1 && $fps==0 && $mmo==0 && $rpg==0 && $moba==0 && $multip==0 && $
 $biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id WHERE `inne`=$inne GROUP BY gry.id";
 
 else  if( $inne==0 && $fps==0 && $mmo==0 && $rpg==0 && $moba==0 && $multip==0 && $singlep==0)
-$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id GROUP BY gry.id";
+$biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry`";
 else 
 {
-    $biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry` JOIN gatunki on gatunki.id_gry=gry.id JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gry.id  GROUP BY gry.id";
+    $biblioteka="SELECT gry.id,Nazwa,Obrazek,Alt_obrazka FROM `gry`";
     echo "nie znaleziono wyniku ";
 }
 $id_gier=[];
@@ -233,8 +233,6 @@ $rekord_2=mysqli_fetch_array($wynik_2);
 // wyswietlanie bibioteki
 $biblioteka_W=mysqli_query($connect,$biblioteka);
         echo "<div id='prawo'>";
-if($biblioteka_W)
-{
 while($biblioteka_R=mysqli_fetch_array($biblioteka_W))
 {
     $kup="kup";
@@ -254,7 +252,6 @@ while($biblioteka_R=mysqli_fetch_array($biblioteka_W))
         </form></div>
         ";
 }
- }
  echo "</div>";
 ?>
 </div>
