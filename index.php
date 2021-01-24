@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gpoint</title>
+    <title>Gspot</title>
     <meta charset="utf-8">
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
     <link rel="stylesheet" href="style.css" type="text/css">
