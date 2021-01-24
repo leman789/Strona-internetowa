@@ -94,7 +94,7 @@
             </a>";
         } 
         ?>
-        
+        <div id="Puste_pole1" class="Tlo"></div>
         <?php
         if(isset($_COOKIE["Clogin"]))//sklep po zalogowaniu
         {
@@ -114,8 +114,8 @@
         }
         ?>
         <div id="Puste_pole" class="Tlo"></div>
-        <a href="../index.php">
-        <div id="Logo">
+        <a href="../index.php" id="Logo">
+        <div >
             Logo
         </div>
         </a>  
