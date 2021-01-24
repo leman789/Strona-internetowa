@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../style.css" type="text/css">
     <link rel="stylesheet" href="../menu.css" type="text/css">
      <link rel="stylesheet" href="../style/zakup.css" type="text/css">
-    <?php 
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+   <?php 
     $host="localhost";
     $uzytkownik="root";
     $haslo="";
@@ -33,13 +34,13 @@
     ?>
 </head>
 <body>
-    <script>
+        <script>
         let x=0;
-    function wysun()
+        function wysun()
         {
             x++;
             if(x==1){
-                    document.getElementById("elwys1").innerHTML="<div id='elwys'><?php echo "<a id='elwys2'> Stan Konta:".$stan_konta_elwys_r[0]."zł</a><br>" ?><a href='../ustawienia/dane_osobowe.php' id='elwys2'>ustawienia</a><br><a href='../wyloguj.php' id='elwys2'>wyloguj</a><br></div>";
+                    document.getElementById("elwys1").innerHTML="<div id='elwys'><?php echo "<a id='elwys2' href='../ustawienia/doladuj.php'><div>Stan Konta:".$stan_konta_elwys_r[0]."zł</div></a><br>" ?><a href='../ustawienia/dane_osobowe.php' id='elwys3'><div>ustawienia</div></a><br><a href='../wyloguj.php' id='elwys4'><div>wyloguj</div></a><br></div>";
                 }
             else if(x>1){
                     x=0;
@@ -92,7 +93,7 @@
             </a>";
         } 
         ?>
-        
+        <div id="Puste_pole1" class="Tlo"></div>
         <?php
         if(isset($_COOKIE["Clogin"]))//sklep po zalogowaniu
         {
@@ -112,8 +113,8 @@
         }
         ?>
         <div id="Puste_pole" class="Tlo"></div>
-        <a href="../index.php">
-        <div id="Logo">
+        <a href="../index.php" id="Logo">
+        <div >
             Logo
         </div>
         </a>  
@@ -155,11 +156,11 @@ $rekord=mysqli_fetch_array($wynik);
         <div id='kupno'>
         <div id='obraz_z'><img src='../Zdjecia_gier/okladki/$rekord[7]' alt=' $rekord[8]' id='okladka_obraz'></div>
         <div id='prawa'>
-        <div id='tytul'>Tytuł: $rekord[1]</div>
-        <div id='opis'>Opis: $rekord[2]</div>
-        <div id='tworca'>Tworca: $tworca[0]<br><br>Wydawca: $tworca[1]</div>
-        <div id='data'>Data powstania: $rekord[5]</div>
-        <div id='cena'>Cena: $rekord[3]zł</div>
+        <div id='tytul' class='prawa_d'>Tytuł: $rekord[1]</div>
+        <div id='opis'class='prawa_d'>Opis: $rekord[2]</div>
+        <div id='tworca' class='prawa_d'>Tworca: $tworca[0]</div><div id='tworca' class='prawa_d'>Wydawca: $tworca[1]</div>
+        <div id='data'class='prawa_d'>Data powstania: $rekord[5]</div>
+        <div id='cena'class='prawa_d'>Cena: $rekord[3]zł</div>
         </div>
         <div id='przyciski'>
     ";
@@ -222,7 +223,7 @@ echo "
         function wymagania(){
             wym++;
                 if(wym==1){
-                document.getElementById("prawa").innerHTML="<div id='opis_wymagan'>"+"<p id='zm1'>system:<br>"+system+"</p><p id='zm2'>procesor:<br>"+procesor+"</p><p id='zm3'>ram:"+ram+"GB</p><p id='zm4'>miejsce:"+miejsce+"GB</p><p id='zm5'>dirx:"+dirx+"</p></div>";}
+                document.getElementById("prawa").innerHTML="<div id='opis_wymagan' >"+"<p id='zm1' class='prawa_d2'>System:<br>"+system+"</p><p id='zm2' class='prawa_d2'>Procesor:<br>"+procesor+"</p><p id='zm3' class='prawa_d2'>Ram:"+ram+"GB</p><p id='zm4' class='prawa_d2'>Miejsce:"+miejsce+"GB</p><p id='zm5' class='prawa_d2'>DirectX:"+dirx+"</p></div>";}
             else if(wym>1){
                 wym=0;
                 javascript:location.reload();
