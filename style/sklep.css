@@ -46,7 +46,6 @@ input[type=text]:focus {
     float: right;
     width: 80%;
     color: blue;
-    font-size: 200%;
 }
 #okladka{
     text-align: center;
@@ -82,7 +81,7 @@ select:-webkit-autofill:focus {
     border: none;
     color: white;
 }
-.napis{
-    font-size: 150%;
+#napis{
+    font-size: 98%;
     padding-top: 1%;
 }
