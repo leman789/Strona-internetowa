@@ -244,9 +244,9 @@ while($biblioteka_R=mysqli_fetch_array($biblioteka_W))
     echo " <form action='sklep/zakup.php' method='post'><div id='okladka'>
     <button type='submit' class='button'>
     <img src='Zdjecia_gier/okladki/$biblioteka_R[2]' alt='$biblioteka_R[3]' width='150px' height='185px' id='okladka_obraz'><br>
-    <p class='napis'>
+        <div id='napis'>
         $biblioteka_R[1]<br>
-        ($kup)</p>
+        ($kup)</div>
           </button>
         <input type='hidden' name='id' value='$biblioteka_R[0]'>
         </form></div>
