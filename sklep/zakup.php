@@ -47,7 +47,7 @@ $rekord=mysqli_fetch_array($wynik);
         <div id='prawa'>
         <div id='tytul' class='prawa_d'>Tytuł: $rekord[1]</div>
         <div id='opis'class='prawa_d'>Opis: $rekord[2]</div>
-        <div id='tworca' class='prawa_d'>Tworca: $tworca[0]</div><div id='tworca' class='prawa_d'>Wydawca: $tworca[1]</div>
+        <div id='tworca' class='prawa_d'>Tworca: $tworca[1]</div><div id='tworca' class='prawa_d'>Wydawca: $tworca[2]</div>
         <div id='data'class='prawa_d'>Data powstania: $rekord[5]</div>
         <div id='cena'class='prawa_d'>Cena: $rekord[3]zł</div>
         </div>
@@ -103,7 +103,7 @@ echo "
     <script>
         var napis_startowy=document.getElementById("prawa").textContent;
         var napis=document.getElementById("wynagania").value;
-        var system=document.getElementById("wynagania").value;
+        var system=document.getElementById("system").value;
         var procesor=document.getElementById("procesor").value;
         var ram=document.getElementById("ram").value;
         var miejsce=document.getElementById("miejsce").value;
