@@ -2,6 +2,7 @@
 <html>
 <head>
    <?php include('menu/head_1.php');?>
+   <meta charset="utf-8">
     <link rel="stylesheet" href="style/sklep.css" type="text/css">
 </head>
 <body>
