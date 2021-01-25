@@ -2,6 +2,7 @@
 <html>
 <head>
     <?php include('menu/head_1.php');?>
+    <meta charset="utf-8">
 </head>
 <body>
     <?php include('menu/menu_1.php');?>
