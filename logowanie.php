@@ -5,84 +5,12 @@
     <meta charset="utf-8">
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
         <link rel="stylesheet" href="logowanie.css" type="text/css">
-        <link rel="stylesheet" href="menu.css" type="text/css">
+        <link rel="stylesheet" href="menu/menu.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 
 </head>
 <body>
-        <div id="menu">
-        <?php
-        if(isset($_COOKIE["Clogin"]))//logowanie po zalogowaniu
-        {
-        echo "
-        <div id='Zalogowany'>
-            <img src='Zdjecia_gier/avatar/$rekord[2]' alt='awatar' id='avatar'>
-            $rekord[1]
-            <a href='wyloguj.php'>wyloguj</a>
-        </div>
-        <style>
-            #zalogowany{
-                color: red;
-            }
-        </style>
-        ";
-        }
-        else//przed zalogowaniem
-            {
-            echo "<a href='index.php'  id='Zaloguj'><div> 
-            Powrót
-            </div> </a>";
-            }
-        ?>
-       
-        
-        <div id="Puste_pole"></div>
-        
-        <?php
-        if(isset($_COOKIE["Clogin"]))//biblioteka po zalogowaniu
-        {
-        echo "<a href='biblioteka.php' id='Biblioteka'>
-            <div> 
-                Biblioteka
-            </div>
-            </a>";
-        }
-        else
-           {
-        echo "<a href='logowanie.php' id='Biblioteka'>
-            <div> 
-                Biblioteka
-            </div>
-            </a>";
-        } 
-        ?>
-        
-        <?php
-        if(isset($_COOKIE["Clogin"]))//sklep po zalogowaniu
-        {
-        echo "<a href='sklep.php' id='Sklep'>
-        <div>
-           Sklep
-        </div>
-        </a>";
-        }
-        else
-         {
-        echo "<a href='logowanie.php' id='Sklep'>
-        <div>
-           Sklep
-        </div>
-        </a>";
-        }
-        ?>
-        <div id="Puste_pole" class="Tlo"></div>
-        <a href="index.php">
-        <div id="Logo">
-            Logo
-        </div>
-        </a>  
-
-    </div>
+        <?php include('menu/menu_1.php');?>
     
     <div id="reje">
         <form action="" method="POST">
