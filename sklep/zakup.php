@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+ 
+<meta charset="utf-8">
      <link rel="stylesheet" href="../style/zakup.css" type="text/css">
      <?php include('../menu/head_2.php');?>
 </head>
