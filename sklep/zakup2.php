@@ -36,15 +36,15 @@
 </head>
 <body>
     <script>
-        let x=0;
+        let wysuniete=0;
     function wysun()
         {
-            x++;
-            if(x==1){
+            wysuniete++;
+            if(wysuniete==1){
                     document.getElementById("elwys1").innerHTML="<div id='elwys'><?php echo "<a id='elwys2'> Stan Konta:".$stan_konta_elwys_r[0]."zł</a><br>" ?><a href='../ustawienia/dane_osobowe.php' id='elwys2'>ustawienia</a><br><a href='../wyloguj.php' id='elwys2'>wyloguj</a><br></div>";
                 }
-            else if(x>1){
-                    x=0;
+            else if(wysuniete>1){
+                    wysuniete=0;
                     document.getElementById("elwys1").innerHTML="";
                 }
         }
