@@ -1,5 +1,5 @@
     <title>Gspot</title>
-    <meta charset="utf-8">
+   
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="description" content="Zobacz najnowsze promocje na naszej stronie !">
     <link rel="stylesheet" href="../style.css" type="text/css">
