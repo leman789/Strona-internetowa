@@ -5,7 +5,7 @@
     background-color:#15202b;
     font-size: 200%;
     height: 6%;
-    z-index: 2;
+    z-index: 50;
 }
   html{
     font-family: 'Lato', sans-serif;
@@ -91,7 +91,7 @@
     position: fixed;
     top: 6%;
     right: 0px;
-    z-index: 3;
+    z-index: 50;
 }
 #elwys2{
     background-color: #15202b;
@@ -121,7 +121,7 @@
      position: fixed;
     text-decoration: none;
       color: #7e8b98;
-     z-index: 3;
+     z-index: 50;
 }
 #elwys3:hover{
      position: fixed;
