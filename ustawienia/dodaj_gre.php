@@ -50,8 +50,8 @@
  //echo '<input type="text" name="tytul"><br>';
  // echo 'Cena <input type="number" name="cena"><br>';
   //echo 'Data wydania <input type="date" name="data"><br>';
-            echo '<input type="button" value="dalej" onClick="prawa2_dalej()">';
          echo '<input type="button" value="wstecz" onClick="prawa2_wstecz()">';
+        echo '<input type="button" value="dalej" onClick="prawa2_dalej()">';
  echo   "</div>";
 
  echo  "<div id='prawa_3'>";
