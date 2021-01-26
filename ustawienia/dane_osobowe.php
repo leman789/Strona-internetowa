@@ -13,6 +13,10 @@
      <a href="doladuj.php"><div>Doladuj konto</div></a><br>
      <a href="transakcje.php"><div>Transakcje</div></a><br>
      <a href="zabezpieczenia.php"><div>Haslo i zabezpieczenia</div></a><br>
+     <a href="dodaj_gre.php"><div>Dodaj własną grę</div></a><br>
+     <a href="statystyki_gier.php"><div>Statystyki gier</div></a><br>
+     <a href="panel_gier.php"><div>Panel gier</div></a><br>
+
     </div>
 <div id="prawa">
 <h2>USTAWIENIA OGÓLNE</h2>
