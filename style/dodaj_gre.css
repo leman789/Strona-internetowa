@@ -1,0 +1,53 @@
+
+#prawa_1
+{
+    padding: 0px 1.5% 1.5% 1.5%;
+    border-radius: 10px;
+    box-shadow:2px 2px 10px 5px #1d3a53;
+   min-height: 50%;
+    position: absolute;
+    float: left;
+    background-color:#1d3a53;
+    top: 10%;
+    width: 100%;
+    z-index: -4;
+  
+}
+ 
+#prawa_2
+{
+    padding: 0px 1.5% 1.5% 1.5%;
+    border-radius: 10px;
+    box-shadow:2px 2px 10px 5px #1d3a53;
+    position: absolute;
+    float: left;
+    background-color:blue;
+    min-width: 1%;
+    width: 100%;
+    top: 10%;
+    z-index: 10;
+   
+
+}
+#prawa_3
+{
+    padding: 0px 1.5% 1.5% 1.5%;
+    border-radius: 10px;
+    box-shadow:2px 2px 10px 5px #1d3a53;
+    position: absolute;
+    float: left;
+    background-color: red;
+    width: 150%;
+    top: 10%;
+    z-index: -5;
+   
+   
+}
+#prawa1{
+    padding: 0px 1.5% 1.5% 1.5%;
+        margin-top: 4%;
+        margin-left: 5%;
+        position: relative;
+        float: left;
+        width: 60%;
+    }
