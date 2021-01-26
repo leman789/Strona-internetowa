@@ -1,8 +1,6 @@
 #content{
     left: 15%;
     width: 80%;
-    background-color: yellow;
-    z-index: 40;
 }
 a{
       text-decoration: none;
