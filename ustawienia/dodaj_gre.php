@@ -17,13 +17,12 @@
      <a href="dodaj_gre.php"><div>Dodaj własną grę</div></a><br>
      <a href="statystyki_gier.php"><div>Statystyki gier</div></a><br>
      <a href="panel_gier.php"><div>Panel gier</div></a><br>
-
     </div>
         <p id="wynik"></p>
 <div id="prawa1">
 <?php 
  echo "<form action='../Zdjecia_gier/okladki/dodaj_gre1.php' method='POST' ENCTYPE='multipart/form-data'>";
- echo  "<div id='prawa_1'>";
+ echo  "<scroll-container><div id='prawa_1'>";
   echo '<h2>Dodaj włąsną grę</h2>';
  echo 'Nazwa gry<input type="text" name="tytul"><br>';
   echo 'Cena <input type="number" name="cena"><br>';
@@ -36,14 +35,14 @@
          Wybierz plik ...
          <p class='file-name'></p>
        </label>
-       <img id='blah' src='#' alt='your image' />
+       <img id='blah' src='#' alt='your image'  width='250px'/>
        </form>
      </div>
         <br><br><br>";      
   echo '<h5>napisz opisz swojej gry do 250 znakow</h5>';
  echo' <textarea name="opis" id="" cols="30" rows="10"></textarea><br>';
     echo '<input type="button" value="dalej" onClick="prawa1_dalej()">';
-    echo   "</div>";
+    echo   "</div></scroll-container>";
  echo  "<div id='prawa_2'>";
  //echo '<h2>Dodaj włąsną grę</h2>';
   //echo '<h2>specyfikacja gry</h2>';
