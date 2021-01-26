@@ -28,12 +28,16 @@
  echo 'Nazwa gry<input type="text" name="tytul"><br>';
   echo 'Cena <input type="number" name="cena"><br>';
   echo 'Data wydania <input type="date" name="data"><br>';
+  echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>';
   echo   "<h5>Dodaj okładke</h5><div class='file-input'>
+        <form runat='server'>
        <input type='file' name='plik' id='file' class='file'>
        <label for='file'>
          Wybierz plik ...
          <p class='file-name'></p>
        </label>
+       <img id='blah' src='#' alt='your image' />
+       </form>
      </div>
         <br><br><br>";      
   echo '<h5>napisz opisz swojej gry do 250 znakow</h5>';
@@ -59,7 +63,19 @@
 echo '</form>';
 ?>
 <script>
- 
+ function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#file").change(function() {
+  readURL(this);
+});
 </script>
 <?php
 // pobieranie id
