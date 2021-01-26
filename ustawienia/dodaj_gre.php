@@ -19,8 +19,8 @@
      <a href="panel_gier.php"><div>Panel gier</div></a><br>
 
     </div>
+        <p id="wynik"></p>
 <div id="prawa1">
-
 <?php 
  echo "<form action='../Zdjecia_gier/okladki/dodaj_gre1.php' method='POST' ENCTYPE='multipart/form-data'>";
  echo  "<div id='prawa_1'>";
@@ -38,7 +38,7 @@
         <br><br><br>";      
   echo '<h5>napisz opisz swojej gry do 250 znakow</h5>';
  echo' <textarea name="opis" id="" cols="30" rows="10"></textarea><br>';
-    echo '<input type="button" value="dalej" onClick="prawa1_dalej">';
+    echo '<input type="button" value="dalej" onClick="prawa1_dalej()">';
     echo   "</div>";
  echo  "<div id='prawa_2'>";
  //echo '<h2>Dodaj włąsną grę</h2>';
@@ -46,7 +46,7 @@
  //echo '<input type="text" name="tytul"><br>';
  // echo 'Cena <input type="number" name="cena"><br>';
   //echo 'Data wydania <input type="date" name="data"><br>';
-         echo '<input type="button" value="dalej" onClick="prawa2_dalej">';
+         echo '<input type="button" value="dalej" onClick="prawa2_dalej()">';
  echo   "</div>";
 
  echo  "<div id='prawa_3'>";
@@ -58,9 +58,6 @@
 
 echo '</form>';
 ?>
-<script>
- 
-</script>
 <?php
 // pobieranie id
 $login=$_COOKIE["Clogin"];
@@ -73,6 +70,12 @@ $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
 
     mysqli_close($connect);
 ?>
+    <script>
+    function prawa1_dalej(){
+     document.getElementById("wynik").innerHTML="<style>#prawa_1{z-index: 1;}#prawa_2{z-index: 5;} #prawa_3{z-index: 1;}</style>";}
+    function prawa2_dalej(){
+     document.getElementById("wynik").innerHTML="<style>#prawa_1{z-index: 1;}#prawa_2{z-index: 1;} #prawa_3{z-index: 5;}</style>";}
+</script>
 </div>
 </div>
 </body>
