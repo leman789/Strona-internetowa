@@ -16,19 +16,20 @@ $id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login
 $id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
 $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
 echo "<form action='' method='post'>";
-echo "<div id='gora'><input type='text' id='napis' name='napis' placeholder='wpisz nazwe gry' size='50%'>";
+echo "<div id='gora'><input type='text' name='napis' placeholder='wpisz nazwe gry'size='50%'>";
 echo "<input type='submit' value='szukaj' id='szukaj2'></div>";
 echo "</form><br>";
  echo "<form action='' method='post'>";
- echo "<div id='lewo'><input type='checkbox' name='multip'>Multi player <br>";
- echo "<input type='checkbox' name='singlep'>Single player <br>";
- echo "<input type='checkbox' name='fps'>Fps <br>";
- echo "<input type='checkbox' name='mmo'>Mmo  <br>";
- echo "<input type='checkbox' name='rpg'>rpg <br>";
- echo "<input type='checkbox' name='moba'>moba<br>";
- echo "<input type='checkbox' name='inne'>inne<br>";
- echo "<input type='submit' value='szukaj' id='szukaj'><br></div>";
-
+ echo "<div id='lewo'>";
+ echo "<label class='container'><input type='checkbox' name='multip'>Multi player <span  class='checkmark'></span></label>";
+ echo "<label class='container'><input type='checkbox' name='singlep'>Single player <span class='checkmark'></span></label>";
+ echo "<label class='container'><input type='checkbox' name='fps'>Fps <span class='checkmark'><span></label>";
+ echo "<label class='container'><input type='checkbox' name='mmo'>MMO  <span class='checkmark'><span></label>";
+ echo "<label class='container'><input type='checkbox' name='rpg'>RPG <span class='checkmark'><span></label>";
+ echo "<label class='container'><input type='checkbox' name='moba'>Moba <span class='checkmark'><span></label>";
+ echo "<label class='container'><input type='checkbox' name='inne'>inne <span class='checkmark'><span></label>";
+ echo "<input type='submit' value='szukaj' id='szukaj'><br>";
+ echo "</div>";
 echo "</form>";
 // trzeba ogarnąć jak pobrac value bo nie można uzyc tego sposobu :/ 
 $multip=0;
