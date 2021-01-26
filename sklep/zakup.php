@@ -7,7 +7,7 @@
      <?php include('../menu/head_2.php');?>
 </head>
 <body>
-    <?php include('../menu/menu_2.php');?>
+    <?php include('../menu/menu_3.php');?>
     <div id="content">
     <?php
 $connect=mysqli_connect("localhost","root","","strona_z_grami");
