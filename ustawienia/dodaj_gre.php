@@ -50,20 +50,21 @@
  //echo '<input type="text" name="tytul"><br>';
  // echo 'Cena <input type="number" name="cena"><br>';
   //echo 'Data wydania <input type="date" name="data"><br>';
-         echo '<input type="button" value="dalej" onClick="prawa2_dalej()">';
+            echo '<input type="button" value="dalej" onClick="prawa2_dalej()">';
+         echo '<input type="button" value="wstecz" onClick="prawa2_wstecz()">';
  echo   "</div>";
 
  echo  "<div id='prawa_3'>";
  //echo '<h2>Dodaj włąsną grę</h2>';
+    echo '<input type="button" value="wstecz" onClick="prawa3_wstecz()">';
         echo " <input type='submit' value='zapisz' id='zmien1'></form>";
+    
  echo   "</div>";
 
  
 
 echo '</form>';
 ?>
-<<<<<<< HEAD
-=======
 <script>
  function readURL(input) {
   if (input.files && input.files[0]) {
@@ -79,7 +80,6 @@ $("#file").change(function() {
   readURL(this);
 });
 </script>
->>>>>>> 49cc922a265787d650535127b1e5418f18abec08
 <?php
 // pobieranie id
 $login=$_COOKIE["Clogin"];
@@ -97,6 +97,10 @@ $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
      document.getElementById("wynik").innerHTML="<style>#prawa_1{z-index: 1;}#prawa_2{z-index: 5;} #prawa_3{z-index: 1;}</style>";}
     function prawa2_dalej(){
      document.getElementById("wynik").innerHTML="<style>#prawa_1{z-index: 1;}#prawa_2{z-index: 1;} #prawa_3{z-index: 5;}</style>";}
+    function prawa2_wstecz(){
+         document.getElementById("wynik").innerHTML="<style>#prawa_1{z-index: 5;}#prawa_2{z-index: 1;} #prawa_3{z-index: 1;}</style>";}
+    function prawa3_wstecz(){
+         document.getElementById("wynik").innerHTML="<style>#prawa_1{z-index: 1;}#prawa_2{z-index: 5;} #prawa_3{z-index: 1;}</style>";}
 </script>
 </div>
 </div>
