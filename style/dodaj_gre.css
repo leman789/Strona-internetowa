@@ -55,5 +55,38 @@
         margin-left: 5%;
         position: absolute;
         float: left;
-        width: 60%;
     }
+
+input[type=text],input[type=number]{
+    color: white;
+      font-size: 150%;
+    padding: 10 10;
+    border-width: 10px;
+    outline-style: none;
+    background-color: #162d40;
+    border: 1px solid #7e8b98;
+    margin-bottom: 3%;
+}
+input[type=text]:focus,input[type=number]:focus{
+          border: 1px solid #1d99db;
+        outline-color: #7e8b98;
+     transform: scale(1.02);
+}
+.przycisk{
+         font-family: 'Lato', sans-serif;
+    display: block;
+    left: 10%;
+    margin: 1%;
+     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+    padding: 1.5% 3%;
+    color: white;
+    font-size: 150%;
+    border-radius: 50px;
+    border: 1px solid #1d99db;
+    background-color: #162d40;
+    float: left;
+}
+.przycisk:hover{
+    cursor: pointer;
+    background-color: #1d99db;
+}
