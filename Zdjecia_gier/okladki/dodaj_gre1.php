@@ -55,21 +55,22 @@ $id_gry_zapytanie_W=mysqli_query($connect,$id_gry_zapytanie);
 $id_gry_zapytanie_R=mysqli_fetch_array($id_gry_zapytanie_W);
 //danie id
  $id_gry=$id_gry_zapytanie_R[0]+1;
-
-$id_specyfikacji=0;
+ 
+ $id_specyfikacja_zapytanie="SELECT `id` FROM specyfikacja GROUP by `id` DESC LIMIT 1";
+ $id_specyfikacja_zapytanie_W=mysqli_query($connect,$id_specyfikacja_zapytanie);
+ $id_specyfikacja_zapytanie_R=mysqli_fetch_array($id_specyfikacja_zapytanie_W);
+$id_specyfikacji=$id_specyfikacja_zapytanie_R[0]+1;
 $dodanie_gry="INSERT INTO `gry` (`id`, `Nazwa`, `Opis`, `Cena`, `id_tworcy`, `Data_wydania`, `Obrazek`, `Alt_obrazka`, `id_specyfikacja`, `id_dodajacego`) VALUES (NULL, '$tytul', '$opis', '$cena', '$id_tworcy', '$data', '$nazwa', '$tytul', '$id_specyfikacji', '$id_uzytkownika_R[0]');";
 $dodanie_gry_W=mysqli_query($connect,$dodanie_gry);
 
 
 
-$id_specyfikacja_zapytanie="SELECT `id` FROM specyfikacja GROUP by `id` DESC LIMIT 1";
-$id_specyfikacja_zapytanie_W=mysqli_query($connect,$id_specyfikacja_zapytanie);
-$id_specyfikacja_zapytanie_R=mysqli_fetch_array($id_specyfikacja_zapytanie_W);
+
 
 $specyfikacja_Z="INSERT INTO `specyfikacja` (`id`, `id_gry`, `system_o`, `procesor`, `ram`, `miejsce_dysku`, `directx`) VALUES (NULL, '$id_gry', '$System', '$Procesor', '$Ram', '$Miejsce', '$DirectX');";
 $specyfikacja_W=mysqli_query($connect,$specyfikacja_Z);
 //danie id
- $id_specyfikacja=$id_specyfikacja_zapytanie_R[0]+1;
+ 
 echo "to sjflksjfsldfkjslfkjsflkj $id_specyfikacji";
 $aktualizacja_gry="UPDATE `gry` SET `id_specyfikacja` = '$id_specyfikacji' WHERE `gry`.`id` = $id_gry;";
 $aktualizacja_gry_W=mysqli_query($connect,$aktualizacja_gry);
