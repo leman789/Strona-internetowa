@@ -19,7 +19,7 @@
      echo "<a href='dodaj_gre.php'><div>Dodaj własną grę</div></a><br>";
      echo "<a href='statystyki_gier.php'><div>Statystyki gier</div></a><br>";
      echo "<a href='panel_gier.php'><div>Panel gier</div></a><br>";
-        }
+        }?>
           <?php
         if($uprawnienia[0]==2){
              echo "<a href='panel_banowania.php'><div>Panel administratora</div></a><br>";
