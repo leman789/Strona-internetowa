@@ -23,11 +23,11 @@
  echo "<form action='../Zdjecia_gier/okladki/dodaj_gre1.php' method='POST' ENCTYPE='multipart/form-data'>";
  echo  "<scroll-container><div id='prawa_1'>";
   echo '<h2>Dodaj włąsną grę</h2>';
- echo 'Nazwa gry<input type="text" name="tytul"><br>';
-  echo 'Cena <input type="number" name="cena"><br>';
-  echo 'Data wydania <input type="date" name="data"><br>';
+ echo '<div>Nazwa gry:</div><input type="text" name="tytul"><br>';
+  echo '<div>Cena:</div> <input type="number" name="cena"><br>';
+  echo '<div>Data wydania</div> <input type="date" name="data"><br><br>';
   echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>';
-  echo   "<h5>Dodaj okładke</h5><div class='file-input'>
+  echo   "<div>Dodaj okładke:<br> </div><div class='file-input'>
         <form runat='server'>
        <input type='file' name='plik' id='file' class='file'>
        <label for='file'>
@@ -38,24 +38,30 @@
        </form>
      </div>
         <br><br><br>";      
-  echo '<h5>napisz opisz swojej gry do 250 znakow</h5>';
- echo' <textarea name="opis" id="" cols="30" rows="10"></textarea><br>';
-    echo '<input type="button" value="dalej" onClick="prawa1_dalej()">';
+  echo '<div>Napisz opisz swojej gry do 250 znakow:</div><br>';
+ echo' <textarea name="opis" id="" cols="80" rows="5"></textarea><br>';
+    echo '<input type="button" value="dalej" onClick="prawa1_dalej()" class="przycisk">';
     echo   "</div></scroll-container>";
  echo  "<div id='prawa_2'>";
- //echo '<h2>Dodaj włąsną grę</h2>';
-  //echo '<h2>specyfikacja gry</h2>';
- //echo '<input type="text" name="tytul"><br>';
- // echo 'Cena <input type="number" name="cena"><br>';
-  //echo 'Data wydania <input type="date" name="data"><br>';
-         echo '<input type="button" value="wstecz" onClick="prawa2_wstecz()">';
-        echo '<input type="button" value="dalej" onClick="prawa2_dalej()">';
+         echo '<h2>Dodaj włąsną grę</h2>';
+        echo '<h3>Twórca gry</h3>';
+        echo '<div>Twórca gry:</div><input type="text" name="Tworca"><br>';
+     echo '<h3>Wydawca gry</h3>';
+        echo '<div>Wydawca gry:</div><input type="text" name="Wydawca"><br>';
+         echo '<input type="button" value="wstecz" onClick="prawa2_wstecz()" class="przycisk">';
+        echo '<input type="button" value="dalej" onClick="prawa2_dalej()" class="przycisk">';
  echo   "</div>";
 
  echo  "<div id='prawa_3'>";
- //echo '<h2>Dodaj włąsną grę</h2>';
-    echo '<input type="button" value="wstecz" onClick="prawa3_wstecz()">';
-        echo " <input type='submit' value='zapisz' id='zmien1'></form>";
+    echo '<h2>Dodaj włąsną grę</h2>';
+    echo '<h3>Specyfikacje gry</h3>';
+      echo '<div>System operacyjny:</div> <input type="text" name="Wydawca"><br>';
+      echo '<div>Procesor:</div> <input type="text" name="Wydawca"><br>';
+      echo '<div>Ram:</div> <input type="number" name="Wydawca"><br>';
+      echo '<div>Miejsce na dysku:</div> <input type="number" name="Wydawca"><br>';
+      echo '<div>DirectX:</div> <input type="number" name="Wydawca"><br>';
+    echo '<input type="button" value="wstecz" onClick="prawa3_wstecz()" class="przycisk">';
+        echo " <input type='submit' value='zapisz' id='zmien1' class='przycisk'></form>";
     
  echo   "</div>";
 
