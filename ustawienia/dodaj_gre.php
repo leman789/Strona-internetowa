@@ -53,12 +53,18 @@
  echo  "<div id='prawa_3'>";
     echo '<h2>Dodaj włąsną grę</h2>';
     echo '<h3>Specyfikacje gry</h3>';
-      echo '<div>System operacyjny:</div> <input type="text" name="Wydawca"><br>';
-      echo '<div>Procesor:</div> <input type="text" name="Wydawca"><br>';
-      echo '<div>Ram:</div> <input type="number" name="Wydawca"><br>';
-      echo '<div>Miejsce na dysku:</div> <input type="number" name="Wydawca"><br>';
-      echo '<div>DirectX:</div> <input type="number" name="Wydawca"><br>';
-    echo '<input type="button" value="wstecz" onClick="prawa3_wstecz()" class="przycisk">';
+    
+      echo '<div>System operacyjny:</div> <input type="text" name="System"><br>';
+    
+      echo '<div>Procesor:</div> <input type="text" name="Procesor"><br>';
+    
+      echo '<div>Ram:</div> <input type="number" name="Ram"><br>';
+    
+      echo '<div>Miejsce na dysku:</div> <input type="number" name="Miejsce"><br>';
+    
+      echo '<div>DirectX:</div> <input type="number" name="DirectX"><br>';
+    
+        echo '<input type="button" value="wstecz" onClick="prawa3_wstecz()" class="przycisk">';
         echo '<input type="submit" value="zapisz" id="zmien1" class="przycisk"></form>';
     
  echo   "</div>";
