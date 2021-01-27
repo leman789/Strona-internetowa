@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="../style/ustawienia.css" type="text/css">
     <link rel="stylesheet" href="../style/zabezpieczenia.css" type="text/css">
     <?php include('../menu/head_2.php');?>
+        <?php include('uprawnienia.php');?>
 </head>
 <body>
     <?php include('../menu/menu_2.php');?>
@@ -13,9 +14,13 @@
      <a href="doladuj.php"><div>Doladuj konto</div></a><br>
      <a href="transakcje.php"><div>Transakcje</div></a><br>
      <a href="zabezpieczenia.php"><div>Haslo i zabezpieczenia</div></a><br>
-     <a href="dodaj_gre.php"><div>Dodaj własną grę</div></a><br>
-     <a href="statystyki_gier.php"><div>Statystyki gier</div></a><br>
-     <a href="panel_gier.php"><div>Panel gier</div></a><br>
+    <?php
+        if($uprawnienia[0]!=0){
+     echo "<a href='dodaj_gre.php'><div>Dodaj własną grę</div></a><br>";
+     echo "<a href='statystyki_gier.php'><div>Statystyki gier</div></a><br>";
+     echo "<a href='panel_gier.php'><div>Panel gier</div></a><br>";
+        }
+    ?>
 
     </div>
 <div id="prawa">
