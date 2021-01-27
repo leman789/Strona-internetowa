@@ -1,5 +1,15 @@
 <?php
-
+$tytul=$_POST['tytul'];
+$cena=$_POST['cena'];
+$data=$_POST['data'];
+$opis=$_POST['opis'];
+$Tworca=$_POST['Tworca'];
+$Wydawca=$_POST['Wydawca'];
+$System=$_POST['System'];
+$Procesor=$_POST['Procesor'];
+$Ram=$_POST['Ram'];
+$Miejsce=$_POST['Miejsce'];
+$DirectX=$_POST['DirectX'];
     $max_rozmiar = 1024*1024;
     if(is_uploaded_file($_FILES['plik']['tmp_name']))
     {
