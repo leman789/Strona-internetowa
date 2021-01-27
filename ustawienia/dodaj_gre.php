@@ -3,7 +3,6 @@
 <head>
     <link rel="stylesheet" href="../style/ustawienia.css" type="text/css">
     <link rel="stylesheet" href="../style/dodaj_gre.css" type="text/css">
-   
     <?php include('../menu/head_2.php');?>
 </head>
 <body>
@@ -14,9 +13,9 @@
      <a href="doladuj.php"><div>Doladuj konto</div></a><br>
      <a href="transakcje.php"><div>Transakcje</div></a><br>
      <a href="zabezpieczenia.php"><div>Haslo i zabezpieczenia</div></a><br>
-     <a href="dodaj_gre.php"><div>Dodaj własną grę</div></a><br>
-     <a href="statystyki_gier.php"><div>Statystyki gier</div></a><br>
-     <a href="panel_gier.php"><div>Panel gier</div></a><br>
+     <a href='dodaj_gre.php'><div>Dodaj własną grę</div></a><br>
+    <a href='statystyki_gier.php'><div>Statystyki gier</div></a><br>
+    <a href='panel_gier.php'><div>Panel gier</div></a><br>
     </div>
         <p id="wynik"></p>
 <div id="prawa1">
