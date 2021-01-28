@@ -24,13 +24,27 @@
  echo  "<div id='prawa_1'>";
   echo '<h2>Dodaj włąsną grę</h2>';
  echo '<div>Nazwa gry:</div><input type="text" name="tytul"><br>';
+ echo 'rodzaj rozgrywki';
+ echo '<select name="rodzaj_g">';
+echo ' <option value="multip">Multiplayer</option>
+ <option value="singlep">Singleplayer</option>
+
+</select><br>';
+ echo " wybierz gatunek gry:";
+ echo '<select name="gatunki">';
+echo ' <option value="fps">fps</option>
+ <option value="mmo">mmo</option>
+ <option value="rpg">rpg</option>
+ <option value="moba">moba</option>
+ <option value="inne">inne</option>
+</select><br>';
   echo '<div>Cena:</div> <input type="number" name="cena"><br>';
   echo '<div>Data wydania</div> <input type="date" name="data"><br><br>';
   echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>';
   echo   "<div>Dodaj okładke:<br> </div><div class='file-input'>
        <input type='file' name='plik' id='file' class='file'>
        <label for='file'>
-         Wybierz plik ...
+        
          <p class='file-name'></p>
        </label>
        <img id='blah' src='#' alt='your image'  width='250px'/>
