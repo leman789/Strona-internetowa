@@ -67,22 +67,23 @@ echo "<br>";
 echo $id_gry;
 if($Gatunki=="fps")
 $dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '1', '0', '0', '0', '0');";
-else if($Gatunki=="mmo")
-$dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '1', '0', '0', '0');";
+else if($Gatunki=="mmo"){
+$dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '1', '0', '0', '0');";}
  else if($Gatunki=="rpg")
 $dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '0', '1', '0', '0');";
  else if($Gatunki=="moba")
+ {
 $dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '0', '0', '1', '0');";
+    }
 else if ($Gatunki=="inne")
 { 
 $dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '0', '0', '0', '1');";
 }
-else
+else 
 {
-    $dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '0', '0', '0', '1');";
+    $dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '0', '0', '0', '0');";
 }
 mysqli_query($connect,$dodanie_gatunku_gry);
-
 
 
 
@@ -116,6 +117,8 @@ $specyfikacja_W=mysqli_query($connect,$specyfikacja_Z);
  
 $aktualizacja_gry="UPDATE `gry` SET `id_specyfikacja` = '$id_specyfikacji' WHERE `gry`.`id` = $id_gry;";
 $aktualizacja_gry_W=mysqli_query($connect,$aktualizacja_gry);
-
-
+$dodanie_gatunku_gry1="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '0', '0', '0', '0');";
+$dodanie_gatunku_gry2="UPDATE `gatunki` SET `$Gatunki`=1 WHERE `id_gry`=$id_gry";
+mysqli_query($connect,$dodanie_gatunku_gry1);
+mysqli_query($connect,$dodanie_gatunku_gry2);
  echo "dziala";
