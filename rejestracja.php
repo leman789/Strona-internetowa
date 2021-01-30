@@ -49,9 +49,9 @@ error_reporting(E_ALL ^ E_WARNING);
               
                 $rekord1=mysqli_fetch_array($wynik1);
                 $zapytanie2="INSERT INTO `dane_logowania`(`id_uzytkownika`,`Login`, `Haslo`, `E-mail`) VALUES ('$id_dane_logowanie','$login','$haslo1','$email');";
-                $konto_bankowe_Z="INSERT INTO `konto_bankowe` (`id`, `id_uzytkownika`, `nr_karty`, `miesiac`, `rok`, `cvv`) VALUES (NULL, '$rekord_id[0]', NULL, NULL, NULL, NULL);";
-                $paypal_Z="INSERT INTO `paypal` (`id`, `id_uzytkownika`, `login_paypal`, `haslo_paypal`) VALUES (NULL, '$rekord_id[0]', NULL, NULL);";
-                $play_Z="INSERT INTO `play` (`id`, `id_uzytkownika`, `nr_telefonu`, `kod`) VALUES (NULL, $rekord[0], NULL, NULL);";
+                $konto_bankowe_Z="INSERT INTO `konto_bankowe` (`id`, `id_uzytkownika`, `nr_karty`, `miesiac`, `rok`, `cvv`) VALUES (NULL, '$id_dane_logowanie', NULL, NULL, NULL, NULL);";
+                $paypal_Z="INSERT INTO `paypal` (`id`, `id_uzytkownika`, `login_paypal`, `haslo_paypal`) VALUES (NULL, '$id_dane_logowanie', NULL, NULL);";
+                $play_Z="INSERT INTO `play` (`id`, `id_uzytkownika`, `nr_telefonu`, `kod`) VALUES (NULL, $id_dane_logowanie, NULL, NULL);";
                 if($rekord1[0]=="admin")
                     {
                         
