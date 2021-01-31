@@ -29,10 +29,30 @@ $id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login
 $id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
 $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
 //wyswitlanie rekordow 
- 
+$ile_masz_gier="SELECT COUNT(`id`) FROM `gry` WHERE `id_dodajacego`=$id_uzytkownika_R[0]";
+$ile_masz_gier_W=mysqli_query($connect,$ile_masz_gier);
+$ile_masz_gier_Z=mysqli_fetch_array($ile_masz_gier_W);
+ $zapytanie_wszystkie_gry="SELECT `id`,`Nazwa`,`Opis`,`Cena`,`id_tworcy`,`Data_wydania`,`Obrazek`,`Alt_obrazka`,`id_specyfikacja` FROM `gry` WHERE `id_dodajacego`=$id_uzytkownika_R[0]";
+ $zapytanie_wszystkie_gry_W=mysqli_query($connect,$zapytanie_wszystkie_gry);
+ $i=0;
+ while($zapytanie_wszystkie_gry_R=mysqli_fetch_array($zapytanie_wszystkie_gry_W))
+ {
+     echo "<div id='wyswietlanie'>
+      <form action='panel_gier1.php' method='post'>
+    <div id='nazwa'>$zapytanie_wszystkie_gry_R[1]</div><br><br>
+    <input type='hidden' name='id_gry' value='$zapytanie_wszystkie_gry_R[0]'><br>
+    <div id='przycisk'><input type='submit' value='zmien'></div>
+    </form>
+     </div>" ;
+   
+ }
+
 
     mysqli_close($connect);
 ?>
+
+
+
 </div>
 </div>
 </body>
