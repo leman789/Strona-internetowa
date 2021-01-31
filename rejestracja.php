@@ -28,6 +28,8 @@
 </html>
 <?php
 error_reporting(E_ALL ^ E_WARNING);
+if(isset($_POST['login'])!='admin')
+{ 
             if(isset($_POST['imie']) && isset($_POST['nazwisko']) && isset($_POST['email']) && isset($_POST['wiek']) && isset($_POST['login'])&& isset($_POST['haslo1']) && isset($_POST['haslo2']) && $_POST['haslo1']==$_POST['haslo2'])
             {
                 $imie=$_POST['imie'];
@@ -48,11 +50,15 @@ error_reporting(E_ALL ^ E_WARNING);
                 $wynik1=mysqli_query($connect,$zapytanie1);
               
                 $rekord1=mysqli_fetch_array($wynik1);
+                $zapytanie_o_id_dalej="SELECT `id_uzytkownika` FROM `dane_logowania` WHERE `Login`='$rekord1[0]'";
+                $zapytanie_o_id_dalej_W=mysqli_query($connect,$zapytanie_o_id_dalej);
+                $zapytanie_o_id_dalej_R=mysqli_fetch_array($zapytanie_o_id_dalej_W);
+               
                 $zapytanie2="INSERT INTO `dane_logowania`(`id_uzytkownika`,`Login`, `Haslo`, `E-mail`) VALUES ('$id_dane_logowanie','$login','$haslo1','$email');";
                 $konto_bankowe_Z="INSERT INTO `konto_bankowe` (`id`, `id_uzytkownika`, `nr_karty`, `miesiac`, `rok`, `cvv`) VALUES (NULL, '$id_dane_logowanie', NULL, NULL, NULL, NULL);";
                 $paypal_Z="INSERT INTO `paypal` (`id`, `id_uzytkownika`, `login_paypal`, `haslo_paypal`) VALUES (NULL, '$id_dane_logowanie', NULL, NULL);";
                 $play_Z="INSERT INTO `play` (`id`, `id_uzytkownika`, `nr_telefonu`, `kod`) VALUES (NULL, $id_dane_logowanie, NULL, NULL);";
-                if($rekord1[0]=="admin")
+                if($zapytanie_o_id_dalej_R[0]==0)
                     {
                         
                        
@@ -118,10 +124,16 @@ error_reporting(E_ALL ^ E_WARNING);
                     {
                         echo "<em>Ten login jest zajęty</em>";
                     }
-                mysqli_close($connect);
+                    mysqli_close($connect);
             }
+        }
+        else
+        { 
+        echo "ten login jest nie dozwolony";
+        }
         echo "<p>TWOJE HASŁO:<br>
 *Twoje hasło musi mieć co najmniej 7 znaków<br>
 *Twoje hasło musi zawierać co najmniej 1 cyfrę<br>
 *Zalecane jest użycie znaków specjalnych<br></p>";
+
         ?>
