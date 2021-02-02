@@ -23,8 +23,8 @@
           <?php
         if($uprawnienia[0]==2){
              echo "<a href='panel_banowania.php'><div>Panel administratora</div></a><br>";
-        }
-    ?>
+        }?>
+    <a href="pomoc.php"><div>Pomoc</div></a><br>
 
     </div>
 <div id="prawa">
