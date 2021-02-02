@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php include('../menu/menu_2.php');?>
+    
     <div style="position:absolute; top:10%;" id="content">
     <div id="lewa">
      <a href="dane_osobowe.php"><div>Dane osobowe</div></a><br>
@@ -20,10 +21,37 @@
         <p id="wynik"></p>
 <div id="prawa1">
 <?php 
- echo "<form action='../Zdjecia_gier/okladki/dodaj_gre1.php' method='POST' ENCTYPE='multipart/form-data' runat='server'> ";
+$id_gry=$_POST['id_gry'];
+
+$dane_gry="SELECT `Nazwa`,`Opis`,`Cena`,tworcy.Tworca,tworcy.Wydawca,`Data_wydania`,`Obrazek`,`Alt_obrazka`,specyfikacja.system_o,specyfikacja.procesor,specyfikacja.ram, specyfikacja.miejsce_dysku,specyfikacja.directx FROM `gry` JOIN specyfikacja ON specyfikacja.id=gry.id_specyfikacja JOIN tworcy on tworcy.id=gry.id_tworcy WHERE gry.id=$id_gry";
+$dane_gry_W=mysqli_query($connect,$dane_gry);
+while($dane_gry_R=mysqli_fetch_array($dane_gry_W))
+{
+  $nazwa=$dane_gry_R[0];
+  $opis=$dane_gry_R[1];
+  $cena=$dane_gry_R[2];
+  $tworca=$dane_gry_R[3];
+  $wydawca=$dane_gry_R[4];
+  $data_wydania=$dane_gry_R[5];
+  $obrazek=$dane_gry_R[6];
+  $alt_obrazka=$dane_gry_R[7];
+  $system=$dane_gry_R[8];
+  $procesor=$dane_gry_R[9];
+  $ram=$dane_gry_R[10];
+  $miejsce=$dane_gry_R[11];
+  $drx=$dane_gry_R[12];
+
+}
+
+
+
+
+
+
+ echo "<form action='../Zdjecia_gier/okladki/zmiana_w_grach.php' method='POST' ENCTYPE='multipart/form-data' runat='server'> ";
  echo  "<div id='prawa_1'>";
   echo '<h2>Dodaj włąsną grę</h2>';
- echo '<div>Nazwa gry:</div><input type="text" name="tytul"><br>';
+ echo '<div>Nazwa gry:</div><input type="text" value='$nazwa' name="tytul"><br>';
  echo 'rodzaj rozgrywki';
  echo '<select name="rodzaj_g">';
 echo ' <option value="multip">Multiplayer</option>
