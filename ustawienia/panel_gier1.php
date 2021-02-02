@@ -18,11 +18,12 @@
     <a href='statystyki_gier.php'><div>Statystyki gier</div></a><br>
     <a href='panel_gier.php'><div>Panel gier</div></a><br>
     </div>
+   
         <p id="wynik"></p>
 <div id="prawa1">
 <?php 
 $id_gry=$_POST['id_gry'];
-
+$connect=mysqli_connect("localhost","root","","strona_z_grami");
 $dane_gry="SELECT `Nazwa`,`Opis`,`Cena`,tworcy.Tworca,tworcy.Wydawca,`Data_wydania`,`Obrazek`,`Alt_obrazka`,specyfikacja.system_o,specyfikacja.procesor,specyfikacja.ram, specyfikacja.miejsce_dysku,specyfikacja.directx FROM `gry` JOIN specyfikacja ON specyfikacja.id=gry.id_specyfikacja JOIN tworcy on tworcy.id=gry.id_tworcy WHERE gry.id=$id_gry";
 $dane_gry_W=mysqli_query($connect,$dane_gry);
 while($dane_gry_R=mysqli_fetch_array($dane_gry_W))
@@ -39,11 +40,46 @@ while($dane_gry_R=mysqli_fetch_array($dane_gry_W))
   $procesor=$dane_gry_R[9];
   $ram=$dane_gry_R[10];
   $miejsce=$dane_gry_R[11];
-  $drx=$dane_gry_R[12];
+  $dex=$dane_gry_R[12];
 
 }
+echo "$nazwa";
+ $gatunek="SELECT `fps`,`mmo`,`rpg`,`moba`,`inne`,gatunki_multi_single.multip,gatunki_multi_single.singlep FROM `gatunki` JOIN gatunki_multi_single ON gatunki_multi_single.id_gry=gatunki.id_gry WHERE gatunki.id_gry=$id_gry";
+ $gatunek_W=mysqli_query($connect,$gatunek);
+ while($gatunke_R=mysqli_fetch_array($gatunek_W))
+ {
+   $fps=$gatunek_R[0];
+   $mmo=$gatunek_R[1];
+   $rpg=$gatunek_R[2];
+   $moba=$gatunek_R[3];
+   $inne=$gatunek_R[4];
+   $mulip=$gatunek_R[5];
+   $singlep=$gatunek_R[6];
+ }
 
+ $gatunek_value="fps";
+ $gatunek_m_s_value="multip";
+ if($fps==1)
+ $gatunek_value="fps";
+ else if($mmo==1)
+ $gatunek_value="mmo";
+ else if($rpg==1)
+ $gatunek_value="rpg";
+ else if($moba==1)
+ $gatunek_value="moba";
+ else if($inne==1)
+ $gatunek_value="inne";
 
+  if($mulip==1)
+  { 
+ $gatunek_m_svalue="multip";
+ $gatunek_m_svalue_1="Multiplayer";
+  }
+ else 
+ { 
+ $gatunek_m_svalue="singlep";
+ $gatunek_m_svalue="singlep";
+ }
 
 
 
@@ -51,25 +87,31 @@ while($dane_gry_R=mysqli_fetch_array($dane_gry_W))
  echo "<form action='../Zdjecia_gier/okladki/zmiana_w_grach.php' method='POST' ENCTYPE='multipart/form-data' runat='server'> ";
  echo  "<div id='prawa_1'>";
   echo '<h2>Dodaj włąsną grę</h2>';
- echo '<div>Nazwa gry:</div><input type="text" value='$nazwa' name="tytul"><br>';
+ echo "<div>Nazwa gry:</div><input type='text' value='$nazwa' name='tytul'><br>";
  echo 'rodzaj rozgrywki';
  echo '<select name="rodzaj_g">';
-echo ' <option value="multip">Multiplayer</option>
- <option value="singlep">Singleplayer</option>
+echo "
+<option value='$gatunek_m_s_value'>$gatunek_m_s_value</option>
+<option value='multip'>Multiplayer</option>
+ <option value='singlep'>Singleplayer</option>
 
-</select><br>';
+</select><br>";
  echo " wybierz gatunek gry:";
  echo '<select name="gatunki">';
-echo ' <option value="fps">fps</option>
- <option value="mmo">mmo</option>
- <option value="rpg">rpg</option>
- <option value="moba">moba</option>
- <option value="inne">inne</option>
-</select><br>';
-  echo '<div>Cena:</div> <input type="number" name="cena"><br>';
-  echo '<div>Data wydania</div> <input type="date" name="data"><br><br>';
-  echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>';
-  echo   "<div>Dodaj okładke:<br> </div><div class='file-input'>
+echo "
+<option value='$gatunek_value'>$gatunek_value</option>
+<option value='fps'>fps</option>
+ <option value='mmo'>mmo</option>
+ <option value='rpg'>rpg</option>
+ <option value='moba'>moba</option>
+ <option value='inne'>inne</option>
+</select><br>";
+
+  echo "<div>Cena:</div> <input type='number' value='$cena' name='cena'><br>";
+  echo "<div>Data wydania</div> <input type='date' value='$data_wydania' name='data'><br><br>";
+  echo "<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>";
+  echo "<div id='zdj_okladki'> Aktualna okładka<br><img src='../zdjecia_gier/okladki/$obrazek' alt='$alt_obrazka' width='150px' height='160px'></div>";
+  echo  "<div>Dodaj okładke:<br> </div><div class='file-input'> 
        <input type='file' name='plik' id='file' class='file'>
        <label for='file'>
         
@@ -79,15 +121,15 @@ echo ' <option value="fps">fps</option>
      </div>
         <br><br><br>";      
   echo '<div>Napisz opisz swojej gry do 250 znakow:</div><br>';
- echo' <textarea name="opis" id="" cols="80" rows="5"></textarea><br>';
+ echo' <textarea name="opis" placeholder="Opis nie zostanie zmieniony jezeli nic nie zostanie wpisane" id="" cols="80" rows="5"></textarea><br>';
     echo '<input type="button" value="dalej" onClick="prawa1_dalej()" class="przycisk">';
     echo   "</div>";
  echo  "<div id='prawa_2'>";
          echo '<h2>Dodaj włąsną grę</h2>';
         echo '<h3>Twórca gry</h3>';
-        echo '<div>Twórca gry:</div><input type="text" name="Tworca"><br>';
+        echo "<div>Twórca gry:</div><input type='text' value='$tworca' name='Tworca'><br>";
      echo '<h3>Wydawca gry</h3>';
-        echo '<div>Wydawca gry:</div><input type="text" name="Wydawca"><br>';
+        echo "<div>Wydawca gry:</div><input type='text' value='$wydawca'name='Wydawca'><br>";
          echo '<input type="button" value="wstecz" onClick="prawa2_wstecz()" class="przycisk">';
         echo '<input type="button" value="dalej" onClick="prawa2_dalej()" class="przycisk">';
  echo   "</div>";
@@ -96,15 +138,15 @@ echo ' <option value="fps">fps</option>
     echo '<h2>Dodaj włąsną grę</h2>';
     echo '<h3>Specyfikacje gry</h3>';
     
-      echo '<div>System operacyjny:</div> <input type="text" name="System"><br>';
+      echo "<div>System operacyjny:</div> <input type='text' value='$system' name='System'><br>";
     
-      echo '<div>Procesor:</div> <input type="text" name="Procesor"><br>';
+      echo "<div>Procesor:</div> <input type='text' value='$procesor' name='Procesor'><br>";
     
-      echo '<div>Ram:</div> <input type="number" name="Ram"><br>';
+      echo "<div>Ram:</div> <input type='number' value='$ram' name='Ram'><br>";
     
-      echo '<div>Miejsce na dysku:</div> <input type="number" name="Miejsce"><br>';
+      echo "<div>Miejsce na dysku:</div> <input type='number' value='$miejsce' name='Miejsce'><br>";
     
-      echo '<div>DirectX:</div> <input type="number" name="DirectX"><br>';
+      echo "<div>DirectX:</div> <input type='number' value='$dex' name='DirectX'><br>";
     
         echo '<input type="button" value="wstecz" onClick="prawa3_wstecz()" class="przycisk">';
         echo '<input type="submit" value="zapisz" id="zmien1" class="przycisk"></form>';
