@@ -2,7 +2,7 @@
 <html >
 <head>
     <link rel="stylesheet" href="../style/ustawienia.css" type="text/css">
-    <link rel="stylesheet" href="../style/dane_osobowe.css" type="text/css">
+    <link rel="stylesheet" href="../style/panel_gier.css" type="text/css">
     <?php include('../menu/head_2.php');?>
 </head>
 <body>
@@ -39,9 +39,9 @@ $ile_masz_gier_Z=mysqli_fetch_array($ile_masz_gier_W);
  {
      echo "<div id='wyswietlanie'>
       <form action='panel_gier1.php' method='post'>
-    <div id='nazwa'>$zapytanie_wszystkie_gry_R[1]</div><br><br>
-    <input type='hidden' name='id_gry' value='$zapytanie_wszystkie_gry_R[0]'><br>
-    <div id='przycisk'><input type='submit' value='zmien'></div>
+    <input type='hidden' name='id_gry' value='$zapytanie_wszystkie_gry_R[0]'>
+    <div id='nazwa'>$zapytanie_wszystkie_gry_R[1]</div>
+    <div id='przycisk'><input type='submit' value='zmien' class='przycisk'></div><br>
     </form>
      </div>" ;
    
