@@ -20,9 +20,11 @@
         <p id="wynik"></p>
 <div id="prawa1">
 <?php 
- echo "<form action='../Zdjecia_gier/okladki/dodaj_gre1.php' method='POST' ENCTYPE='multipart/form-data' runat='server'> ";
- echo  "<div id='prawa_1'>";
+ 
+
+  echo  "<div id='prawa_1'>";
   echo '<h2>Dodaj włąsną grę</h2>';
+  echo "<form action='../Zdjecia_gier/okladki/dodaj_gre1.php' method='POST' ENCTYPE='multipart/form-data' runat='server'> ";
  echo '<div>Nazwa gry:</div><input type="text" name="tytul"><br>';
  echo 'rodzaj rozgrywki';
  echo '<select name="rodzaj_g">';
@@ -49,7 +51,20 @@ echo ' <option value="fps">fps</option>
        </label>
        <img id='blah' src='#' alt='your image'  width='250px'/>
      </div>
-        <br><br><br>";      
+        <br><br><br>";
+       
+        echo "tutaj podaj plik swojej gry";
+       
+       echo   " <div class='file-input'>
+       <input type='file' name='plik_gra' id='file' class='file'>
+       <label for='file'>
+       
+        <p class='file-name'></p>
+       </label>
+       
+         
+       </div>
+       <br>";    
   echo '<div>Napisz opisz swojej gry do 250 znakow:</div><br>';
  echo' <textarea name="opis" id="" cols="80" rows="5"></textarea><br>';
     echo '<input type="button" value="dalej" onClick="prawa1_dalej()" class="przycisk">';
