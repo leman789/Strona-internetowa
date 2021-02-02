@@ -145,7 +145,10 @@ $rekord2=mysqli_fetch_array($wynik2);
 $cena_gry="SELECT Cena FROM `gry` WHERE id=$gra";//pobieranie ceny gry
 $wynik3=mysqli_query($connect,$cena_gry);
 $rekord3=mysqli_fetch_array($wynik3);
-
+        
+$id_dodajacego_z="SELECT id_dodajacego FROM `gry` WHERE id=$gra";//pobieranie id dodającego
+$id_dodajacego_w=mysqli_query($connect,$id_dodajacego_z);
+$id_dodajacego=mysqli_fetch_array($id_dodajacego_w);
 $posiadanie_gry="SELECT id_gry,id_uzytkownika FROM `biblioteka_gier` WHERE id_uzytkownika='$rekord[0]' AND id_gry='$gra'";//pobieranie zakupionych gier uzytkownika
 $wynik10=mysqli_query($connect,$posiadanie_gry);
 $rekord10=mysqli_fetch_array($wynik10);
@@ -161,18 +164,24 @@ if($rekord10[0]!=$gra && $rekord10[1]!=$rekord[0])
 {
 if($rekord2[1]>=$rekord3[0])
 {
-  $dodawanie_do_biblioteki="INSERT INTO `biblioteka_gier` (`id`, `id_gry`, `id_uzytkownika`) VALUES (NULL, '$gra', '$rekord[0]');";
-      $wynik7=mysqli_query($connect,$dodawanie_do_biblioteki);
-  $pobieranie_oplaty="UPDATE `uzytkownicy` SET `Stan_konta` = `Stan_konta`-$rekord3[0] WHERE `uzytkownicy`.`id` = '$rekord[0]';";
-      $wynik8=mysqli_query($connect,$pobieranie_oplaty);
+    $dodawanie_do_biblioteki="INSERT INTO `biblioteka_gier` (`id`, `id_gry`, `id_uzytkownika`) VALUES (NULL, '$gra', '$rekord[0]');";
+    $wynik7=mysqli_query($connect,$dodawanie_do_biblioteki);
+    
+    $pobieranie_oplaty="UPDATE `uzytkownicy` SET `Stan_konta` = `Stan_konta`-$rekord3[0] WHERE `uzytkownicy`.`id` = '$rekord[0]';";
+    $wynik8=mysqli_query($connect,$pobieranie_oplaty);
+    
+    $przelanie_pieniedzy_dodajacemu_z="UPDATE `uzytkownicy` SET `Stan_konta`=`Stan_konta`+($rekord3[0]*0.9) WHERE id=$id_dodajacego[0]";
+    $przelanie_pieniedzy_adminowi_z="UPDATE `uzytkownicy` SET `Stan_konta`=`Stan_konta`+($rekord3[0]*0.1) WHERE id=0";
+    $przelanie_pieniedzy_dodajacemu_w=mysqli_query($connect,$przelanie_pieniedzy_dodajacemu_z);
+    $przelanie_pieniedzy_adminowi_w=mysqli_query($connect,$przelanie_pieniedzy_adminowi_z);
+    
     $Tranzakcje_gry="INSERT INTO `tranzakcje` (`id`, `id_uzytkownika`, `kwota`, `metoda`, `czas`, `nazwa_gry`) VALUES (NULL, '$rekord[0]', '$rekord3[0]', '0', '$czas', '$nazwa_gry_r[0]');";
-    $Tranzakcje_gry_w=mysqli_query($connect,$Tranzakcje_gry);
-    header("Location:../sklep.php");
+    $Tranzakcje_gry_w=mysqli_query($connect,$Tranzakcje_gry);//zapisywanie tranzakcji
+    
+    header("Location:../sklep.php");//powrot
 }
 else{
-    echo "za malo kasy<br>
-    <a href='../sklep.php'>Wroc</a>
-    ";
+    echo "Za malo kasy<br><a href='../sklep.php'>Wroc</a>";
     
 }}
 else{
