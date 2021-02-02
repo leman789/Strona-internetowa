@@ -33,7 +33,8 @@ echo ' <option value="multip">Multiplayer</option>
 
 </select><br>';
  echo " wybierz gatunek gry:";
- echo '<select name="gatunki">';
+ echo '<select  name="gatunki">';
+
 echo ' <option value="fps">fps</option>
  <option value="mmo">mmo</option>
  <option value="rpg">rpg</option>
