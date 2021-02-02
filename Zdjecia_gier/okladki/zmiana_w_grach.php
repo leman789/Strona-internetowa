@@ -53,28 +53,7 @@ $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
     {
         echo "błąd przy przesyłaniu danych";
     }
-    // dodawanie pliku z grą !!!!!!!!!!!!!!!!!!!!!!!!!
-    if(is_uploaded_file($_FILES['plik_gra']['tmp_name']))
-    {
-        if($_FILES['plik_gra']['size'] > $max_rozmiar)
-        {
-            echo "za duży plik_gra";
-        }
-        else
-        {
-            $_FILES['plik_gra']['name'];
-           
-            if(isset($_FILES['plik_gra']['type']))
-            {
-               
-            }
-            move_uploaded_file($_FILES['plik_gra']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/git/Strona-internetowa/gry_rar/'.$_FILES['plik_gra']['name']);
-        }
-    }
-    else
-    {
-        echo "błąd przy przesyłaniu danych";
-    }
+   
     echo "<img src='$nazwa' alt='zdj_avatara'>";
 
 $dodanie_gry="INSERT INTO `gry` (`id`, `Nazwa`, `Opis`, `Cena`, `id_tworcy`, `Data_wydania`, `Obrazek`, `Alt_obrazka`, `id_specyfikacja`, `id_dodajacego`) VALUES (NULL, '$tytul', '$opis', '$cena', '$id_tworcy', '$data', '$nazwa', '$tytul', '$id_specyfikacji', '$id_uzytkownika_R[0]');";
