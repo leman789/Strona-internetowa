@@ -43,11 +43,13 @@ $ile_masz_gier_Z=mysqli_fetch_array($ile_masz_gier_W);
       <input type='hidden' name='id_gry' value='$zapytanie_wszystkie_gry_R[0]'>
     <div id='nazwa'>$zapytanie_wszystkie_gry_R[1]</div>
    
-    <div id='przycisk'><input class='przycisk' type='submit' value='zmien'></div><br
+    <div id='przycisk'><input class='przycisk' type='submit' value='zmien'></div><br>
+    
     </form>
      </div>" ;
    
  }
+ 
 
 
     mysqli_close($connect);
