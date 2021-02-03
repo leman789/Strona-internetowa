@@ -1,6 +1,8 @@
 <?php
 $login=$_COOKIE["Clogin"];
 $connect=mysqli_connect("localhost","root","","strona_z_grami");
+$id_gry=$_POST['id_gry'];
+$obrazek=$_POST['obrazek'];
 $tytul=$_POST['tytul'];
 $cena=$_POST['cena'];
 $data=$_POST['data'];
@@ -14,23 +16,30 @@ $Miejsce=$_POST['Miejsce'];
 $DirectX=$_POST['DirectX'];
 $Gatunki=$_POST['gatunki'];
 $Rodzaj_g=$_POST['rodzaj_g'];
+
 $max_rozmiar = 1024*1024;
 //id_towrycy 
-$id_tworcy_zapytanie="SELECT `id` FROM `tworcy` GROUP by `id` DESC LIMIT 1";//jakie i1
-$id_tworcy_zapytanie_W=mysqli_query($connect,$id_tworcy_zapytanie);
-$id_tworcy_zapytanie_R=mysqli_fetch_array($id_tworcy_zapytanie_W);
-$id_tworcy=$id_tworcy_zapytanie_R[0]+1;
+$ogolne_zapytanie_gra="SELECT id,Nazwa,Opis,Cena,id_tworcy,Data_wydania,Obrazek,Alt_obrazka,id_specyfikacja,id_dodajacego FROM gry Where id=$id_gry";
+$ogolne_zapytanie_gra_W=mysqli_query($connect,$ogolne_zapytanie_gra);
+while($ogolne_zapytanie_gra_R=mysqli_fetch_array($ogolne_zapytanie_gra_W))
+{
+    $id_tworcy=$ogolne_zapytanie_gra_R[4];
+    $id_specyfikacji=$ogolne_zapytanie_gra_R[8];
+    $opis_baza_danych=$ogolne_zapytanie_gra_R[2];
+}
 
-//id gry
-$id_specyfikacja_zapytanie="SELECT `id` FROM specyfikacja GROUP by `id` DESC LIMIT 1";
-$id_specyfikacja_zapytanie_W=mysqli_query($connect,$id_specyfikacja_zapytanie);
-$id_specyfikacja_zapytanie_R=mysqli_fetch_array($id_specyfikacja_zapytanie_W);
-$id_specyfikacji=$id_specyfikacja_zapytanie_R[0]+1;
-
+if($_POST['opis']=="" || $_POST['opis']=='')
+{
+    $opis=$opis_baza_danych;
+}
 //id_uzytkownika  
 $id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";
 $id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
 $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
+
+if(isset($_POST['tytul']) || isset($_POST['cena']) || isset($_POST['data']) || isset($_POST['Tworca']) || isset($_POST['Wydawca']) || isset($_POST['System']) || isset($_POST['Procesor']) || isset($_POST['Ram']) || isset($_POST['Miejsce']) || isset($_POST['DirectX']) || isset($_POST['gatunki']) || isset($_POST['rodzaj_g']) )
+{
+
 
     if(is_uploaded_file($_FILES['plik']['tmp_name']))
     {
@@ -55,34 +64,21 @@ $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
     }
    
     echo "<img src='$nazwa' alt='zdj_avatara'>";
-
-$dodanie_gry="INSERT INTO `gry` (`id`, `Nazwa`, `Opis`, `Cena`, `id_tworcy`, `Data_wydania`, `Obrazek`, `Alt_obrazka`, `id_specyfikacja`, `id_dodajacego`) VALUES (NULL, '$tytul', '$opis', '$cena', '$id_tworcy', '$data', '$nazwa', '$tytul', '$id_specyfikacji', '$id_uzytkownika_R[0]');";
+if($nazwa!=$obrazek)
+{
+    $obrazek=$nazwa;
+}
+$dodanie_gry="UPDATE gry SET Nazwa = '$tytul', Opis = '$opis', Cena = '$cena', Data_wydania = '$data', Obrazek = '$obrazek' WHERE gry.id = $id_gry;";
 $dodanie_gry_W=mysqli_query($connect,$dodanie_gry);
-
-//id_uzytkownika  
-/*  
-$login=$_COOKIE["Clogin"];
-$connect=mysqli_connect("localhost","root","","strona_z_grami");
-$id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";
-$id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
-$id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
-*/
-
-$id_gry_zapytanie="SELECT `id` FROM gry GROUP by `id` DESC LIMIT 1";
-$id_gry_zapytanie_W=mysqli_query($connect,$id_gry_zapytanie);
-$id_gry_zapytanie_R=mysqli_fetch_array($id_gry_zapytanie_W);
-//danie id
-$id_gry=$id_gry_zapytanie_R[0];
-
 
 if($Rodzaj_g=="singlep")
 { 
-$dodanie_gatunku="INSERT INTO `gatunki_multi_single` (`id_gry`, `multip`, `singlep`) VALUES ('$id_gry', '0', '1');";
+$dodanie_gatunku="UPDATE gatunki_multi_single SET multip = '0', singlep = '1' WHERE gatunki_multi_single.id_gry = $id_gry";
 mysqli_query($connect,$dodanie_gatunku);
 }
 else
 { 
-$dodanie_gatunku="INSERT INTO `gatunki_multi_single` (`id_gry`, `multip`, `singlep`) VALUES ('$id_gry', '1', '0');";
+$dodanie_gatunku="UPDATE gatunki_multi_single SET multip = '1', singlep = '0' WHERE gatunki_multi_single.id_gry = 10;";
 mysqli_query($connect,$dodanie_gatunku);
 }
 
@@ -92,56 +88,41 @@ echo $Rodzaj_g;
 echo "<br>";
 echo $id_gry;
 if($Gatunki=="fps")
-$dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '1', '0', '0', '0', '0');";
-else if($Gatunki=="mmo"){
-$dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '1', '0', '0', '0');";}
+$dodanie_gatunku_gry="UPDATE gatunki SET fps = '1', mmo = '0', rpg = '0', moba = '0', inne = '0' WHERE gatunki.id_gry = $id_gry";
+else if($Gatunki=="mmo")
+$dodanie_gatunku_gry="UPDATE gatunki SET fps = '0', mmo = '1', rpg = '0', moba = '0', inne = '0' WHERE gatunki.id_gry = $id_gry";
  else if($Gatunki=="rpg")
-$dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '0', '1', '0', '0');";
+$dodanie_gatunku_gry="UPDATE gatunki SET fps = '0', mmo = '0', rpg = '1', moba = '0', inne = '0' WHERE gatunki.id_gry = $id_gry";
  else if($Gatunki=="moba")
  {
-$dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '0', '0', '1', '0');";
+$dodanie_gatunku_gry="UPDATE gatunki SET fps = '0', mmo = '0', rpg = '0', moba = '1', inne = '0' WHERE gatunki.id_gry = $id_gry";
     }
 else if ($Gatunki=="inne")
 { 
-$dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '0', '0', '0', '1');";
-}
-else 
-{
-    $dodanie_gatunku_gry="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '0', '0', '0', '0');";
+$dodanie_gatunku_gry="UPDATE gatunki SET fps = '0', mmo = '0', rpg = '0', moba = '0', inne = '1' WHERE gatunki.id_gry = $id_gry";
 }
 mysqli_query($connect,$dodanie_gatunku_gry);
 
-/*/id_towrycy 
-$id_tworcy_zapytanie="SELECT `id` FROM `tworcy` GROUP by `id` DESC LIMIT 1";//jakie i1
-$id_tworcy_zapytanie_W=mysqli_query($connect,$id_tworcy_zapytanie);
-$id_tworcy_zapytanie_R=mysqli_fetch_array($id_tworcy_zapytanie_W);
-$id_tworcy=$id_tworcy_zapytanie_R[0]+1;*/
+
 //dodawanie tworcy
-$dodanie_tworcy="INSERT INTO `tworcy` (`id`, `Tworca`, `Wydawca`) VALUES ('$id_tworcy', '$Tworca', '$Wydawca');";
+$dodanie_tworcy="UPDATE tworcy SET Tworca = '$Tworca', Wydawca = '$Wydawca' WHERE tworcy.id = $id_tworcy;";
 $dodanie_tworcy_W=mysqli_query($connect,$dodanie_tworcy);
 //id gry
 
  
- /*
-$id_specyfikacja_zapytanie="SELECT `id` FROM specyfikacja GROUP by `id` DESC LIMIT 1";
-$id_specyfikacja_zapytanie_W=mysqli_query($connect,$id_specyfikacja_zapytanie);
-$id_specyfikacja_zapytanie_R=mysqli_fetch_array($id_specyfikacja_zapytanie_W);
-$id_specyfikacji=$id_specyfikacja_zapytanie_R[0]+1;
-*/
-/*
-$dodanie_gry="INSERT INTO `gry` (`id`, `Nazwa`, `Opis`, `Cena`, `id_tworcy`, `Data_wydania`, `Obrazek`, `Alt_obrazka`, `id_specyfikacja`, `id_dodajacego`) VALUES (NULL, '$tytul', '$opis', '$cena', '$id_tworcy', '$data', '$nazwa', '$tytul', '$id_specyfikacji', '$id_uzytkownika_R[0]');";
-$dodanie_gry_W=mysqli_query($connect,$dodanie_gry);
-*/
+ 
 
 
-$specyfikacja_Z="INSERT INTO `specyfikacja` (`id`, `id_gry`, `system_o`, `procesor`, `ram`, `miejsce_dysku`, `directx`) VALUES (NULL, '$id_gry', '$System', '$Procesor', '$Ram', '$Miejsce', '$DirectX');";
+$specyfikacja_Z="UPDATE specyfikacja SET system_o = '$System', procesor = '$Procesor', ram = '$Ram', miejsce_dysku = '$Miejsce', directx = '$DirectX' WHERE specyfikacja.id =$id_gry;";
 $specyfikacja_W=mysqli_query($connect,$specyfikacja_Z);
 //danie id
  
-$aktualizacja_gry="UPDATE `gry` SET `id_specyfikacja` = '$id_specyfikacji' WHERE `gry`.`id` = $id_gry;";
-$aktualizacja_gry_W=mysqli_query($connect,$aktualizacja_gry);
-$dodanie_gatunku_gry1="INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES ('$id_gry', '0', '0', '0', '0', '0');";
-$dodanie_gatunku_gry2="UPDATE `gatunki` SET `$Gatunki`=1 WHERE `id_gry`=$id_gry";
+
+
+
 mysqli_query($connect,$dodanie_gatunku_gry1);
 mysqli_query($connect,$dodanie_gatunku_gry2);
  echo "dziala";
+}
+else
+echo "źle wypełniłeś formularz ";
