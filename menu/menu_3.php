@@ -79,7 +79,7 @@
         <div id="Puste_pole" class="Tlo"></div>
         <a href="../index.php" id="Logo">
         <div >
-            Logo
+            <img src="../Zdjecia_gier/logo.png" id="logo" alt="logo">
         </div>
         </a>  
     </div>
