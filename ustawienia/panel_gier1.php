@@ -19,10 +19,12 @@
     <a href='panel_gier.php'><div>Panel gier</div></a><br>
     </div>
    
+   
         <p id="wynik"></p>
 <div id="prawa1">
 <?php 
 $id_gry=$_POST['id_gry'];
+echo $id_gry;
 $connect=mysqli_connect("localhost","root","","strona_z_grami");
 $dane_gry="SELECT `Nazwa`,`Opis`,`Cena`,tworcy.Tworca,tworcy.Wydawca,`Data_wydania`,`Obrazek`,`Alt_obrazka`,specyfikacja.system_o,specyfikacja.procesor,specyfikacja.ram, specyfikacja.miejsce_dysku,specyfikacja.directx FROM `gry` JOIN specyfikacja ON specyfikacja.id=gry.id_specyfikacja JOIN tworcy on tworcy.id=gry.id_tworcy WHERE gry.id=$id_gry";
 $dane_gry_W=mysqli_query($connect,$dane_gry);
@@ -90,7 +92,7 @@ echo "$nazwa";
  echo "<div>Nazwa gry:</div><input type='text' value='$nazwa' name='tytul'><br>";
  echo 'rodzaj rozgrywki';
  echo '<select name="rodzaj_g">';
-echo "
+echo " 
 <option value='$gatunek_m_s_value'>$gatunek_m_s_value</option>
 <option value='multip'>Multiplayer</option>
  <option value='singlep'>Singleplayer</option>
@@ -108,6 +110,8 @@ echo "
 </select><br>";
 
   echo "<div>Cena:</div> <input type='number' value='$cena' name='cena'><br>";
+  echo "<input type='hidden' name='id_gry' value='$id_gry'>
+  <input type='hidden' name='obrazek' value='$obrazek'>";
   echo "<div>Data wydania</div> <input type='date' value='$data_wydania' name='data'><br><br>";
   echo "<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>";
   echo "<div id='zdj_okladki'> Aktualna okładka<br><img src='../zdjecia_gier/okladki/$obrazek' alt='$alt_obrazka' width='150px' height='160px'></div>";
