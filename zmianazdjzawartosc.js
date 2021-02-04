@@ -5,11 +5,11 @@ let zdj=['Zdjecia_gier/Top_gry/1.jpg',
 'Zdjecia_gier/Top_gry/5.jpg']
 i=0;
  document.getElementById("przejscie1").innerHTML="<form action='sklep/zakup.php' method='post'><input type='hidden' name='id2' value='"+(i+1)+"'><input type='submit' value='DOWIDZ SIE WIECEJ' id='przejscie'> </form>";
-napis0="to jest zdj 0";
-napis1="to  jest zdj 1";
-napis2="to  jest zdj 2";
-napis3="to  jest zdj 3";
-napis4="to  jest zdj 4";
+napis0="Dawid Lemański, Dawid  Reczek";
+napis1="Dawid Lemański, Dawid  Reczek";
+napis2="Dawid  Kamiński, Bartosz Kunicki";
+napis3="Dawid  Kamiński, Bartosz Kunicki";
+napis4="Mikołaj Nolewajka, Paweł Wyleżoł";
 function dodaj() 
 {
     i++;
