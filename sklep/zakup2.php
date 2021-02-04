@@ -178,6 +178,8 @@ if($rekord2[1]>=$rekord3[0])
     $Tranzakcje_gry="INSERT INTO `tranzakcje` (`id`, `id_uzytkownika`, `kwota`, `metoda`, `czas`, `nazwa_gry`) VALUES (NULL, '$rekord[0]', '$rekord3[0]', '0', '$czas', '$nazwa_gry_r[0]');";
     $Tranzakcje_gry_w=mysqli_query($connect,$Tranzakcje_gry);//zapisywanie tranzakcji
     
+    $statystyki_kup="UPDATE `statystyki` SET `ilosc`=`ilosc`+1,`zarobek`=`zarobek`+($rekord3[0]*0.9) WHERE `id_gry`=$gra;";
+    mysqli_query($connect,$statystyki_kup);// Statystyki
     header("Location:../sklep.php");//powrot
 }
 else{
