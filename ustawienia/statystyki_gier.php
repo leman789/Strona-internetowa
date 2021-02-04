@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="../style/ustawienia.css" type="text/css">
     <link rel="stylesheet" href="../style/dane_osobowe.css" type="text/css">
     <?php include('../menu/head_2.php');?>
+     <?php include('uprawnienia.php');?>
 </head>
 <body>
     <?php include('../menu/menu_2.php');?>
