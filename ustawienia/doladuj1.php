@@ -1,4 +1,8 @@
 <?php
+ if( isset($_POST['ile'])|| isset($_POST['nr_karty'])||isset($_POST['miesiac'])||isset($_POST['rok'])|| isset($_POST['cvv']))
+ {
+
+ 
 $ile=$_POST['ile'];
 $nr_karty=$_POST['nr_karty'];
 $miesiac=$_POST['miesiac'];
@@ -6,7 +10,7 @@ $rok=$_POST['rok'];
 $cvv=$_POST['cvv'];
 $czas=date("Y-m-d");
 //id_uzytkownika
-
+ 
 $login=$_COOKIE["Clogin"];
 $connect=mysqli_connect("localhost","root","","strona_z_grami");
 $id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";
@@ -21,4 +25,7 @@ $tranzakcje="INSERT INTO `tranzakcje` (`id`, `id_uzytkownika`, `kwota`, `metoda`
 $wynik3=mysqli_query($connect,$tranzakcje);
 mysqli_close($connect);
 header("Location:doladuj.php");
+ }
+ else 
+ header("Location:doladuj.php");
 ?>
