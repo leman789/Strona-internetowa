@@ -166,3 +166,6 @@ $dodanie_gatunku_gry2="UPDATE `gatunki` SET `$Gatunki`=1 WHERE `id_gry`=$id_gry"
 mysqli_query($connect,$dodanie_gatunku_gry1);
 mysqli_query($connect,$dodanie_gatunku_gry2);
  echo "dziala";
+ 
+ $statystyki="INSERT INTO `statystyki` (`id`, `id_gry`, `ilosc`, `zarobek`) VALUES (NULL, '$id_gry', '0', '0');";
+ mysqli_query($connect,$statystyki);
