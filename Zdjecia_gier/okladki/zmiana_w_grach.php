@@ -50,7 +50,7 @@ if(isset($_POST['tytul']) || isset($_POST['cena']) || isset($_POST['data']) || i
         else
         {
             $nazwa=$_FILES['plik']['name'];
-           
+           $obrazek=$nazwa;
             if(isset($_FILES['plik']['type']))
             {
                
@@ -60,14 +60,12 @@ if(isset($_POST['tytul']) || isset($_POST['cena']) || isset($_POST['data']) || i
     }
     else
     {
+      
         echo "błąd przy przesyłaniu danych";
     }
    
     echo "<img src='$nazwa' alt='zdj_avatara'>";
-if($nazwa!=$obrazek)
-{
-    $obrazek=$nazwa;
-}
+
 $dodanie_gry="UPDATE gry SET Nazwa = '$tytul', Opis = '$opis', Cena = '$cena', Data_wydania = '$data', Obrazek = '$obrazek' WHERE gry.id = $id_gry;";
 $dodanie_gry_W=mysqli_query($connect,$dodanie_gry);
 
@@ -120,8 +118,7 @@ $specyfikacja_W=mysqli_query($connect,$specyfikacja_Z);
 
 
 
-mysqli_query($connect,$dodanie_gatunku_gry1);
-mysqli_query($connect,$dodanie_gatunku_gry2);
+
  echo "dziala";
 }
 else
