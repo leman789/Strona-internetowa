@@ -4,7 +4,7 @@ let zdj=['Zdjecia_gier/Top_gry/1.jpg',
 'Zdjecia_gier/Top_gry/4.jpg',
 'Zdjecia_gier/Top_gry/5.jpg']
 i=0;
- document.getElementById("przejscie1").innerHTML="<form action='sklep/zakup.php' method='post'><input type='hidden' name='id2' value='"+(i+1)+"'><input type='submit' value='DOWIDZ SIE WIECEJ' id='przejscie'> </form>";
+ document.getElementById("przejscie1").innerHTML="<form action='sklep/zakup.php' method='post'><input type='hidden' name='id2' value='"+(i+1)+"'><input type='submit' value='DOWIEDZ SIE WIECEJ' id='przejscie'> </form>";
 napis0="Dawid Lemański, Dawid  Reczek";
 napis1="Dawid Lemański, Dawid  Reczek";
 napis2="Dawid  Kamiński, Bartosz Kunicki";
@@ -50,7 +50,7 @@ function zmiana(x)
 
                 y=0;
             }
-         document.getElementById("przejscie1").innerHTML="<form action='sklep/zakup.php' method='post'><input type='hidden' name='id2' value='"+(i+1)+"'><input type='submit' value='DOWIDZ SIE WIECEJ' id='przejscie'> </form>";
+         document.getElementById("przejscie1").innerHTML="<form action='sklep/zakup.php' method='post'><input type='hidden' name='id2' value='"+(i+1)+"'><input type='submit' value='DOWIEDZ SIE WIECEJ' id='przejscie'> </form>";
         document.getElementById("obraz1").src=zdj[i];
         if(i>4){
             i=0;
