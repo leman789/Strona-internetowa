@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html >
 <head>
+  
     <link rel="stylesheet" href="../style/ustawienia.css" type="text/css">
     <link rel="stylesheet" href="../style/dodaj_gre.css" type="text/css">
     <?php include('../menu/head_2.php');?>
      <?php include('uprawnienia.php');?>
+     <?php
+     error_reporting(E_ALL ^ E_WARNING);
+     $text=$_COOKIE["Blad"];
+     ?>
 </head>
 <body>
     <?php include('../menu/menu_2.php');?>
@@ -18,6 +23,11 @@
  
 
   echo  "<div id='prawa_1'>";
+  if(isset($text)){
+    $blad="";
+    echo "<div id='blad'>Podałeś błędne dane</div>";
+    setcookie("Blad",$blad,time()+(60*2),"/");
+  }
   echo '<h2>Dodaj włąsną grę</h2>';
   echo "<form action='../Zdjecia_gier/okladki/dodaj_gre1.php' method='POST' ENCTYPE='multipart/form-data' runat='server'> ";
  echo '<div>Nazwa gry:</div><input type="text" name="tytul"><br>';
