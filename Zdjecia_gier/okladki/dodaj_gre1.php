@@ -1,4 +1,6 @@
 <?php
+$i=0;
+if(isset($_POST['tytul']) && isset($_POST['cena']) && isset($_POST['data']) && isset($_POST['opis']) && isset($_POST['Tworca']) && isset($_POST['Wydawca']) && isset($_POST['System']) && isset($_POST['Procesor']) && isset($_POST['Ram']) && isset($_POST['Miejsce']) && isset($_POST['DirectX']) && isset($_POST['gatunki']) && isset($_POST['rodzaj_g']) && $i==1){
 $login=$_COOKIE["Clogin"];
 $connect=mysqli_connect("localhost","root","","strona_z_grami");
 $tytul=$_POST['tytul'];
@@ -31,7 +33,6 @@ $id_specyfikacji=$id_specyfikacja_zapytanie_R[0]+1;
 $id_uzytkownika="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";
 $id_uzytkownika_W=mysqli_query($connect,$id_uzytkownika);
 $id_uzytkownika_R=mysqli_fetch_array($id_uzytkownika_W);
-
     if(is_uploaded_file($_FILES['plik']['tmp_name']))
     {
         if($_FILES['plik']['size'] > $max_rozmiar)
@@ -169,3 +170,10 @@ mysqli_query($connect,$dodanie_gatunku_gry2);
  
  $statystyki="INSERT INTO `statystyki` (`id`, `id_gry`, `ilosc`, `zarobek`) VALUES (NULL, '$id_gry', '0', '0');";
  mysqli_query($connect,$statystyki);
+}
+else{
+    $blad="Blad";
+    setcookie("Blad",$blad,time()+(60*2),"/");//coocie na 2 min
+    $text=$_COOKIE["Blad"];
+    header("Location:../../ustawienia/dodaj_gre.php");
+}
