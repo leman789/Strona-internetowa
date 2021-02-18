@@ -35,93 +35,9 @@
     ?>
 </head>
 <body>
-    <script>
-        let wysuniete=0;
-    function wysun()
-        {
-            wysuniete++;
-            if(wysuniete==1){
-                    document.getElementById("elwys1").innerHTML="<div id='elwys'><?php echo "<a id='elwys2'> Stan Konta:".$stan_konta_elwys_r[0]."zł</a><br>" ?><a href='../ustawienia/dane_osobowe.php' id='elwys2'>ustawienia</a><br><a href='../wyloguj.php' id='elwys2'>wyloguj</a><br></div>";
-                }
-            else if(wysuniete>1){
-                    wysuniete=0;
-                    document.getElementById("elwys1").innerHTML="";
-                }
-        }
-    </script>
-    <div id="elwys1"></div>
-    <div id="menu">
-        <?php
-        if(isset($_COOKIE["Clogin"]))//logowanie po zalogowaniu
-        {
-        echo "<a id='Zalogowany' data-tooltip='xd'>
-         <div id='nick'>
-         $rekord[1]
-        </div>
-        <div>
-            <img src='../Zdjecia_gier/avatar/$rekord[2]' alt='awatar' width='45px'>
-            <input type='button' onclick='wysun()' id='wysun'>
-        </div>
-        </a>";
-        }
-        
-        else//przed zalogowaniem
-            {
-            echo "<a href='../logowanie.php'  id='Zaloguj'><div> 
-            Logowanie
-            </div> </a>";
-            }
-        ?>
-       
-        
-        <div id="Puste_pole"></div>
-        
-        <?php
-        if(isset($_COOKIE["Clogin"]))//biblioteka po zalogowaniu
-        {
-        echo "<a href='../biblioteka.php' id='Biblioteka'>
-            <div> 
-                Biblioteka
-            </div>
-            </a>";
-        }
-        else
-           {
-        echo "<a href='../logowanie.php' id='Biblioteka'>
-            <div> 
-                Biblioteka
-            </div>
-            </a>";
-        } 
-        ?>
-        
-        <?php
-        if(isset($_COOKIE["Clogin"]))//sklep po zalogowaniu
-        {
-        echo "<a href='../sklep.php' id='Sklep'>
-        <div>
-           Sklep
-        </div>
-        </a>";
-        }
-        else
-         {
-        echo "<a href='../logowanie.php' id='Sklep'>
-        <div>
-           Sklep
-        </div>
-        </a>";
-        }
-        ?>
-        <div id="Puste_pole" class="Tlo"></div>
-        <a href="../index.php">
-        <div id="Logo">
-            Logo
-        </div>
-        </a>  
-    </div>
-    <div id="content">
+    <div id="content" style="font-size:500%;">
     <?php
+error_reporting(E_ALL ^ E_WARNING);
 $connect=mysqli_connect("localhost","root","","strona_z_grami");
 $gra=$_POST['gra'];
 $login=$_COOKIE["Clogin"];
@@ -132,7 +48,6 @@ $czas=date("Y-m-d");//aktualny czas
 $nazwa_gry="SELECT Nazwa FROM `gry` WHERE id=$gra";
 $nazwa_gry_w=mysqli_query($connect,$nazwa_gry);
 $nazwa_gry_r=mysqli_fetch_array($nazwa_gry_w);
-        echo $nazwa_gry_r[0];
         
 $uzytkownik="SELECT id_uzytkownika FROM `dane_logowania` WHERE Login='$login'";//pobieranie id uzytkownika
 $wynik=mysqli_query($connect,$uzytkownik);
@@ -155,11 +70,6 @@ $rekord10=mysqli_fetch_array($wynik10);
 
 
         
-echo "login: $login<br>";
-echo "Id: $rekord[0]<br>";
-echo "Gra: $gra<br>";
-echo "stan konta: $rekord2[1]<br>";
-echo "Cena gry: $rekord3[0]<br>";
 if($rekord10[0]!=$gra && $rekord10[1]!=$rekord[0])
 {
 if($rekord2[1]>=$rekord3[0])
