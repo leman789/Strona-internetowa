@@ -112,7 +112,7 @@ echo "
         function wymagania(){
             wym++;
                 if(wym==1){
-                document.getElementById("prawa").innerHTML="<div id='opis_wymagan' >"+"<p id='zm1' class='prawa_d2'>System:<br>"+system+"</p><p id='zm2' class='prawa_d2'>Procesor:<br>"+procesor+"</p><p id='zm3' class='prawa_d2'>Ram:"+ram+"GB</p><p id='zm4' class='prawa_d2'>Miejsce:"+miejsce+"GB</p><p id='zm5' class='prawa_d2'>DirectX:"+dirx+"</p></div>";}
+                document.getElementById("prawa").innerHTML="<div id='opis_wymagan' >"+"<p id='zm1' class='prawa_d2'>System: <br>"+system+"</p><p id='zm2' class='prawa_d2'>Procesor:<br>"+procesor+"</p><p id='zm3' class='prawa_d2'>Ram: "+ram+"GB</p><p id='zm4' class='prawa_d2'>Miejsce: "+miejsce+"GB</p><p id='zm5' class='prawa_d2'>DirectX: "+dirx+"</p></div>";}
             else if(wym>1){
                 wym=0;
                 javascript:location.reload();
