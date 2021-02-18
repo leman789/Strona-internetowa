@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 10 Lut 2021, 09:23
+-- Czas generowania: 18 Lut 2021, 09:51
 -- Wersja serwera: 10.4.17-MariaDB
 -- Wersja PHP: 8.0.0
 
@@ -42,7 +42,9 @@ INSERT INTO `biblioteka_gier` (`id`, `id_gry`, `id_uzytkownika`) VALUES
 (136, 4, 1),
 (137, 2, 1),
 (138, 3, 1),
-(149, 5, 1);
+(149, 5, 1),
+(150, 77, 1),
+(151, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -91,7 +93,7 @@ CREATE TABLE `gatunki` (
 
 INSERT INTO `gatunki` (`id_gry`, `fps`, `mmo`, `rpg`, `moba`, `inne`) VALUES
 (1, 0, 0, 1, 0, 0),
-(2, 0, 1, 0, 0, 0),
+(2, 0, 0, 0, 1, 0),
 (3, 0, 0, 1, 0, 0),
 (4, 0, 0, 1, 0, 0),
 (5, 1, 0, 0, 0, 0),
@@ -119,7 +121,7 @@ CREATE TABLE `gatunki_multi_single` (
 
 INSERT INTO `gatunki_multi_single` (`id_gry`, `multip`, `singlep`) VALUES
 (1, 0, 1),
-(2, 0, 1),
+(2, 1, 0),
 (3, 0, 1),
 (4, 0, 1),
 (5, 0, 1),
@@ -154,7 +156,7 @@ CREATE TABLE `gry` (
 
 INSERT INTO `gry` (`id`, `Nazwa`, `Opis`, `Cena`, `id_tworcy`, `Data_wydania`, `Obrazek`, `Alt_obrazka`, `id_specyfikacja`, `id_dodajacego`) VALUES
 (1, 'Assassin’s Creed Valhalla', 'To nowa gra RPG z otwartym światem od studia Ubisoft Montréal będąca kolejną odsłoną kultowej serii Assassin\'s Creed. Tym razem Twórcy przenoszą nas do średniowiecznej Anglii, która zmaga się z najazdami zaciekłych Wikingów. Jesteś jednym lub jedną z nich - nazywasz się Eivor i szukasz chwały na obcej ziemi. Walcz, eksploruj i rozwijaj swoją osadę, a także atakuj wrogie przyczółki. Klimat surowych Wysp Brytyjskich oraz mroźnej Norwegii zapiera dech w piersiach i gwarantuje niezapomniane emocje.', 249.9, 1, '2020-11-10', 'thumb-355053.jpg', 'Assassin’s Creed Val', 1, 1),
-(2, 'Dota 3', 'Darmowa gra sieciowa od legendarnego studia Valve. Należy do gatunku MOBA i stanowi świetne wyzwanie dla Graczy szukających intensywnej rywalizacji. Na polu bitwy ścierają się dwie grupy składające się z pięciu Graczy każda. Zadaniem drużyny jest zdobycie twierdzy wroga, po drodze walcząc ze Stworami oraz Bohaterami, czyli wrogimi graczami. Rozwijaj swoją Postać, by nie zostać w tyle i przeć do przodu, ku zwycięstwu. Gra korzysta z silnika Source 2 i gromadzi wokół siebie wielką społeczność.', 55, 2, '2003-07-09', 'bdc9b2fa94c8d799d55b942363357e40.jpg', 'Dota 2', 2, 1),
+(2, 'Dota 2', 'Darmowa gra sieciowa od legendarnego studia Valve. Należy do gatunku MOBA i stanowi świetne wyzwanie dla Graczy szukających intensywnej rywalizacji. Na polu bitwy ścierają się dwie grupy składające się z pięciu Graczy każda. Zadaniem drużyny jest zdobycie twierdzy wroga, po drodze walcząc ze Stworami oraz Bohaterami, czyli wrogimi graczami. Rozwijaj swoją Postać, by nie zostać w tyle i przeć do przodu, ku zwycięstwu. Gra korzysta z silnika Source 2 i gromadzi wokół siebie wielką społeczność.', 0, 2, '2003-07-09', '300px-Dota_2_cover.jpg', 'Dota 2', 2, 1),
 (3, 'Final Fantasy VII', 'Dzieło studia Square Co. przeznaczone na konsolę PlayStation oraz PC. Jest jedną z najlepszych gier z gatunku jRPG, o czym świadczy imponujący remake, który trafił na konsole PS4 i PS5. To kolejny element wielkiej fabuły serii Final Fantasy. Gra przedstawia historię drużyny bohatera znanego jako Cloud Strife. Dzierży on sławny wielki miecz, Buster Sword, którym rozprawia się z różnorakimi przeciwnikami. Pozycja obowiązkowa dla fanów dalekowschodnich dzieł elektronicznej rozrywki.', 43.99, 3, '1997-01-31', '5910e62cae653a60ee410a95.jpg', 'Final Fantasy VII', 3, 1),
 (4, 'Cyberpunk 2077', 'Wyczekiwana gra polskiego studia CD Projekt Red. To fabularne RPG z elementami akcji osadzone w niesamowitym Night City. Jesteś V, najemnikiem, który podejmie się nawet najtrudniejszej roboty. Możesz dostosować swój wygląd, płeć, wyposażenie, ale też przeszłość i ukształtować przyszłość - V oraz całego Night City. Fabuła może potoczyć się bardzo różnie, w zależności od Twoich wyborów. Ulubieniec Fanów, Keanu Reeves, będzie Ci towarzyszyć podczas przemierzania Miasta Snów. Wstawaj, Samuraju...', 199, 4, '2020-12-10', 'co1rft.jpg', 'Cyberpunk 2077', 4, 1),
 (5, 'Doom Eternal', 'To najnowsze dzieło studia id Software, którego sztandarowa seria, DOOM, jest z nami już prawie trzy dekady, a mimo to wciąż zaskakuje świeżością i zapewnia niezwykłe doznania. Wbrew pozorom to nie bezmyślna krwawa jadka. To piekielnie krwawa jadka wymagająca ruszenia głową i pewnych umiejętności. Podczas rozgrywki adrenalina nie odpuszcza nawet na chwilę, a intensywna akcja wciska w fotel. Bezbłędna muzyka Micka Gordona buduje obłędny klimat i zagrzewa do walki. Jesteś jedynym czego się boją...', 249.99, 5, '2020-03-20', 'doometernal_2876653b.png', 'Doom Eternal', 5, 1),
@@ -294,7 +296,7 @@ CREATE TABLE `specyfikacja` (
 
 INSERT INTO `specyfikacja` (`id`, `id_gry`, `system_o`, `procesor`, `ram`, `miejsce_dysku`, `directx`) VALUES
 (1, 1, 'Windows 10 (tylko wersje 64-bitowe)', 'Intel i5-4460 @ 3,2 Ghz lub AMD Ryzen3 1200 @ 3,1 Ghz ', 8, 50, 12),
-(2, 2, 'Windows 10/5 (tylko wersje 64-bitowe)', 'Intel i5-4460 @ 3,33 Ghz lub AMD Ryzen3 1200 @ 3,1 Ghz ', 5, 54, 166),
+(2, 2, 'Windows 10 (tylko wersje 64-bitowe)', 'Intel i5-4460 @ 3,2 Ghz lub AMD Ryzen3 1200 @ 3,1 Ghz ', 8, 50, 12),
 (3, 3, 'Windows 10 (tylko wersje 64-bitowe)', 'Intel i5-4460 @ 3,2 Ghz lub AMD Ryzen3 1200 @ 3,1 Ghz ', 8, 50, 12),
 (4, 4, 'Windows 10 (tylko wersje 64-bitowe)', 'Intel i5-4460 @ 3,2 Ghz lub AMD Ryzen3 1200 @ 3,1 Ghz ', 8, 50, 12),
 (5, 5, 'Windows 10 (tylko wersje 64-bitowe)', 'Intel i5-4460 @ 3,2 Ghz lub AMD Ryzen3 1200 @ 3,1 Ghz ', 8, 50, 12),
@@ -303,6 +305,35 @@ INSERT INTO `specyfikacja` (`id`, `id_gry`, `system_o`, `procesor`, `ram`, `miej
 (8, 8, 'Windows 10 (tylko wersje 64-bitowe)', 'Intel i5-4460 @ 3,2 Ghz lub AMD Ryzen3 1200 @ 3,1 Ghz ', 8, 50, 12),
 (9, 9, 'Windows 10 (tylko wersje 64-bitowe)', 'Intel i5-4460 @ 3,2 Ghz lub AMD Ryzen3 1200 @ 3,1 Ghz ', 8, 50, 12),
 (10, 10, 'Windows 10 (tylko wersje 64-bitowe)', 'Intel i5-4460 @ 3,2 Ghz lub AMD Ryzen3 1200 @ 3,1 Ghz ', 8, 50, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `statystyki`
+--
+
+CREATE TABLE `statystyki` (
+  `id` int(11) NOT NULL,
+  `id_gry` int(11) NOT NULL,
+  `ilosc` int(11) NOT NULL DEFAULT 0,
+  `zarobek` float(10,2) NOT NULL DEFAULT 0.00
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `statystyki`
+--
+
+INSERT INTO `statystyki` (`id`, `id_gry`, `ilosc`, `zarobek`) VALUES
+(1, 1, 0, 0.00),
+(2, 2, 0, 0.00),
+(8, 3, 0, 0.00),
+(9, 4, 0, 0.00),
+(10, 5, 0, 0.00),
+(11, 6, 1, 179.99),
+(12, 7, 0, 0.00),
+(13, 8, 0, 0.00),
+(14, 9, 0, 0.00),
+(15, 10, 0, 0.00);
 
 -- --------------------------------------------------------
 
@@ -382,7 +413,8 @@ INSERT INTO `tranzakcje` (`id`, `id_uzytkownika`, `kwota`, `metoda`, `czas`, `na
 (73, 131, 123, 3, '2021-01-28', '0'),
 (74, 131, 123, 2, '2021-01-28', '0'),
 (75, 131, 123, 2, '2021-01-28', '0'),
-(76, 1, 2147483647, 1, '2021-02-04', '0');
+(76, 1, 12, 0, '2021-02-04', '123123'),
+(77, 1, 200, 0, '2021-02-04', 'Dark Souls III');
 
 -- --------------------------------------------------------
 
@@ -402,7 +434,7 @@ CREATE TABLE `tworcy` (
 
 INSERT INTO `tworcy` (`id`, `Tworca`, `Wydawca`) VALUES
 (1, 'Ubisoft Montréal', 'Ubisoft'),
-(2, 'Walve Corporation', 'Valve Corporation'),
+(2, 'Valve Corporation', 'Valve Corporation'),
 (3, 'Square', 'Eidos Interactive'),
 (4, 'CD Projekt Red', 'CD Projekt Red'),
 (5, 'id Software', 'Bethesda Softworks'),
@@ -432,8 +464,8 @@ CREATE TABLE `uzytkownicy` (
 --
 
 INSERT INTO `uzytkownicy` (`id`, `Imie`, `Nazwisko`, `Wiek`, `Stan_konta`, `Avatar`) VALUES
-(0, 'Admin', 'Admin', 12, 1212, '1.jpg'),
-(1, 'dawid', 'reczek', 22, 2000000000000, 'p.jfif'),
+(0, 'Admin', 'Admin', 12, 1233.2, '1.jpg'),
+(1, 'dawid', 'reczek', 22, 999999000000, 'p.jfif'),
 (92, 'qqqqqqqqqqqqqq', 'wwwwwwwwwww', 6565, 0, '1.jpg'),
 (98, 'dawid_rrr', 'reczek', 10, 0, '1.jpg'),
 (100, 'sprawdz', 'sprawdz', 9, 0, '1.jpg'),
@@ -520,6 +552,13 @@ ALTER TABLE `specyfikacja`
   ADD KEY `Fk` (`id_gry`);
 
 --
+-- Indeksy dla tabeli `statystyki`
+--
+ALTER TABLE `statystyki`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `statygry_fk` (`id_gry`);
+
+--
 -- Indeksy dla tabeli `top_5`
 --
 ALTER TABLE `top_5`
@@ -551,13 +590,13 @@ ALTER TABLE `uzytkownicy`
 -- AUTO_INCREMENT dla tabeli `biblioteka_gier`
 --
 ALTER TABLE `biblioteka_gier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
 -- AUTO_INCREMENT dla tabeli `gry`
 --
 ALTER TABLE `gry`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT dla tabeli `konto_bankowe`
@@ -593,7 +632,13 @@ ALTER TABLE `play`
 -- AUTO_INCREMENT dla tabeli `specyfikacja`
 --
 ALTER TABLE `specyfikacja`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+
+--
+-- AUTO_INCREMENT dla tabeli `statystyki`
+--
+ALTER TABLE `statystyki`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT dla tabeli `top_5`
@@ -605,7 +650,7 @@ ALTER TABLE `top_5`
 -- AUTO_INCREMENT dla tabeli `tranzakcje`
 --
 ALTER TABLE `tranzakcje`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT dla tabeli `uzytkownicy`
@@ -670,6 +715,12 @@ ALTER TABLE `play`
 --
 ALTER TABLE `specyfikacja`
   ADD CONSTRAINT `Fk` FOREIGN KEY (`id_gry`) REFERENCES `gry` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ograniczenia dla tabeli `statystyki`
+--
+ALTER TABLE `statystyki`
+  ADD CONSTRAINT `statygry_fk` FOREIGN KEY (`id_gry`) REFERENCES `gry` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograniczenia dla tabeli `tworcy`
