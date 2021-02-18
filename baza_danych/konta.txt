@@ -1,0 +1,7 @@
+Admin
+L: dreczek
+H: mleczko123
+
+Ten typ co gry moze sprzedawac
+L: login1
+H: login123
