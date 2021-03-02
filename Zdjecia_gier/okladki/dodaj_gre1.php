@@ -1,6 +1,5 @@
 <?php
-$i=0;
-if(isset($_POST['tytul']) && isset($_POST['cena']) && isset($_POST['data']) && isset($_POST['opis']) && isset($_POST['Tworca']) && isset($_POST['Wydawca']) && isset($_POST['System']) && isset($_POST['Procesor']) && isset($_POST['Ram']) && isset($_POST['Miejsce']) && isset($_POST['DirectX']) && isset($_POST['gatunki']) && isset($_POST['rodzaj_g']) && $i==1){
+if(isset($_POST['tytul']) && isset($_POST['cena']) && isset($_POST['data']) && isset($_POST['opis']) && isset($_POST['Tworca']) && isset($_POST['Wydawca']) && isset($_POST['System']) && isset($_POST['Procesor']) && isset($_POST['Ram']) && isset($_POST['Miejsce']) && isset($_POST['DirectX']) && isset($_POST['gatunki']) && isset($_POST['rodzaj_g'])){
 $login=$_COOKIE["Clogin"];
 $connect=mysqli_connect("localhost","root","","strona_z_grami");
 $tytul=$_POST['tytul'];
@@ -170,6 +169,7 @@ mysqli_query($connect,$dodanie_gatunku_gry2);
  
  $statystyki="INSERT INTO `statystyki` (`id`, `id_gry`, `ilosc`, `zarobek`) VALUES (NULL, '$id_gry', '0', '0');";
  mysqli_query($connect,$statystyki);
+ header("Location:../../ustawienia/dodaj_gre.php");
 }
 else{
     $blad="Blad";
